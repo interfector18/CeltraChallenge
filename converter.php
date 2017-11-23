@@ -417,40 +417,40 @@ function IfFunctionsFinish()
 function IfFunctionsCommented()
 {
     $lines2 = array();
-    string[] $lines2 = rtb_JavaCode.lines;
-    for ($nn = 0; nn < $lines2.Length; nn++)
+    $lines2 = $tb_javascript;
+    for ($nn = 0; $nn < count($lines2); $nn++)
     {
-        $line = $lines2[nn];
-        if (line.Trim().StartsWith("!"))
+        $line = $lines2[$nn];
+        if (substr(trim($line), 0, 1) === "!")//line.Trim().StartsWith("!"))
         {
             $tempCount = 0;
-            for ($xx = 0; xx < line.Length; xx++)
+            for ($xx = 0; $xx < count($line); $xx++)
             {
-                if (line[$xx] == ' ')
+                if ($line[$xx] === " ")
                 {
-                    tempCount++;
+                    $tempCount++;
                 }
                 else { break; }
             }
 
             $tempCount2 = 0;
-            $nextLine = $lines2[nn + 1];
-            for ($xx = 0; xx < nextLine.Length; xx++)
+            $nextLine = $lines2[$nn + 1];
+            for ($xx = 0; $xx < count($nextLine); $xx++)
             {
-                if (nextline[$xx] == ' ')
+                if ($nextline[$xx] === " ")
                 {
-                    tempCount2++;
+                    $tempCount2++;
                 }
                 else { break; }
             }
-            if (tempCount2 > tempCount)
+            if ($tempCount2 > $tempCount)
             {
-                $lines2[nn + 1] = $lines2[nn + 1].Substring(0, tempCount) + "//" + $lines2[nn + 1].Substring(tempCount, $lines2[nn + 1].Length - (tempCount));
-                nn = nn + 1;
+                $lines2[$nn + 1] = substr($lines2[$nn + 1], 0, $tempCount)."//".substr($lines2[$nn + 1], $tempCount, (strlen($lines2[nn + 1]) - $tempCount));//$lines2[nn + 1].Substring(0, tempCount) + "//" + $lines2[nn + 1].Substring(tempCount, $lines2[nn + 1].Length - (tempCount));
+                $nn = $nn + 1;
             }
         }
     }
-    rtb_JavaCode.lines = $lines2;
+    $tb_javascript = $lines2;
 }
 
 ?>

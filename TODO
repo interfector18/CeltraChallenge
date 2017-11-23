@@ -10,6 +10,6 @@ Todo - jasmin:
 Todo - zoki: 
   ✔ IfFunctionsClosing(); @done(17-11-23 20:52)
   ✔ ReplaceFunction(" ! ", " // ! ", ""); @done(17-11-23 21:24)
-  ☐ CommentingCodeFromString("SalWaitCursor");
+  ✔ CommentingCodeFromString("SalWaitCursor"); @done(17-11-23 21:31)
   ✔ SelectLine(); @started(17-11-23 21:04) @done(17-11-23 21:04) @lasted(31 seconds)
   ✔ Deletelines(); @started(17-11-23 20:52) @done(17-11-23 20:56) @lasted(4 minutes 15 seconds)

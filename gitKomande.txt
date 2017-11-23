@@ -1,0 +1,6 @@
+git fetch origin master - za dohvacanje s servera
+git pull - ista stvar, samo u slucaju kad napravimo vise commita bez sinkronizacije
+git push -u origin - za spremanje na server
+git add [ime datoteke, ili *] - za dodavanje na git
+git stage [ime datoteke, ili *] - za pripremanje promjena
+git commit -m "poruka commita"- za commitanje promjena

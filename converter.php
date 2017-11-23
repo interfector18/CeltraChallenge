@@ -283,7 +283,8 @@ for ($jj = 0; jj < $lines1.Length; jj++)
 //Fixing if functions
 function IfFunctionFix()
 {
-    string[] $lines1 = rtb_JavaCode.lines;
+    $lines1 = array();
+    $lines1 = rtb_JavaCode.lines;
     for ($nn = 0; nn < $lines1.Length; nn++)
     {
         $line = $lines1[nn];
@@ -302,7 +303,8 @@ function IfFunctionFix()
 //Commented if functions 
 function IfFunctionsClosing()
 {
-    string[] $linesRtb = rtb_JavaCode.lines;
+    $linesRtb = array();
+    $linesRtb = rtb_JavaCode.lines;
     for ($yy = 0; yy < $linesRtb.Length; yy++)
     {
         $line = $linesRtb[yy];

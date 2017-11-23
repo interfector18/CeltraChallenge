@@ -288,13 +288,8 @@ for ($jj = 0; jj < $lines1.Length; jj++)
 function IfFunctionFix()
 {
     $lines1 = array();
-<<<<<<< HEAD
-    $lines1 = rtb_JavaCode.lines;
-    for ($nn = 0; nn < $lines1.Length; nn++)
-=======
     $lines1 = $tb_javascript;
     for ($nn = 0; $nn < count($lines1); $nn++)
->>>>>>> 6950d0c4d3a0a1c23491cb66724d0b14c040c5c2
     {
         $line = $lines1[$nn];
         if (strpos($line, "if (") && strpos($line, " != "))//line.Contains("if ("))

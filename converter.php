@@ -265,23 +265,24 @@ function CloseFunctions()
 //DELETING TEXT FROM BEGGINNING
 function Deletelines()
 {
-string[] $lines1 = rtb_JavaCode.lines;
-for ($jj = 0; jj < $lines1.Length; jj++)
-{
-    $line = $lines1[jj];
-    if (line.Contains("Functions"))
+    $lines1 = array();
+    $lines1 = $tb_javascript;
+    for ($jj = 0; $jj < count($lines1); $jj++)
     {
-        line = line.Remove(0);
-        $lines1[jj] = line;
-        rtb_JavaCode.lines = $lines1;
-        return;
+        $line = $lines1[$jj];
+        if (contains($line,"Functions"))//line.Contains("Functions"))
+        {
+            $line = preg_replace( "/\r|\n/", "", $line );//line.Remove(0);
+            $lines1[$jj] = $line;
+            $tb_javascript = $lines1;
+            return;
+        }
+        else
+        {
+            $line = preg_replace( "/\r|\n/", "", $line );//line.Remove(0);
+            $lines1[$jj] = $line;
+        }
     }
-    else
-    {
-        line = line.Remove(0);
-        $lines1[jj] = line;
-    }
-}
 }
 
 //Fixing if functions

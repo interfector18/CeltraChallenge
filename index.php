@@ -25,6 +25,7 @@
     // case 'd':
     default:
         login();
+        registracija();
         break;
     }
 

@@ -52,7 +52,7 @@ function AccessingData()
     for ($vv = 0; $vv < count($lines); $vv++)
     {
         $line = $lines[$vv];
-        if (strpos($a, 'SELECT') && strpos($a, 'FROM'))
+        if (strpos($line, 'SELECT') && strpos($line, 'FROM'))
         {
                 $indexFROM = strrpos(trim($line), 'FROM');//line.Trim().IndexOf("FROM");
                 $textLength = strlen(trim($line));// $textLength = line.Trim().Length;
@@ -103,27 +103,29 @@ function Klase()
 {
     $lines = array();
     $lines = $tb_javascript;
-    for ($gg = 0; $gg < $lines.Length; $gg++)
+    for ($gg = 0; $gg < count($lines); $gg++)
     {
         $line = $lines[$gg];
-        if (line.Contains("Form Window: "))
+        if (strpos($line, "Form Window: "))//line.Contains("Form Window: "))
         {
-            for ($pp = $gg+1; $pp < $lines.Length; $pp++)
+            for ($pp = $gg+1; $pp < count($lines); $pp++)
             {
                 $line1 = $lines[$pp];
-                if (line1.Trim().StartsWith("Class: "))
+                if (substr($line1, 0, 7) === "Class: ")//line1.Trim().StartsWith("Class: "))
                 {
-                    $temp3 = line.Replace("Form Window: ", "public class ") + line1.Trim().Replace("Class: ", " extends ");
-                    $lines[$pp] = $temp3 + " {";
-                    System.Windows.Forms.Clipboard.SetText($lines[$pp]);
-                    for ($ll = pp + 1; ll < $lines.Length; ll++)
+                    $temp3 = str_replace($line,"Form Window: ", "public class ").str_replace(trim($line),"Class: "," extends ");//line.Replace("Form Window: ", "public class ") + line1.Trim().Replace("Class: ", " extends ");
+                    $lines[$pp] = $temp3." {";
+                    $temp4 = $lines[$pp];
+                    //System.Windows.Forms.Clipboard.SetText($lines[$pp]);
+                    
+                    for ($ll = $pp + 1; $ll < count($lines); $ll++)
                     {
-                        if ($lines[$ll].Trim().StartsWith("/*"))
+                        if (substr(trim($lines[$ll]), 0, 2) === "/*")//$lines[$ll].Trim().StartsWith("/*"))
                         {
-                            $index1 = $lines.Length;
-                            $lines[$ll] = System.Windows.Forms.Clipboard.GetText() + "\n" + $lines[$ll];
-                            $lines[$index1 - 1] = $lines[$index1 - 1] + "\n}";
-                            rtb_JavaCode.lines = $lines;
+                            $index1 = count($lines);
+                            $lines[$ll] = $temp4."\n".$lines[$ll];
+                            $lines[$index1 - 1] = $lines[$index1 - 1]."\n}";
+                            $tb_javascript = $lines;
                             return;
                         }
                     }                          
@@ -151,24 +153,25 @@ function CommentingCodeFromString($find)
 // if (and/or)
 function IfAndOr()
 {
-    string[] $lines = rtb_JavaCode.lines;
-    for ($dd = 0; dd < $lines.Length; dd++)
+    $lines = array();
+    $lines = $tb_javascript;
+    for ($dd = 0; $dd < count($lines); $dd++)
     {
         $line = $lines[$dd];
-        if (line.Contains("if ("))
+        if (strpos($line, "if ("))//line.Contains("if ("))
         {
-            if (line.Contains(" and "))
+            if (strpos($line, " and "))//line.Contains(" and "))
             {
-                line = line.Replace(" and ", " && ");
+                $line = str_replace($lines[$vv]," and ", " && ");// line.Replace(" and ", " && ");
             }
-            if (line.Contains(" or "))
+            if (strpos($line, " or "))//line.Contains(" or "))
             {
-                line = line.Replace(" or ", " || ");
+                $line = str_replace($lines[$vv]," or ", " || ");//line.Replace(" or ", " || ");
             }
-            $lines[$dd] = line;
+            $lines[$dd] = $line;
             
         }
-        rtb_JavaCode.lines = $lines;
+        $tb_javascript = $lines;
     }
 }
 

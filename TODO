@@ -4,11 +4,11 @@ Todo - jasmin:
   ✔ Klase(); - jasmin @started(17-11-23 15:16) @done(17-11-23 20:00) 
   ✔ IfAndOr(); @started(17-11-23 20:00) @done(17-11-23 20:05) @lasted(5 minutes 3 seconds)
   ✔ CloseFunctions(); @started(17-11-23 20:05) @done(17-11-23 20:15) @lasted(10 minutes 41 seconds)
-  ☐ IfFunctionFix();
+  ✔ IfFunctionFix(); @started(17-11-23 20:18) @done(17-11-23 20:23) @lasted(5 minutes 42 seconds)
   ☐ IfFunctionsCommented();
 
 Todo - zoki: 
-  ☐ IfFunctionsClosing();
+  ✔ IfFunctionsClosing(); @done(17-11-23 20:38)
   ☐ ReplaceFunction(" ! ", " // ! ", "");
   ☐ CommentingCodeFromString("SalWaitCursor");
   ☐ SelectLine();

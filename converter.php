@@ -308,13 +308,13 @@ function IfFunctionsClosing()
     $linesRtb = $tb_javascript;
     for ($yy = 0; $yy < count($linesRtb); $yy++)
     {
-        $line = $linesRtb[$yy];
-        if (substr(trim($line), 0, 2) === "if")//line.Trim().StartsWith("if"))
+        $line = $linesRtb[yy];
+        if (startsWith(trim($line), "if"))
         {
             $tempCount = 0;
-            for ($xx = 0; $xx < count(line); $xx++)
+            for ($xx = 0; xx < strlen($line); $xx++)
             {
-                if ($line[$xx] === ' ')
+                if ($line[$xx] == ' ')
                 {
                     $tempCount++;
                 }
@@ -322,16 +322,16 @@ function IfFunctionsClosing()
             }
 
             $tempCount2 = 0;
-            $nextLine = $linesRtb[$yy + 1];
-            for ($xx = 0; $xx < count($nextLine); $xx++)
+            $nextLine = $linesRtb[yy + 1];
+            for ($xx = 0; xx < strlen(nextLine); $xx++)
             {
-                if ($nextline[$xx] === ' ')
+                if ($nextline[$xx] == ' ')
                 {
                     $tempCount2++;
                 }
                 else { break; }
             }
-            if ($tempCount2 > $tempCount && strpos($linesRtb[$yy + 1], ",") && !strpos($linesRtb[$yy + 1], ";"))//$linesRtb[$yy + 1].Contains(",") && (!$linesRtb[$yy + 1].Contains(";")))
+            if ($tempCount2 > $tempCount && $linesRtb[yy + 1].Contains(",") && (!$linesRtb[yy + 1].Contains(";")))
             {
                 $linesRtb[$yy] = $linesRtb[$yy]." " .trim($linesRtb[$yy+1]);
                 $linesRtb[$yy + 1] = "";
@@ -451,6 +451,24 @@ function IfFunctionsCommented()
         }
     }
     $tb_javascript = $lines2;
+}
+
+function startsWith($haystack, $needle) 
+{
+  $length = strlen($needle);
+  return (substr($haystack, 0, $length) === $needle);
+}
+
+function contains($text, $word)
+{
+    if (strpos($text, $word) !== false) 
+    {
+        return false;
+    } 
+    else
+    {
+        return true;
+    }
 }
 
 ?>

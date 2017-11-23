@@ -1,0 +1,9 @@
+C:\Users\Jasmin\Desktop\Centura2Java\Centura2Java\Centura2Java\bin\Release\Centura2Java.exe
+C:\Users\Jasmin\Desktop\Centura2Java\Centura2Java\Centura2Java\bin\Release\Centura2Java.pdb
+C:\Users\Jasmin\Desktop\Centura2Java\Centura2Java\Centura2Java\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Jasmin\Desktop\Centura2Java\Centura2Java\Centura2Java\obj\Release\Centura2Java.Centura2Java.resources
+C:\Users\Jasmin\Desktop\Centura2Java\Centura2Java\Centura2Java\obj\Release\Centura2Java.Properties.Resources.resources
+C:\Users\Jasmin\Desktop\Centura2Java\Centura2Java\Centura2Java\obj\Release\Centura2Java.csproj.GenerateResource.Cache
+C:\Users\Jasmin\Desktop\Centura2Java\Centura2Java\Centura2Java\obj\Release\Centura2Java.exe
+C:\Users\Jasmin\Desktop\Centura2Java\Centura2Java\Centura2Java\obj\Release\Centura2Java.pdb
+C:\Users\Jasmin\Desktop\Centura2Java\Centura2Java\Centura2Java\obj\Release\Centura2Java.Find.resources

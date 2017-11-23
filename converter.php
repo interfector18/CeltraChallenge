@@ -137,17 +137,18 @@ function Klase()
 
 function CommentingCodeFromString($find)
 {
-    string[] $lines = rtb_JavaCode.lines;
-    for ($cc = 0; cc < $lines.Length; cc++)
+    $lines = array();
+    $lines = $tb_JavaCode;
+    for ($cc = 0; $cc < strlen($lines); $cc++)
     {
         $line = $lines[$cc];
-        if (line.Contains(find)&& !line.Contains(" !"))
+        if (contains($line, $find) && !contains(line, " !"))
         {
-            line = "//" + line;
-            $lines[$cc] = line;
+            $line = "//".$line;
+            $lines[$cc] = $line;
         }
     }
-    rtb_JavaCode.lines = $lines;
+    $tb_JavaCode = $lines;
 }
 
 // if (and/or)

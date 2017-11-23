@@ -5,7 +5,7 @@
         ?>
 
         <form action="login.php">
-            <input type="text" name="username" placeholder="Enter your username">
+            <input type="text" name="username" placeholder="Enter your name">
             <br>
             <input type="Password" name="password" placeholder="Enter your password">
             <br>

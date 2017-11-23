@@ -413,6 +413,7 @@ function IfFunctionsFinish()
 
 function IfFunctionsCommented()
 {
+    $lines2 = array();
     string[] $lines2 = rtb_JavaCode.lines;
     for ($nn = 0; nn < $lines2.Length; nn++)
     {

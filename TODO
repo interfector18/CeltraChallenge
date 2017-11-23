@@ -1,0 +1,15 @@
+
+Todo - jasmin:
+  ✔ AccessingData(); - jasmin @done(17-11-23 15:15)
+  ☐ Klase(); - jasmin @started(17-11-23 15:16)
+  ☐ IfAndOr();
+  ☐ CloseFunctions();
+  ☐ IfFunctionFix();
+  ☐ IfFunctionsCommented();
+
+Todo - zoki: 
+  ☐ IfFunctionsClosing();
+  ☐ ReplaceFunction(" ! ", " // ! ", "");
+  ☐ CommentingCodeFromString("SalWaitCursor");
+  ☐ SelectLine();
+  ☐ Deletelines();

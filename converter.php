@@ -308,33 +308,33 @@ function IfFunctionFix()
 function IfFunctionsClosing()
 {
     $linesRtb = array();
-    $linesRtb = rtb_JavaCode.lines;
-    for ($yy = 0; yy < $linesRtb.Length; yy++)
+    $linesRtb = $tb_javascript;
+    for ($yy = 0; $yy < count($linesRtb); $yy++)
     {
         $line = $linesRtb[yy];
-        if (line.Trim().StartsWith("if"))
+        if (startsWith(trim($line), "if"))
         {
             $tempCount = 0;
-            for ($xx = 0; xx < line.Length; xx++)
+            for ($xx = 0; xx < strlen($line); $xx++)
             {
-                if (line[$xx] == ' ')
+                if ($line[$xx] == ' ')
                 {
-                    tempCount++;
+                    $tempCount++;
                 }
                 else { break; }
             }
 
             $tempCount2 = 0;
             $nextLine = $linesRtb[yy + 1];
-            for ($xx = 0; xx < nextLine.Length; xx++)
+            for ($xx = 0; xx < strlen(nextLine); $xx++)
             {
-                if (nextline[$xx] == ' ')
+                if ($nextline[$xx] == ' ')
                 {
-                    tempCount2++;
+                    $tempCount2++;
                 }
                 else { break; }
             }
-            if (tempCount2 > tempCount && $linesRtb[yy + 1].Contains(",") && (!$linesRtb[yy + 1].Contains(";")))
+            if ($tempCount2 > $tempCount && $linesRtb[yy + 1].Contains(",") && (!$linesRtb[yy + 1].Contains(";")))
             {
                 $linesRtb[yy] = $linesRtb[yy]+ " " + $linesRtb[yy+1].Trim();
                 $linesRtb[yy + 1] = "";
@@ -454,6 +454,24 @@ function IfFunctionsCommented()
         }
     }
     rtb_JavaCode.lines = $lines2;
+}
+
+function startsWith($haystack, $needle) 
+{
+  $length = strlen($needle);
+  return (substr($haystack, 0, $length) === $needle);
+}
+
+function contains($text, $word)
+{
+    if (strpos($text, $word) !== false) 
+    {
+        return false;
+    } 
+    else
+    {
+        return true;
+    }
 }
 
 ?>

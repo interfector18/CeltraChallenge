@@ -101,19 +101,20 @@ function AccessingData()
 $temp3;
 function Klase()
 {
-    string[] $lines = rtb_JavaCode.lines;
-    for ($gg = 0; gg < $lines.Length; gg++)
+    $lines = array();
+    $lines = $tb_javascript;
+    for ($gg = 0; $gg < $lines.Length; $gg++)
     {
         $line = $lines[$gg];
         if (line.Contains("Form Window: "))
         {
-            for ($pp = gg+1; pp < $lines.Length; pp++)
+            for ($pp = $gg+1; $pp < $lines.Length; $pp++)
             {
                 $line1 = $lines[$pp];
                 if (line1.Trim().StartsWith("Class: "))
                 {
-                    temp3 = line.Replace("Form Window: ", "public class ") + line1.Trim().Replace("Class: ", " extends ");
-                    $lines[$pp] = temp3 + " {";
+                    $temp3 = line.Replace("Form Window: ", "public class ") + line1.Trim().Replace("Class: ", " extends ");
+                    $lines[$pp] = $temp3 + " {";
                     System.Windows.Forms.Clipboard.SetText($lines[$pp]);
                     for ($ll = pp + 1; ll < $lines.Length; ll++)
                     {
@@ -258,7 +259,7 @@ function CloseFunctions()
 }
 
 //DELETING TEXT FROM BEGGINNING
-function Delete$lines()
+function Deletelines()
 {
 string[] $lines1 = rtb_JavaCode.lines;
 for ($jj = 0; jj < $lines1.Length; jj++)

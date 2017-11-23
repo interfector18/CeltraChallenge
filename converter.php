@@ -178,41 +178,45 @@ function IfAndOr()
 // MOVE PUBLIC VOID UNTER COMMENTS
 function SelectLine()
 {
-    string[] $lines = rtb_JavaCode.lines;
-    for ($jj = 0; jj < $lines.Length; jj++)
+    $lines = array();
+    $lines = $tb_javascript;
+    for ($jj = 0; $jj < count($lines); $jj++)
     {
         $line = $lines[$jj];
-        if (line.Contains("public"))
+        if (contains($line, "public"))//line.Contains("public"))
         {
-            $temp = line;
-            System.Windows.Forms.Clipboard.SetText(temp);
-            line = "";
+            $temp1 = "";
+            $tmp = $line;
+            $temp1 = $tmp;
+            $line = "";
 
-            $lines[$jj] = line;
-            string[] a = $lines;
-            MoveLine(jj,a);
-            jj = tempCount;
+            $lines[$jj] = $line;
+            $a = array();
+            $a = $lines;
+            MoveLine($jj,$a,$tmp);
+            $jj = $tempCount;
           
         }
     }
 }
 
 $tempCount= 0;
-function MoveLine($count$lines,string[] list)
+function MoveLine($countlines,$list,$tmp)
 {
-    string[] $lines = list;
-    for ($jj = count$lines; jj < $lines.Length; jj++)
+    $lines = $array();
+    $lines = $list;
+    for ($jj = $countlines; $jj < count($lines); $jj++)
     {
         $line = $lines[$jj];
-        if (line.Contains("*/"))
+        if (contains(line, "*/"))//line.Contains("*/"))
         {
-            line = line +"\n" +System.Windows.Forms.Clipboard.GetText();
-            $lines[$jj] = line;
-            rtb_JavaCode.lines = $lines;
-            tempCount = jj++;
+            $line = $line."\n".$tmp;
+            $lines[$jj] = $line;
+            $tb_javascript = $lines;
+            $tempCount = $jj++;
             return;
         }
-        $lines[$jj] = line;
+        $lines[$jj] = $line;
         
     }
     
@@ -265,23 +269,24 @@ function CloseFunctions()
 //DELETING TEXT FROM BEGGINNING
 function Deletelines()
 {
-string[] $lines1 = rtb_JavaCode.lines;
-for ($jj = 0; jj < $lines1.Length; jj++)
-{
-    $line = $lines1[jj];
-    if (line.Contains("Functions"))
+    $lines1 = array();
+    $lines1 = $tb_javascript;
+    for ($jj = 0; $jj < count($lines1); $jj++)
     {
-        line = line.Remove(0);
-        $lines1[jj] = line;
-        rtb_JavaCode.lines = $lines1;
-        return;
+        $line = $lines1[$jj];
+        if (contains($line,"Functions"))//line.Contains("Functions"))
+        {
+            $line = preg_replace( "/\r|\n/", "", $line );//line.Remove(0);
+            $lines1[$jj] = $line;
+            $tb_javascript = $lines1;
+            return;
+        }
+        else
+        {
+            $line = preg_replace( "/\r|\n/", "", $line );//line.Remove(0);
+            $lines1[$jj] = $line;
+        }
     }
-    else
-    {
-        line = line.Remove(0);
-        $lines1[jj] = line;
-    }
-}
 }
 
 //Fixing if functions

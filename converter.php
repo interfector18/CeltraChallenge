@@ -142,7 +142,7 @@ function CommentingCodeFromString($find)
     for ($cc = 0; $cc < strlen($lines); $cc++)
     {
         $line = $lines[$cc];
-        if (contains($line, $find) && !contains(line, " !"))
+        if (contains($line, $find) && !contains($line, " !"))
         {
             $line = "//".$line;
             $lines[$cc] = $line;

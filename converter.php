@@ -243,22 +243,23 @@ function ReplaceFunction($OldString,$NewString, $EndLine)
 $temp;
 function CloseFunctions()
 {
-    string[] $lines1 = rtb_JavaCode.lines;
-    for ($gg = 0; gg < $lines1.Length; gg++)
+    $lines1 = array();
+    $lines1 = $tb_javascript;
+    for ($gg = 0; $gg < count($lines1); $gg++)
     {
-        $line = $lines1[gg];
-        if (line.Contains("public void"))
+        $line = $lines1[$gg];
+        if (strpos($line, "public void"))//line.Contains("public void"))
         {
-            temp++;
-            if (temp>=2)
+            $temp++;
+            if ($temp>=2)
             {
-                line = line.Replace("public void","\n}\npublic void");
+                $line = str_replace($line,"public void", "\n}\npublic void");//line.Replace("public void","\n}\npublic void");
             }
-            $lines1[gg] = line;
+            $lines1[$gg] = $line;
         }
     }
-    $lines1[$lines1.Length - 1] = $lines1[$lines1.Length - 1] + "\n}";
-    rtb_JavaCode.lines = $lines1;
+    $lines1[count($lines1) - 1] = $lines1[count($lines1) - 1]."\n}";//$lines1[$lines1.Length - 1] = $lines1[$lines1.Length - 1] + "\n}";
+    $tb_javascript = $lines1;
 }
 
 //DELETING TEXT FROM BEGGINNING

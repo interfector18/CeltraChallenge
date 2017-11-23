@@ -332,9 +332,9 @@ function IfFunctionsClosing()
                 }
                 else { break; }
             }
-            if ($tempCount2 > $tempCount && $linesRtb[yy + 1].Contains(",") && (!$linesRtb[yy + 1].Contains(";")))
+            if ($tempCount2 > $tempCount && contains($linesRtb[yy + 1], ",") && (!contains($linesRtb[yy + 1], ";")))
             {
-                $linesRtb[$yy] = $linesRtb[$yy]." " .trim($linesRtb[$yy+1]);
+                $linesRtb[$yy] = $linesRtb[$yy]." ".trim($linesRtb[$yy+1]);
                 $linesRtb[$yy + 1] = "";
                 $yy = $yy + 1;
             }

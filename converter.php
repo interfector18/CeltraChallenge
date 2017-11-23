@@ -225,22 +225,23 @@ function MoveLine($countlines,$list,$tmp)
  //REPLACE FUNCTIONS
 function ReplaceFunction($OldString,$NewString, $EndLine)
 {
-    string[] $lines1 = rtb_JavaCode.lines;
-    for ($ii = 0; ii < $lines1.Length; ii++ )
+    $lines1 = array();
+    $lines1 = $tb_JavaCode;
+    for ($ii = 0; $ii < strlen($lines1); $ii++ )
     {
-        $line = $lines1[ii];
-        if (line.Contains(OldString))
+        $line = $lines1[$ii];
+        if (contains($line, $OldString)/*.Contains(OldString)*/)
         {
-            line = line.Replace(OldString, NewString);
-            if (EndLine.Length > 0)
+            $line = str_replace($line, $OldString, $NewString) /*line.Replace(OldString, NewString)*/;
+            if (strlen($EndLine) > 0)
             {
-                line = line + EndLine;
+                $line = $line.$EndLine;
             }
         
-            $lines1[ii] = line;
+            $lines1[$ii] = $line;
         }
     }
-    rtb_JavaCode.lines = $lines1;
+    $tb_JavaCode = $lines1;
 }
 
 //CLOSING FUNCTIONS WITH "}"

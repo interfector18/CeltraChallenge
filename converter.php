@@ -287,60 +287,59 @@ for ($jj = 0; jj < $lines1.Length; jj++)
 //Fixing if functions
 function IfFunctionFix()
 {
-    string[] $lines1 = rtb_JavaCode.lines;
-    for ($nn = 0; nn < $lines1.Length; nn++)
+    $lines1 = array();
+    $lines1 = $tb_javascript;
+    for ($nn = 0; $nn < count($lines1); $nn++)
     {
-        $line = $lines1[nn];
-        if (line.Contains("if ("))
+        $line = $lines1[$nn];
+        if (strpos($line, "if (") && strpos($line, " != "))//line.Contains("if ("))
         {
-            if (line.Contains(" != "))
-            {
-                line = line.Replace("//", "");
-                $lines1[nn] = line;
-            }
+            $line =  str_replace($line,"//", "");//line.Replace("//", "");
+            $lines1[$nn] = $line;
         }
     }
-    rtb_JavaCode.lines = $lines1;
+    $tb_javascript = $lines1;
 }
 
 //Commented if functions 
 function IfFunctionsClosing()
 {
-    string[] $linesRtb = rtb_JavaCode.lines;
-    for ($yy = 0; yy < $linesRtb.Length; yy++)
+    $linesRtb = array();
+    $linesRtb = $tb_javascript;
+    for ($yy = 0; $yy < count($linesRtb); $yy++)
     {
-        $line = $linesRtb[yy];
-        if (line.Trim().StartsWith("if"))
+        $line = $linesRtb[$yy];
+        if (substr(trim($line), 0, 2) === "if")//line.Trim().StartsWith("if"))
         {
             $tempCount = 0;
-            for ($xx = 0; xx < line.Length; xx++)
+            for ($xx = 0; $xx < count(line); $xx++)
             {
-                if (line[$xx] == ' ')
+                if ($line[$xx] === ' ')
                 {
-                    tempCount++;
+                    $tempCount++;
                 }
                 else { break; }
             }
 
             $tempCount2 = 0;
-            $nextLine = $linesRtb[yy + 1];
-            for ($xx = 0; xx < nextLine.Length; xx++)
+            $nextLine = $linesRtb[$yy + 1];
+            for ($xx = 0; $xx < count($nextLine); $xx++)
             {
-                if (nextline[$xx] == ' ')
+                if ($nextline[$xx] === ' ')
                 {
-                    tempCount2++;
+                    $tempCount2++;
                 }
                 else { break; }
             }
-            if (tempCount2 > tempCount && $linesRtb[yy + 1].Contains(",") && (!$linesRtb[yy + 1].Contains(";")))
+            if ($tempCount2 > $tempCount && strpos($linesRtb[$yy + 1], ",") && !strpos($linesRtb[$yy + 1], ";"))//$linesRtb[$yy + 1].Contains(",") && (!$linesRtb[$yy + 1].Contains(";")))
             {
-                $linesRtb[yy] = $linesRtb[yy]+ " " + $linesRtb[yy+1].Trim();
-                $linesRtb[yy + 1] = "";
-                yy = yy + 1;
+                $linesRtb[$yy] = $linesRtb[$yy]." " .trim($linesRtb[$yy+1]);
+                $linesRtb[$yy + 1] = "";
+                $yy = $yy + 1;
             }
         }
     }
-    rtb_JavaCode.lines = $linesRtb;
+    $tb_javascript = $linesRtb;
     IfFunctionsFinish();
 }
 

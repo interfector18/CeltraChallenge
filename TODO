@@ -11,5 +11,5 @@ Todo - zoki:
   ✔ IfFunctionsClosing(); @done(17-11-23 20:52)
   ☐ ReplaceFunction(" ! ", " // ! ", "");
   ☐ CommentingCodeFromString("SalWaitCursor");
-  ☐ SelectLine(); @started(17-11-23 20:56)
+  ✔ SelectLine(); @started(17-11-23 21:04) @done(17-11-23 21:04) @lasted(31 seconds)
   ✔ Deletelines(); @started(17-11-23 20:52) @done(17-11-23 20:56) @lasted(4 minutes 15 seconds)

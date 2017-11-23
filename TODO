@@ -8,7 +8,7 @@ Todo - jasmin:
   ☐ IfFunctionsCommented();
 
 Todo - zoki: 
-  ✔ IfFunctionsClosing(); @done(17-11-23 20:38)
+  ✔ IfFunctionsClosing(); @done(17-11-23 20:52)
   ☐ ReplaceFunction(" ! ", " // ! ", "");
   ☐ CommentingCodeFromString("SalWaitCursor");
   ☐ SelectLine();

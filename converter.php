@@ -308,11 +308,11 @@ function IfFunctionsClosing()
     $linesRtb = $tb_javascript;
     for ($yy = 0; $yy < count($linesRtb); $yy++)
     {
-        $line = $linesRtb[yy];
+        $line = $linesRtb[$yy];
         if (startsWith(trim($line), "if"))
         {
             $tempCount = 0;
-            for ($xx = 0; xx < strlen($line); $xx++)
+            for ($xx = 0; $xx < strlen($line); $xx++)
             {
                 if ($line[$xx] == ' ')
                 {
@@ -322,8 +322,8 @@ function IfFunctionsClosing()
             }
 
             $tempCount2 = 0;
-            $nextLine = $linesRtb[yy + 1];
-            for ($xx = 0; xx < strlen(nextLine); $xx++)
+            $nextLine = $linesRtb[$yy + 1];
+            for ($xx = 0; $xx < strlen($nextLine); $xx++)
             {
                 if ($nextline[$xx] == ' ')
                 {
@@ -331,7 +331,7 @@ function IfFunctionsClosing()
                 }
                 else { break; }
             }
-            if ($tempCount2 > $tempCount && contains($linesRtb[yy + 1], ",") && (!contains($linesRtb[yy + 1], ";")))
+            if ($tempCount2 > $tempCount && contains($linesRtb[$yy + 1], ",") && (!contains($linesRtb[$yy + 1], ";")))
             {
                 $linesRtb[$yy] = $linesRtb[$yy]." ".trim($linesRtb[$yy+1]);
                 $linesRtb[$yy + 1] = "";
@@ -345,73 +345,74 @@ function IfFunctionsClosing()
 
 function IfFunctionsFinish()
 {
-    string[] $linesRtb = rtb_JavaCode.lines;
-    for ($aa = 0; aa < $linesRtb.Length; aa++)
+    $linesRtb = array();
+    $linesRtb = $tb_JavaCode;
+    for ($aa = 0; $aa < strlen($linesRtb); $aa++)
     {
-        $line = $linesRtb[aa];
-        if (line.Trim().StartsWith("if ("))
+        $line = $linesRtb[$aa];
+        if (startsWith(trim($line),"if"))//.Trim().StartsWith("if ("))
         {
-            $linesRtb[aa] = $linesRtb[aa] + ") {";
+            $linesRtb[$aa] = $linesRtb[$aa].") {";
 
             $tempCount = 0;
-            for ($hh = 0; hh < line.Length; hh++)
+            for ($hh = 0; $hh < strlen($line)/*.Length*/; $hh++)
             {
-                if (line[$hh] == ' ')
+                if ($line[$hh] == ' ')
                 {
-                    tempCount++;
+                    $tempCount++;
                 }
                 else { break; }
             }
 
             $tempCount2 = 0;
-            $nextLine = $linesRtb[aa + 1];
-            for ($xx = 0; xx < nextLine.Length; xx++)
+            $nextLine = $linesRtb[$aa + 1];
+            for ($xx = 0; xx < $nextLine; $xx++)
             {
-                if (nextline[$xx] == ' ')
+                if ($nextline[$xx] == ' ')
                 {
-                    tempCount2++;
+                    $tempCount2++;
                 }
                 else { break; }
             }
-            if (tempCount2 > tempCount )
+            if ($tempCount2 > $tempCount )
             {
-                $linesRtb[aa + 1] = $linesRtb[aa + 1] + "\n}";
-                aa = aa + 1;
+                $linesRtb[$aa + 1] = $linesRtb[$aa + 1]."\n}";
+                $aa = $aa + 1;
             }
         }
-        if (line.Trim().StartsWith("else "))
+        if (startsWith(trim($line),"else ")/*line.Trim().StartsWith("else ")*/)
         {
            
 
             $tempCount = 0;
-            for ($hh = 0; hh < line.Length; hh++)
+            for ($hh = 0; $hh < strlen($line); $hh++)
             {
-                if (line[$hh] == ' ')
+                if ($line[$hh] == ' ')
                 {
-                    tempCount++;
+                    $tempCount++;
                 }
                 else { break; }
             }
 
             $tempCount2 = 0;
-            $nextLine = $linesRtb[aa + 1];
-            for ($xx = 0; xx < nextLine.Length; xx++)
+            $nextLine = $linesRtb[$aa + 1];
+            for ($xx = 0; $xx < strlen($nextLine); $xx++)
             {
-                if (nextline[$xx] == ' ')
+                if ($nextline[$xx] == ' ')
                 {
-                    tempCount2++;
+                    $tempCount2++;
                 }
                 else { break; }
             }
-            if (tempCount2 > tempCount)
+            if ($tempCount2 > $tempCount)
             {
-                $linesRtb[aa + 1] = $linesRtb[aa + 1] + "\n}";
-                aa = aa + 1;
+                $linesRtb[$aa + 1] = $linesRtb[$aa + 1] + "\n}";
+                $aa = $aa + 1;
             }
         }
 
     }
-    rtb_JavaCode.lines = $linesRtb;
+    $tb_JavaCode = $linesRtb;
 }
 
 function IfFunctionsCommented()

@@ -25,3 +25,13 @@ D:\1\Centura2Java\Centura2Java\Centura2Java\obj\Debug\Centura2Java.Centura2Java.
 D:\1\Centura2Java\Centura2Java\Centura2Java\obj\Debug\Centura2Java.Find.resources
 D:\1\Centura2Java\Centura2Java\Centura2Java\obj\Debug\Centura2Java.Properties.Resources.resources
 D:\1\Centura2Java\Centura2Java\Centura2Java\obj\Debug\Centura2Java.csproj.GenerateResource.Cache
+D:\Data\CodeRepos\CeltraChallenge\Centura2Java\Centura2Java\Centura2Java\bin\Debug\Centura2Java.exe
+D:\Data\CodeRepos\CeltraChallenge\Centura2Java\Centura2Java\Centura2Java\bin\Debug\Centura2Java.pdb
+D:\Data\CodeRepos\CeltraChallenge\Centura2Java\Centura2Java\Centura2Java\obj\Debug\Centura2Java.csprojResolveAssemblyReference.cache
+D:\Data\CodeRepos\CeltraChallenge\Centura2Java\Centura2Java\Centura2Java\obj\Debug\Centura2Java.Centura2Java.resources
+D:\Data\CodeRepos\CeltraChallenge\Centura2Java\Centura2Java\Centura2Java\obj\Debug\Centura2Java.Find.resources
+D:\Data\CodeRepos\CeltraChallenge\Centura2Java\Centura2Java\Centura2Java\obj\Debug\Centura2Java.Properties.Resources.resources
+D:\Data\CodeRepos\CeltraChallenge\Centura2Java\Centura2Java\Centura2Java\obj\Debug\Centura2Java.csproj.GenerateResource.Cache
+D:\Data\CodeRepos\CeltraChallenge\Centura2Java\Centura2Java\Centura2Java\obj\Debug\Centura2Java.csproj.CoreCompileInputs.cache
+D:\Data\CodeRepos\CeltraChallenge\Centura2Java\Centura2Java\Centura2Java\obj\Debug\Centura2Java.exe
+D:\Data\CodeRepos\CeltraChallenge\Centura2Java\Centura2Java\Centura2Java\obj\Debug\Centura2Java.pdb

@@ -349,21 +349,19 @@ namespace Centura2Java
         public void MoveLine(int countLines,string[] list)
         {
             string[] lines = list;
-            for (int jj = countLines; jj < lines.Length; jj++)
+            for (int i = countLines; i < lines.Length; i++)
             {
-                string line = lines[jj];
+                string line = lines[i];
                 if (line.Contains("*/"))
                 {
                     line = line +"\n" +System.Windows.Forms.Clipboard.GetText();
-                    lines[jj] = line;
+                    lines[i] = line;
                     rtb_JavaCode.Lines = lines;
-                    tempCount = jj++;
+                    tempCount = i++;
                     return;
                 }
-                lines[jj] = line;
-                
-            }
-            
+                lines[i] = line;
+             }
         }
 
         //TEXT COLOR
@@ -427,9 +425,9 @@ namespace Centura2Java
         public void ReplaceFunction(string OldString,string NewString, string EndLine)
         {
             string[] lines1 = rtb_JavaCode.Lines;
-            for (int ii = 0; ii < lines1.Length; ii++ )
+            for (int i = 0; i < lines1.Length; i++ )
             {
-                string line = lines1[ii];
+                string line = lines1[i];
                 if (line.Contains(OldString))
                 {
                     line = line.Replace(OldString, NewString);
@@ -438,7 +436,7 @@ namespace Centura2Java
                         line = line + EndLine;
                     }
                    
-                    lines1[ii] = line;
+                    lines1[i] = line;
                 }
             }
             rtb_JavaCode.Lines = lines1;

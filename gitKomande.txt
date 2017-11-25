@@ -14,6 +14,9 @@ git config --global push.default simple - da ne spamma tijekom push, jer iako pu
 
 Grane:
 git branch [-a] - daje popis svih grana, parametar "-a" daje popis i sa remote gitova
+git branch [ime grane] - dodaje granu
+git checkout [ime grane] - prebacuje se na granu
+git checkout -b [ime grane] - dodaje granu i prabacuje se na istu granu
 git branch -d [ime grane] - brise granu
 git branch -D [ime grane] - prisilno brise granu
 git push origin [ime grane] - uploada granu na remote git "origin"

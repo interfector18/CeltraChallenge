@@ -181,7 +181,7 @@ namespace Centura2Java
                 rtb_JavaCode.Lines = IfFunctionsCommented(rtb_JavaCode.Lines);
                 rtb_JavaCode.Lines = IfFunctionsClosing(rtb_JavaCode.Lines);
                 rtb_JavaCode.Lines = ReplaceFunction(" ! ", " // ! ", "", rtb_JavaCode.Lines);
-                CommentingCodeFromString("SalWaitCursor");
+                rtb_JavaCode.Lines = CommentingCodeFromString("SalWaitCursor", rtb_JavaCode.Lines);
 
 
                 SelectLine();
@@ -284,19 +284,16 @@ namespace Centura2Java
                 }
             }            
         }
-        public void CommentingCodeFromString(string find)
+        public string[] CommentingCodeFromString(string find, string[] inputLines)
         {
-            string[] lines = rtb_JavaCode.Lines;
-            for (int cc = 0; cc < lines.Length; cc++)
+            for (int cc = 0; cc < inputLines.Length; cc++)
             {
-                string line = lines[cc];
-                if (line.Contains(find)&& !line.Contains(" !"))
+                if (inputLines[cc].Contains(find)&& !inputLines[cc].Contains(" !"))
                 {
-                    line = "//" + line;
-                    lines[cc] = line;
+                    inputLines[cc] = "//" + inputLines[cc];
                 }
             }
-            rtb_JavaCode.Lines = lines;
+            return inputLines;
         }
 
         // if (and/or)

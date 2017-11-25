@@ -13,7 +13,7 @@ git config credential.helper store - da spremi username i password
 git config --global push.default simple - da ne spamma tijekom push, jer iako pusha samo trenutnu granu
 
 Grane:
-git branch [-a] - daje popis svih grana, parametar "-a" daje popis i sa remote gitova
+git branch [-a] - daje popis svih grana, parametar "-a"(ne obavezan) daje popis i sa remote gitova
 git branch [ime grane] - dodaje granu
 git checkout [ime grane] - prebacuje se na granu
 git checkout -b [ime grane] - dodaje granu i prabacuje se na istu granu

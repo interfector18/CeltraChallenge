@@ -9,8 +9,10 @@ git commit -m "poruka commita" - za commitanje(spremanje) pripremljenih(git stag
 git remote set-url origin https://username:password@github.com/username/repo.git - postavlja remote "origin" na ordereni repositorij na githubu
 
 Git configuracija:
+git config [--global] user.name "ime" - postavljanje imena, odnosno ime autora, s --global postavlja se globalno, ne samo u lokalnim repositoriju
+git config [--global] user.email "email adresa" - postavljanje email adrese autora, s --global postavlja se globalno, ne samo u lokalnim repositoriju
 git config credential.helper store - da spremi username i password
-git config --global push.default simple - da ne spamma tijekom push, jer iako pusha samo trenutnu granu
+git config [--global] push.default simple - da ne spamma tijekom push, jer iako pusha samo trenutnu granu, s --global postavlja se globalno, ne samo u lokalnim repositoriju
 
 Grane:
 git branch [-a] - daje popis svih grana, parametar "-a"(ne obavezan) daje popis i sa remote gitova

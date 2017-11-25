@@ -15,7 +15,13 @@ Todo - zoki:
   ✔ Deletelines(); @started(17-11-23 20:52) @done(17-11-23 20:56) @lasted(4 minutes 15 seconds)
 
 Todo:
+<<<<<<< HEAD
   ☐ Napravit par input output parova, i testirat cs sa phpom @started(17-11-23 21:48)
+=======
+  ☐ Napravit par input output parova, i testirat cs sa phpom
+  ☐ Refactorirat .cs @started(17-11-24 21:03)
+  ☐ Prevest refaktorirani .cs u php
+>>>>>>> b2c1d9e648b190755ce826db2a9582d001cb118e
   ☐ Login sustav
     ☐ Sucelje
     ☐ Dizajn

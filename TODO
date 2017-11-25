@@ -19,7 +19,7 @@ Todo:
   ☐ Napravit par input output parova, i testirat cs sa phpom @started(17-11-23 21:48)
 =======
   ☐ Napravit par input output parova, i testirat cs sa phpom
-  ☐ Refactorirat .cs @started(17-11-24 21:03)
+  ✔ Refactorirat .cs @started(17-11-24 21:03) @done(17-11-25 14:18) @lasted(17 hours 15 minutes 44 seconds)
   ☐ Prevest refaktorirani .cs u php
 >>>>>>> b2c1d9e648b190755ce826db2a9582d001cb118e
   ☐ Login sustav

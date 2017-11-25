@@ -43,8 +43,8 @@
         ?>
 
         <form method="post" action="?kv=convert">
-            <input type="textarea" rows="100" name="tb_centura" placeholder="Enter your centura code">
-            <input type="textarea" rows="100" name="tb_javascript" placeholder="Converted code will go here">
+            <input type="text" name="gCenturaCode" placeholder="Enter your centura code">
+            <input type="text" name="gJavaCode" placeholder="Converted code will go here">
             <input type="submit" name="submit" value="Convertaj">
         </form>
 
@@ -52,6 +52,4 @@
 
         <?php
     }
-
-
 ?>

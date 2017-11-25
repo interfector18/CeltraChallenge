@@ -1,470 +1,350 @@
 <?php 
 
 /*
-    tb_centura - textbox s centura kodom
-    tb_javascript - textbox s javascript kodom
+    gCenturaCode - textbox s centura kodom
+    gJavaCode - textbox s javascript kodom
 */
-$tb_centura = $_POST['tb_centura'];
-$tb_javascript = $_POST['tb_javascript'];
+global $gCenturaCode;
+global $gJavaCode;
+$gCenturaCode = file("input.txt");
+// $gCenturaCode = $_POST['gCenturaCode'];
+$gJavaCode = $gCenturaCode;
 
-function convert(){
+function convert()
+{
 
-    ReplaceFunction("\t", "  ", "");
-    ReplaceFunction("Function:", "public void ", "() {\n");
-    ReplaceFunction("Call ", "", ";");
-    ReplaceFunction("FALSE", "false", "");
-    ReplaceFunction("TRUE", "true", "");
-    ReplaceFunction(" Return", " return", ";");
-    ReplaceFunction(" Else If", " else if {", "}");
-    ReplaceFunction(" Else", " else {", "");
-    ReplaceFunction(" Break", " break", ";");
-    // ReplaceFunction("Number:", "$", ";");
-    // ReplaceFunction("Boolean", "$", ";");
-    // ReplaceFunction("String", "$", ";");
-    ReplaceFunction("Set ", "", ";");
-    ReplaceFunction("If ", "if (", "");
-    ReplaceFunction("( )", "()", "");
-    ReplaceFunction("(  )", "()", "");
-    ReplaceFunction("(   )", "()", "");
-    ReplaceFunction("Description", "/*\nDescription", "");
-    ReplaceFunction("  Actions", "  Actions\n*/", "");
-    ReplaceFunction("'", "\u0022", "");
-    IfAndOr();
-    CloseFunctions();
-    IfFunctionFix();
-    IfFunctionsCommented();
-    IfFunctionsClosing();
-    ReplaceFunction(" ! ", " // ! ", "");
-    CommentingCodeFromString("SalWaitCursor");
+    global $gCenturaCode;
+    global $gJavaCode;
+
+    //CONVERTING CODE TO JAVA
+    $gJavaCode = ReplaceFunction("\t", "  ", "", $gJavaCode);
+    $gJavaCode = ReplaceFunction("Function:", "public void ", "() {\n", $gJavaCode);
+    $gJavaCode = ReplaceFunction("Call ", "", ";", $gJavaCode);
+    $gJavaCode = ReplaceFunction("FALSE", "false", "", $gJavaCode);
+    $gJavaCode = ReplaceFunction("TRUE", "true", "", $gJavaCode);
+    $gJavaCode = ReplaceFunction(" Return", " return", ";", $gJavaCode);
+    $gJavaCode = ReplaceFunction(" Else If", " else if {", "}", $gJavaCode);
+    $gJavaCode = ReplaceFunction(" Else", " else {", "", $gJavaCode);
+    $gJavaCode = ReplaceFunction(" Break", " break", ";", $gJavaCode);
+    //ReplaceFunction("Number:", "int ", ";");
+    //ReplaceFunction("Boolean", "bool ", ";");
+    //ReplaceFunction("String", "string ", ";");
+    $gJavaCode = ReplaceFunction("Set ", "", ";", $gJavaCode);
+    $gJavaCode = ReplaceFunction("If ", "if (", "", $gJavaCode);
+    $gJavaCode = ReplaceFunction("( )", "()", "", $gJavaCode);
+    $gJavaCode = ReplaceFunction("(  )", "()", "", $gJavaCode);
+    $gJavaCode = ReplaceFunction("(   )", "()", "", $gJavaCode);
+    $gJavaCode = ReplaceFunction("Description", "/*\nDescription", "", $gJavaCode);
+    $gJavaCode = ReplaceFunction("  Actions", "  Actions\n*/", "", $gJavaCode);
+    $gJavaCode = ReplaceFunction("'", "\"", "", $gJavaCode);
+    $gJavaCode = IfAndOr($gJavaCode);
+    $gJavaCode = CloseFunctions($gJavaCode);
+    $gJavaCode = IfFunctionFix($gJavaCode);
+    $gJavaCode = IfFunctionsCommented($gJavaCode);
+    $gJavaCode = IfFunctionsClosing($gJavaCode);
+    $gJavaCode = ReplaceFunction(" ! ", " // ! ", "", $gJavaCode);
+    $gJavaCode = CommentingCodeFromString("SalWaitCursor", $gJavaCode);
 
 
-    SelectLine();
-    Klase();
-    AccessingData();
-    Deletelines();
+    $gJavaCode = SelectLine($gJavaCode);
+    $gJavaCode = ClassFunct($gJavaCode);
+    $gJavaCode = AccessingData($gJavaCode);
+    $gJavaCode = DeleteLines($gJavaCode);
+
+    $path = "output.txt";
+    $fh = fopen($path, "w");
+    flock($fh,LOCK_EX);
+    foreach($tb_javascript as $line)
+        fwrite($fh, $line);
+    flock($fh, LOCK_UN);
+    fclose($fh);
 
 }
 
-function AccessingData()
+function AccessingData($inputLines)
 {
-    $lines = array(); 
-    $lines = $_POST['tb_centura'];
-    for ($vv = 0; $vv < count($lines); $vv++)
+    for($i = 0; $i < count($inputLines); $i++)
     {
-        $line = $lines[$vv];
-        if (strpos($line, 'SELECT') && strpos($line, 'FROM'))
+        if (contains($line, 'SELECT') && contains($line, 'FROM'))
         {
-                $indexFROM = strrpos(trim($line), 'FROM');//line.Trim().IndexOf("FROM");
-                $textLength = strlen(trim($line));// $textLength = line.Trim().Length;
-                $line = trim($line);//line.Trim();
-                $temp = substr($line,$indexFROM, $textLength - $indexFROM);//line.Substring(indexFROM, textLength - indexFROM);
-                $tempCopy = substr(trim($line),0, $indexFrom)."\u0022 \n        + \u0022" + $temp + "\u0022";//"        "+line.Trim().Substring(0, indexFROM) + "\u0022 \n        + \u0022" + temp + "\u0022";
-                $lines[$vv] = $tempCopy;
-                if (strpos($lines[$vv], ';'))
-                {
-                    $lines[$vv] = str_replace($lines[$vv],';', '');//$lines[$vv].Replace(";", "");
-                }
-                if (strpos($lines[$vv + 2], '}'))//.Contains("}"))
-                {
-                    $lines[$vv + 2] = str_replace($lines[$vv + 1],'}', '');//$lines[$vv + 1].Replace("}", "");
-                }
-
-                    for ($nn = $vv+1; $nn < count($lines); $nn++)
-                    {
-                        if (strpos($lines[$nn], 'AND') || strpos($lines[$nn], 'WHERE'))//$lines[$nn].Contains("AND") || $lines[$nn].Contains("WHERE"))
-                        {
-                            $lines[$nn] = "        +\u0022".trim($lines[$nn]);//$lines[$nn].Trim() ;
-
-                            if (strpos($lines[$nn], ';'))//$lines[$nn].Contains(";"))
-                            {
-                                $lines[$nn] = str_replace($lines[$vv],';', '');//$lines[$vv].Replace(";", "");
-                            }
-                            if (strpos($lines[$nn], '}'))//$lines[$nn].Contains("}"))
-                            {
-                                $lines[$nn] = str_replace($lines[$vv],'}', '');//$lines[$vv].Replace("}", "");
-                            }
-                        }
-                        if (strpos($lines[$nn], 'INTO') && !strpos($lines[$nn], 'AND') && !strpos($lines[$nn], 'WHERE'))//$lines[$nn].Contains("INTO") && !$lines[$nn].Contains("AND") && !$lines[$nn].Contains("WHERE"))
-                        {
-                            $lines[$nn] = "        // + \u0022".trim($lines[$nn])."\u0022";//$lines[$nn].Trim() + "\u0022";
-                            $lines[$nn - 1] = $lines[$nn - 1].";";
-                        
-                        }
-                    }
-            }
-        }
-        $tb_javascript = $lines;
-    
-}          
-
-
-$temp3;
-function Klase()
-{
-    $lines = array();
-    $lines = $tb_javascript;
-    for ($gg = 0; $gg < count($lines); $gg++)
-    {
-        $line = $lines[$gg];
-        if (strpos($line, "Form Window: "))//line.Contains("Form Window: "))
-        {
-            for ($pp = $gg+1; $pp < count($lines); $pp++)
+            $indexFROM = strpos(trim($line), "FROM");
+            $textLength = strlen(trim($line));
+            $line = trim($line);
+            $temp = substr($line, $indexFROM, $textLength - $indexFROM);
+            $tempCopy = "        " . substr(trim($line), 0, $indexFROM) . "\" \n        + \"" . $temp . "\"";
+            $inputLines[$i] = $tempCopy;
+            if ($inputLines[$i].Contains(";"))
             {
-                $line1 = $lines[$pp];
-                if (substr($line1, 0, 7) === "Class: ")//line1.Trim().StartsWith("Class: "))
+                $inputLines[$i] = str_replace(";", "", $inputLines[$i]);
+            }
+            if (contains($inputLines[$i + 2], "}"))
+            {
+                $inputLines[$i + 2] = str_replace("}", "", $inputLines[$i + 1]);
+            }
+
+            for ($j = $i + 1; $j < count($inputLines); $j++)
+            {
+                if (contains($inputLines[$j], 'AND') || contains($inputLines[$j], "WHERE"))
                 {
-                    $temp3 = str_replace($line,"Form Window: ", "public class ").str_replace(trim($line),"Class: "," extends ");//line.Replace("Form Window: ", "public class ") + line1.Trim().Replace("Class: ", " extends ");
-                    $lines[$pp] = $temp3." {";
-                    $temp4 = $lines[$pp];
-                    //System.Windows.Forms.Clipboard.SetText($lines[$pp]);
-                    
-                    for ($ll = $pp + 1; $ll < count($lines); $ll++)
+                    $inputLines[$j] = "        +\"" . trim($inputLines[$j]);
+
+                    if (contains($inputLines[$j], ";"))
                     {
-                        if (substr(trim($lines[$ll]), 0, 2) === "/*")//$lines[$ll].Trim().StartsWith("/*"))
-                        {
-                            $index1 = count($lines);
-                            $lines[$ll] = $temp4."\n".$lines[$ll];
-                            $lines[$index1 - 1] = $lines[$index1 - 1]."\n}";
-                            $tb_javascript = $lines;
-                            return;
-                        }
-                    }                          
+                        $inputLines[$j] = str_replace(";", "", $inputLines[$i]);
+                    }
+                    if (contains($inputLines[$j], "}"))
+                    {
+                        $inputLines[$j] = str_replace("}", "", $inputLines[$i]);
+                    }
+                }
+                if (contains($inputLines[$j], "INTO") && !contains($inputLines[$j], 'AND') && !contains($inputLines[$j], "WHERE"))
+                {
+                    $inputLines[$j] = "        // + \"" . trim($inputLines[$j]) . "\"";
+                    $inputLines[$j - 1] = $inputLines[$j - 1] . ";";
                 }
             }
-        }
-    }            
-}
-
-function CommentingCodeFromString($find)
-{
-    $lines = array();
-    $lines = $tb_JavaCode;
-    for ($cc = 0; $cc < strlen($lines); $cc++)
-    {
-        $line = $lines[$cc];
-        if (contains($line, $find) && !contains($line, " !"))
-        {
-            $line = "//".$line;
-            $lines[$cc] = $line;
         }
     }
-    $tb_JavaCode = $lines;
+    return $inputLines;
+}
+
+
+
+function Class($inputLines)
+{
+    $temp3;
+    for ($i = 0; $i < count($inputLines); $i++)
+    {
+        if (contains($inputLines[$i], "Form Window: "))
+        {
+            for ($j = $i + 1; $j < count($inputLines); $j++)
+            {
+                if (startsWith(trim($inputLines[$j]), "Class: "))
+                {
+                    $temp3 = str_replace("Form Window: ", "public class ", $inputLines[$i]) . str_replace("Class: ", " extends ", trim($inputLines[$j]));
+                    $inputLines[$j] = $temp3 + " {";
+                    $copyTmp = $inputLines[$j];
+                    for ($k = $j + 1; $k < count($inputLines); $k++)
+                    {
+                        if (startsWith(trim($inputLines[$k], "/*")))
+                        {
+                            $inputLines[$k] = $copyTmp . "\n" . $inputLines[$k];
+                            $inputLines[count($inputLines) - 1] = $inputLines[count($inputLines) - 1] . "\n}";
+                            return $inputLines;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return $inputLines;
+}
+
+function CommentingCodeFromString($find, $inputLines)
+{
+    for ($i = 0; $i < count($inputLines); $i++)
+        if (contains($inputLines[$i], $find) && !contains($inputLines[$i], " !"))
+            $inputLines[$i] = "//" . $inputLines[$i];
+
+    return $inputLines;
 }
 
 // if (and/or)
-function IfAndOr()
+function IfAndOr($inputLines)
 {
-    $lines = array();
-    $lines = $tb_javascript;
-    for ($dd = 0; $dd < count($lines); $dd++)
+    for ($i = 0; $i < count($inputLines); $i++)
     {
-        $line = $lines[$dd];
-        if (strpos($line, "if ("))//line.Contains("if ("))
+        if (contains($inputLines[$i],"if ("))
         {
-            if (strpos($line, " and "))//line.Contains(" and "))
-            {
-                $line = str_replace($lines[$vv]," and ", " && ");// line.Replace(" and ", " && ");
-            }
-            if (strpos($line, " or "))//line.Contains(" or "))
-            {
-                $line = str_replace($lines[$vv]," or ", " || ");//line.Replace(" or ", " || ");
-            }
-            $lines[$dd] = $line;
-            
+            if (contains($inputLines[$i], " and "))
+                $inputLines[$i] = str_replace(" and ", " && ", $inputLines[$i]);
+
+            if (contains($inputLines[$i], " or "))
+                $inputLines[$i] = str_replace(" or ", " || ", $inputLines[$i]);
         }
-        $tb_javascript = $lines;
     }
+    return $inputLines;
 }
 
 // MOVE PUBLIC VOID UNTER COMMENTS
-function SelectLine()
+function SelectLine($inputLines)
 {
-    $lines = array();
-    $lines = $tb_javascript;
-    for ($jj = 0; $jj < count($lines); $jj++)
+    $tempCount = 0;
+    for ($i = 0; $i < count($inputLines); $i++)
     {
-        $line = $lines[$jj];
-        if (contains($line, "public"))//line.Contains("public"))
+        $line = $inputLines[$i];
+        if (contains($line, "public"))
         {
-            $temp1 = "";
-            $tmp = $line;
-            $temp1 = $tmp;
+            $temp = $line;
             $line = "";
-
-            $lines[$jj] = $line;
-            $a = array();
-            $a = $lines;
-            MoveLine($jj,$a,$tmp);
-            $jj = $tempCount;
-          
+            $inputLines[$i] = $line;
+            $inputLines = MoveLine($i, $inputLines, $tempCount, $temp);
+            $i = $tempCount;
         }
     }
+    return $inputLines;
 }
 
-$tempCount= 0;
-function MoveLine($countlines,$list,$tmp)
+function MoveLine($countLines, $inputLines, &$tempCount, $copyString)
 {
-    $lines = $array();
-    $lines = $list;
-    for ($jj = $countlines; $jj < count($lines); $jj++)
+    for ($i = $countLines; $i < count($inputLines); $i++)
     {
-        $line = $lines[$jj];
-        if (contains(line, "*/"))//line.Contains("*/"))
+        if (contains($inputLines[$i], '*/'))
         {
-            $line = $line."\n".$tmp;
-            $lines[$jj] = $line;
-            $tb_javascript = $lines;
-            $tempCount = $jj++;
-            return;
+            $inputLines[$i] = $inputLines[$i] + "\n" + $copyString;
+            $tempCount = i++;
+            return $inputLines;
         }
-        $lines[$jj] = $line;
-        
     }
-    
+    return $inputLines;
 }
 
- //REPLACE FUNCTIONS
-function ReplaceFunction($OldString,$NewString, $EndLine)
+//REPLACE FUNCTIONS
+function ReplaceFunction($OldString, $NewString, $EndLine, $inputLines)
 {
-    $lines1 = array();
-    $lines1 = $tb_JavaCode;
-    for ($ii = 0; $ii < strlen($lines1); $ii++ )
+    foreach ($inputLines as $line)
     {
-        $line = $lines1[$ii];
-        if (contains($line, $OldString)/*.Contains(OldString)*/)
+        if (contains($line, $OldString))
         {
-            $line = str_replace($line, $OldString, $NewString) /*line.Replace(OldString, NewString)*/;
+            $line = str_replace($OldString, $NewString, $line);
             if (strlen($EndLine) > 0)
             {
-                $line = $line.$EndLine;
+                $line = $line."\n";
             }
-        
-            $lines1[$ii] = $line;
         }
     }
-    $tb_JavaCode = $lines1;
+    return $inputLines;
 }
 
 //CLOSING FUNCTIONS WITH "}"
-$temp;
-function CloseFunctions()
+function CloseFunctions($inputLines)
 {
-    $lines1 = array();
-    $lines1 = $tb_javascript;
-    for ($gg = 0; $gg < count($lines1); $gg++)
+    $publicVoidCount = 0;
+    for ($i = 0; $i < count($inputLines); $i++)
     {
-        $line = $lines1[$gg];
-        if (strpos($line, "public void"))//line.Contains("public void"))
+        if (contains($inputLines[$i], "public void"))
         {
-            $temp++;
-            if ($temp>=2)
+            $publicVoidCount++;
+            if ($publicVoidCount >= 2)
             {
-                $line = str_replace($line,"public void", "\n}\npublic void");//line.Replace("public void","\n}\npublic void");
+                $inputLines[$i] = str_replace("public void", "\n}\npublic void", $inputLines[$i]);
             }
-            $lines1[$gg] = $line;
         }
     }
-    $lines1[count($lines1) - 1] = $lines1[count($lines1) - 1]."\n}";//$lines1[$lines1.Length - 1] = $lines1[$lines1.Length - 1] + "\n}";
-    $tb_javascript = $lines1;
+    $inputLines[count($inputLines) - 1] = $inputLines[count($inputLines) - 1] . "\n}";
+    return $inputLines;
 }
 
 //DELETING TEXT FROM BEGGINNING
-function Deletelines()
+function DeleteLines($inputLines)
 {
-    $lines1 = array();
-    $lines1 = $tb_javascript;
-    for ($jj = 0; $jj < count($lines1); $jj++)
+    for ($i = 0; $i < count($inputLines); $i++)
     {
-        $line = $lines1[$jj];
-        if (contains($line,"Functions"))//line.Contains("Functions"))
+        if (contains($inputLines[$i], "Functions"))
         {
-            $line = preg_replace( "/\r|\n/", "", $line );//line.Remove(0);
-            $lines1[$jj] = $line;
-            $tb_javascript = $lines1;
-            return;
+            $inputLines[$i] = "";
+            break;
         }
         else
-        {
-            $line = preg_replace( "/\r|\n/", "", $line );//line.Remove(0);
-            $lines1[$jj] = $line;
-        }
+            $inputLines[$i] = "";
     }
+    return $inputLines;
 }
 
 //Fixing if functions
-function IfFunctionFix()
+function IfFunctionFix($inputLines)
 {
-    $lines1 = array();
-    $lines1 = $tb_javascript;
-    for ($nn = 0; $nn < count($lines1); $nn++)
-    {
-        $line = $lines1[$nn];
-        if (strpos($line, "if (") && strpos($line, " != "))//line.Contains("if ("))
-        {
-            $line =  str_replace($line,"//", "");//line.Replace("//", "");
-            $lines1[$nn] = $line;
-        }
-    }
-    $tb_javascript = $lines1;
+    for ($i = 0; $i < count($inputLines); $i++)
+        if (contains($inputLines[$i], "if ("))
+            if (contains($inputLines[$i], " != "))
+                $inputLines[$i] = str_replace("//", "", $inputLines[$i]);
+    
+    return $inputLines;
 }
-
 //Commented if functions 
-function IfFunctionsClosing()
+function IfFunctionsClosing($inputLines)
 {
-    $linesRtb = array();
-    $linesRtb = $tb_javascript;
-    for ($yy = 0; $yy < count($linesRtb); $yy++)
+    for ($i = 0; $i < count($inputLines); $i++)
     {
-        $line = $linesRtb[$yy];
-        if (startsWith(trim($line), "if"))
+        if (startsWith(trim($inputLines[$i]), "if"))
         {
-            $tempCount = 0;
-            for ($xx = 0; $xx < strlen($line); $xx++)
-            {
-                if ($line[$xx] == ' ')
-                {
-                    $tempCount++;
-                }
-                else { break; }
-            }
+            $eadingSpaces = countLeadingSpaces($inputLines[$i]);
+            $leadingSpaces2 = countLeadingSpaces($inputLines[$i+1]);
 
-            $tempCount2 = 0;
-            $nextLine = $linesRtb[$yy + 1];
-            for ($xx = 0; $xx < strlen($nextLine); $xx++)
+            if ($leadingSpaces2 > $leadingSpaces && contains($inputLines[$i + 1], ",") && (!contains($inputLines[$i + 1], ";")))
             {
-                if ($nextline[$xx] == ' ')
-                {
-                    $tempCount2++;
-                }
-                else { break; }
-            }
-            if ($tempCount2 > $tempCount && contains($linesRtb[$yy + 1], ",") && (!contains($linesRtb[$yy + 1], ";")))
-            {
-                $linesRtb[$yy] = $linesRtb[$yy]." ".trim($linesRtb[$yy+1]);
-                $linesRtb[$yy + 1] = "";
-                $yy = $yy + 1;
+                $inputLines[$i] = $inputLines[$i] . " " . trim($inputLines[$i + 1]);
+                $inputLines[$i + 1] = "";
+                $i = $i + 1;
             }
         }
     }
-    $tb_javascript = $linesRtb;
-    IfFunctionsFinish();
+
+    $inputLines = IfFunctionsFinish($inputLines);
+    return $inputLines;
 }
-
-function IfFunctionsFinish()
+function IfFunctionsFinish($inputLines)
 {
-    $linesRtb = array();
-    $linesRtb = $tb_JavaCode;
-    for ($aa = 0; $aa < strlen($linesRtb); $aa++)
+    for ($i = 0; $i < count($inputLines); $i++)
     {
-        $line = $linesRtb[$aa];
-        if (startsWith(trim($line),"if"))//.Trim().StartsWith("if ("))
+        if (startsWith(trim($inputLines[$i]), "if ("))
         {
-            $linesRtb[$aa] = $linesRtb[$aa].") {";
+            $inputLines[$i] = $inputLines[$i] + ") {";
 
-            $tempCount = 0;
-            for ($hh = 0; $hh < strlen($line)/*.Length*/; $hh++)
+            if (countLeadingSpaces($inputLines[$i + 1]) > countLeadingSpaces($inputLines[$i]))
             {
-                if ($line[$hh] == ' ')
-                {
-                    $tempCount++;
-                }
-                else { break; }
-            }
-
-            $tempCount2 = 0;
-            $nextLine = $linesRtb[$aa + 1];
-            for ($xx = 0; xx < $nextLine; $xx++)
-            {
-                if ($nextline[$xx] == ' ')
-                {
-                    $tempCount2++;
-                }
-                else { break; }
-            }
-            if ($tempCount2 > $tempCount )
-            {
-                $linesRtb[$aa + 1] = $linesRtb[$aa + 1]."\n}";
-                $aa = $aa + 1;
+                $inputLines[$i + 1] = $inputLines[$i + 1] . "\n}";
+                $i = $i + 1;
             }
         }
-        if (startsWith(trim($line),"else ")/*line.Trim().StartsWith("else ")*/)
+        if (startsWith(trim($inputLines[$i]), 'else '))
         {
-           
-
-            $tempCount = 0;
-            for ($hh = 0; $hh < strlen($line); $hh++)
+            if (countLeadingSpaces($inputLines[$i + 1]) > countLeadingSpaces($inputLines[$i]))
             {
-                if ($line[$hh] == ' ')
-                {
-                    $tempCount++;
-                }
-                else { break; }
-            }
-
-            $tempCount2 = 0;
-            $nextLine = $linesRtb[$aa + 1];
-            for ($xx = 0; $xx < strlen($nextLine); $xx++)
-            {
-                if ($nextline[$xx] == ' ')
-                {
-                    $tempCount2++;
-                }
-                else { break; }
-            }
-            if ($tempCount2 > $tempCount)
-            {
-                $linesRtb[$aa + 1] = $linesRtb[$aa + 1] + "\n}";
-                $aa = $aa + 1;
-            }
-        }
-
-    }
-    $tb_JavaCode = $linesRtb;
-}
-
-function IfFunctionsCommented()
-{
-    $lines2 = array();
-    $lines2 = $tb_javascript;
-    for ($nn = 0; $nn < count($lines2); $nn++)
-    {
-        $line = $lines2[$nn];
-        if (substr(trim($line), 0, 1) === "!")//line.Trim().StartsWith("!"))
-        {
-            $tempCount = 0;
-            for ($xx = 0; $xx < count($line); $xx++)
-            {
-                if ($line[$xx] === " ")
-                {
-                    $tempCount++;
-                }
-                else { break; }
-            }
-
-            $tempCount2 = 0;
-            $nextLine = $lines2[$nn + 1];
-            for ($xx = 0; $xx < count($nextLine); $xx++)
-            {
-                if ($nextline[$xx] === " ")
-                {
-                    $tempCount2++;
-                }
-                else { break; }
-            }
-            if ($tempCount2 > $tempCount)
-            {
-                $lines2[$nn + 1] = substr($lines2[$nn + 1], 0, $tempCount)."//".substr($lines2[$nn + 1], $tempCount, (strlen($lines2[nn + 1]) - $tempCount));//$lines2[nn + 1].Substring(0, tempCount) + "//" + $lines2[nn + 1].Substring(tempCount, $lines2[nn + 1].Length - (tempCount));
-                $nn = $nn + 1;
+                $inputLines[$i + 1] = $inputLines[$i + 1] . "\n}";
+                $i = $i + 1;
             }
         }
     }
-    $tb_javascript = $lines2;
+    return $inputLines;
 }
 
-function startsWith($haystack, $needle) 
+function countLeadingSpaces($text)
 {
-  $length = strlen($needle);
-  return (substr($haystack, 0, $length) === $needle);
+    $leadingSpaces = 0;
+    
+    for($i = 0; $i < strlen($text); $i++)
+        if ($text[$i] == ' ')                
+            $leadingSpaces++;               
+        else
+            break; 
+
+    return $leadingSpaces;
+}
+
+function IfFunctionsCommented($inputLines)
+{
+    for ($i = 0; $i < count($inputLines); $i++)
+    {
+        if (startsWith(trim($inputLines[$i]), '!'))
+        {
+            $leadingSpaces = countLeadingSpaces($inputLines[$i]);
+            $leadingSpaces2 = countLeadingSpaces($inputLines[$i+1]);
+
+            if ($leadingSpaces2 > $leadingSpaces)
+            {
+                $inputLines[$i + 1] = substr($inputLines[$i + 1], 0, $leadingSpaces) . '//' . substr($inputLines[$i + 1], $leadingSpaces, strlen($inputLines[$i + 1]) - $leadingSpaces);
+                $i = $i + 1;
+            }
+        }
+    }
+    return $inputLines;
+}
+
+function startsWith($text, $word) 
+{
+  $length = strlen($word);
+  return (substr($text, 0, $length) === $word);
 }
 
 function contains($text, $word)

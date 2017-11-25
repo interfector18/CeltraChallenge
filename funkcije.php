@@ -4,7 +4,7 @@
     {
         ?>
 
-        <form action="login.php">
+        <form action="login.php" method="post">
             <input type="text" name="username" placeholder="Enter your name">
             <br>
             <input type="Password" name="password" placeholder="Enter your password">
@@ -21,7 +21,7 @@
     {
         ?>
 
-        <form action="reg.php">
+        <form action="reg.php" method="post">
             <input type="text" name="username" placeholder="Enter your username">
             <br>
             <input type="Password" name="password" placeholder="Enter your password">

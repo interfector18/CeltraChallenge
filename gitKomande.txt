@@ -6,3 +6,4 @@ git stage [ime datoteke, ili *] - za pripremanje promjena
 git commit -m "poruka commita" - za commitanje promjena
 
 git config credential.helper store - da spremi username i password
+git config --global push.default simple - da ne spamma tijekom push, jer iako pusha samo trenutnu granu

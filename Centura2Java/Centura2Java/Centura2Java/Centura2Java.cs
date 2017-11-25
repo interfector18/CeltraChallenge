@@ -338,21 +338,17 @@ namespace Centura2Java
             }
         }
         int tempCount= 0;
-        public void MoveLine(int countLines,string[] list)
+        public void MoveLine(int countLines,string[] inputLines)
         {
-            string[] lines = list;
-            for (int i = countLines; i < lines.Length; i++)
+            for (int i = countLines; i < inputLines.Length; i++)
             {
-                string line = lines[i];
-                if (line.Contains("*/"))
+                if (inputLines[i].Contains("*/"))
                 {
-                    line = line +"\n" +System.Windows.Forms.Clipboard.GetText();
-                    lines[i] = line;
-                    rtb_JavaCode.Lines = lines;
+                    inputLines[i] = inputLines[i] + "\n" +System.Windows.Forms.Clipboard.GetText();
+                    rtb_JavaCode.Lines = inputLines;
                     tempCount = i++;
                     return;
                 }
-                lines[i] = line;
              }
         }
 

@@ -7,3 +7,12 @@ C:\Users\Jasmin\Desktop\Centura2Java\Centura2Java\Centura2Java\obj\Release\Centu
 C:\Users\Jasmin\Desktop\Centura2Java\Centura2Java\Centura2Java\obj\Release\Centura2Java.exe
 C:\Users\Jasmin\Desktop\Centura2Java\Centura2Java\Centura2Java\obj\Release\Centura2Java.pdb
 C:\Users\Jasmin\Desktop\Centura2Java\Centura2Java\Centura2Java\obj\Release\Centura2Java.Find.resources
+D:\Data\CodeRepos\CeltraChallenge\Centura2Java\Centura2Java\Centura2Java\bin\Release\Centura2Java.exe
+D:\Data\CodeRepos\CeltraChallenge\Centura2Java\Centura2Java\Centura2Java\bin\Release\Centura2Java.pdb
+D:\Data\CodeRepos\CeltraChallenge\Centura2Java\Centura2Java\Centura2Java\obj\Release\Centura2Java.Centura2Java.resources
+D:\Data\CodeRepos\CeltraChallenge\Centura2Java\Centura2Java\Centura2Java\obj\Release\Centura2Java.Find.resources
+D:\Data\CodeRepos\CeltraChallenge\Centura2Java\Centura2Java\Centura2Java\obj\Release\Centura2Java.Properties.Resources.resources
+D:\Data\CodeRepos\CeltraChallenge\Centura2Java\Centura2Java\Centura2Java\obj\Release\Centura2Java.csproj.GenerateResource.Cache
+D:\Data\CodeRepos\CeltraChallenge\Centura2Java\Centura2Java\Centura2Java\obj\Release\Centura2Java.csproj.CoreCompileInputs.cache
+D:\Data\CodeRepos\CeltraChallenge\Centura2Java\Centura2Java\Centura2Java\obj\Release\Centura2Java.exe
+D:\Data\CodeRepos\CeltraChallenge\Centura2Java\Centura2Java\Centura2Java\obj\Release\Centura2Java.pdb

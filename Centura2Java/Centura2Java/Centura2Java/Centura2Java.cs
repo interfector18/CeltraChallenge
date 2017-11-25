@@ -431,9 +431,10 @@ namespace Centura2Java
             return inputLines;
         }
         //CLOSING FUNCTIONS WITH "}"
-        int temp;
+        
         public string[] CloseFunctions(string[] inputLines)
         {
+            int temp = 0;
             for (int i = 0; i < inputLines.Length; i++)
             {
                 if (inputLines[i].Contains("public void"))
@@ -597,29 +598,29 @@ namespace Centura2Java
             {
                 if (inputLines[i].Trim().StartsWith("!"))
                 {
-                    int tempCount = 0;
+                    int leadingSpaces = 0;
                     for (int xx = 0; xx < inputLines[i].Length; xx++)
                     {
                         if (inputLines[i][xx] == ' ')
                         {
-                            tempCount++;
+                            leadingSpaces++;
                         }
                         else { break; }
                     }
 
-                    int tempCount2 = 0;
+                    int leadingSpaces2 = 0;
                     string nextLine = inputLines[i + 1];
                     for (int xx = 0; xx < nextLine.Length; xx++)
                     {
                         if (nextLine[xx] == ' ')
                         {
-                            tempCount2++;
+                            leadingSpaces2++;
                         }
                         else { break; }
                     }
-                    if (tempCount2 > tempCount)
+                    if (leadingSpaces2 > leadingSpaces)
                     {
-                        inputLines[i + 1] = inputLines[i + 1].Substring(0, tempCount) + "//" + inputLines[i + 1].Substring(tempCount, inputLines[i + 1].Length - (tempCount));
+                        inputLines[i + 1] = inputLines[i + 1].Substring(0, leadingSpaces) + "//" + inputLines[i + 1].Substring(leadingSpaces, inputLines[i + 1].Length - (leadingSpaces));
                         i = i + 1;
                     }
                 }

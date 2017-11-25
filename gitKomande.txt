@@ -1,3 +1,5 @@
+Opće komande:
+git status - ispisuje status 
 git fetch origin [ime grane] - za dohvacanje grane sa servera, odnosno "origin", ne azurira trenutnu "working copy"
 git pull [origin] [ime grane] - napravi isto sta i git fetch, ali i azurira trenutnu kopiju
 git push -u origin - za spremanje na server, odnosno spremi na remote zvan "origin"

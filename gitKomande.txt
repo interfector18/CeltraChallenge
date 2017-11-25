@@ -4,6 +4,7 @@ git push -u origin - za spremanje na server
 git add [ime datoteke, ili *] - za dodavanje na git
 git stage [ime datoteke, ili *] - za pripremanje promjena
 git commit -m "poruka commita" - za commitanje promjena
+git remote set-url origin https://username:password@github.com/username/repo.git - postavlja origin na ordereni repositorij na githubu
 
 git config credential.helper store - da spremi username i password
 git config --global push.default simple - da ne spamma tijekom push, jer iako pusha samo trenutnu granu

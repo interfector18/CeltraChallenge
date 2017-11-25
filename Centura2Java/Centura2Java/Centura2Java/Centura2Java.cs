@@ -17,7 +17,7 @@ namespace Centura2Java
         public Centura2Java()
         {
             InitializeComponent();
-           
+
         }
 
         public string keyword = "";
@@ -38,7 +38,7 @@ namespace Centura2Java
         {
             if (LB_CenturaCode.Items.Count > 0)
             {
-                DialogResult dr = MessageBox.Show("Are you sure you want to open new centura code?", "Warning", MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+                DialogResult dr = MessageBox.Show("Are you sure you want to open new centura code?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dr == DialogResult.Yes)
                 {
                     OpenFileDialog ofd = new OpenFileDialog();
@@ -52,7 +52,7 @@ namespace Centura2Java
                         List<string> lines = new List<string>();
                         using (StreamReader r = new StreamReader(ofd.OpenFile(), Encoding.Default))
                         {
-                            
+
                             string line;
                             while ((line = r.ReadLine()) != null)
                             {
@@ -60,13 +60,13 @@ namespace Centura2Java
                                 label1.Text = "Centura Code: " + LB_CenturaCode.Items.Count.ToString() + " lines of code";
                             }
                         }
-                        
+
                     }
-                    
+
                 }
             }
-            else {
-
+            else
+            {
                 OpenFileDialog ofd = new OpenFileDialog();
                 ofd.Filter = "Text files (*.txt)|*.txt";
                 if (ofd.ShowDialog() == DialogResult.OK)
@@ -88,7 +88,7 @@ namespace Centura2Java
             }
         }
 
-     
+
         private void saveJavaCodeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Opening savefile dialog and saving code to text file
@@ -107,7 +107,7 @@ namespace Centura2Java
                 sw.Flush();
                 sw.Close();
                 //File.WriteAllText(sfd1.FileName , rtb_JavaCode.Text);
-            }  
+            }
         }
 
         private void convertToJavaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -135,7 +135,6 @@ namespace Centura2Java
         {
             try
             {
-
                 //Copying text to richtextbox
                 int linenumber = LB_CenturaCode.Items.Count;
                 int i = linenumber;
@@ -149,12 +148,10 @@ namespace Centura2Java
                     else
                     {
                         rtb_JavaCode.Text += LB_CenturaCode.Items[i];
-                        
                     }
                 }
 
                 //CONVERTING CODE TO JAVA
-
                 rtb_JavaCode.Lines = ReplaceFunction("\t", "  ", "", rtb_JavaCode.Lines);
                 rtb_JavaCode.Lines = ReplaceFunction("Function:", "public void ", "() {\n", rtb_JavaCode.Lines);
                 rtb_JavaCode.Lines = ReplaceFunction("Call ", "", ";", rtb_JavaCode.Lines);
@@ -174,7 +171,7 @@ namespace Centura2Java
                 rtb_JavaCode.Lines = ReplaceFunction("(   )", "()", "", rtb_JavaCode.Lines);
                 rtb_JavaCode.Lines = ReplaceFunction("Description", "/*\nDescription", "", rtb_JavaCode.Lines);
                 rtb_JavaCode.Lines = ReplaceFunction("  Actions", "  Actions\n*/", "", rtb_JavaCode.Lines);
-                rtb_JavaCode.Lines = ReplaceFunction("'", "\u0022", "", rtb_JavaCode.Lines);
+                rtb_JavaCode.Lines = ReplaceFunction("'", "\"", "", rtb_JavaCode.Lines);
                 rtb_JavaCode.Lines = IfAndOr(rtb_JavaCode.Lines);
                 rtb_JavaCode.Lines = CloseFunctions(rtb_JavaCode.Lines);
                 rtb_JavaCode.Lines = IfFunctionFix(rtb_JavaCode.Lines);
@@ -184,172 +181,164 @@ namespace Centura2Java
                 rtb_JavaCode.Lines = CommentingCodeFromString("SalWaitCursor", rtb_JavaCode.Lines);
 
 
-                SelectLine();
-                Class();
-                AccessingData();
-                DeleteLines();
+                rtb_JavaCode.Lines = SelectLine(rtb_JavaCode.Lines);
+                rtb_JavaCode.Lines = Class(rtb_JavaCode.Lines);
+                rtb_JavaCode.Lines = AccessingData(rtb_JavaCode.Lines);
+                rtb_JavaCode.Lines = DeleteLines(rtb_JavaCode.Lines);
+
+
                 colorComments();
                 pb1.Value = pb1.Maximum;
                 Rchtxt_TextChanged();
-                pb1.Visible = false;    
+                pb1.Visible = false;
                 pb1.Value = 0;
-            
+
             }
-            catch(InvalidCastException e) { MessageBox.Show("Error occurred while code converting.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            MessageBox.Show("" + e, "Error");
+            catch (InvalidCastException e)
+            {
+                MessageBox.Show("Error occurred while code converting.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("" + e, "Error");
             }
         }
-        public void AccessingData()
+        public string[] AccessingData(string[] inputLines)
         {
-            string[] lines = rtb_JavaCode.Lines;
-            for (int vv = 0; vv < lines.Length; vv++)
+            for (int i = 0; i < inputLines.Length; i++)
             {
-                string line = lines[vv];
+                string line = inputLines[i];
                 if (line.Contains("SELECT") && line.Contains("FROM"))
                 {
-                        int indexFROM = line.Trim().IndexOf("FROM");
-                        int textLength = line.Trim().Length;
-                        line = line.Trim();
-                        string temp = line.Substring(indexFROM, textLength - indexFROM);
-                        string tempCopy = "        "+line.Trim().Substring(0, indexFROM) + "\u0022 \n        + \u0022" + temp + "\u0022";
-                        lines[vv] = tempCopy;
-                        if (lines[vv].Contains(";"))
-                        {
-                            lines[vv] = lines[vv].Replace(";", "");
-                        }
-                        if (lines[vv + 2].Contains("}"))
-                        {
-                            lines[vv + 2] = lines[vv + 1].Replace("}", "");
-                        }
-
-                         for (int nn = vv+1; nn < lines.Length; nn++)
-                         {
-                             if (lines[nn].Contains("AND") || lines[nn].Contains("WHERE"))
-                             {
-                                 lines[nn] = "        +\u0022" + lines[nn].Trim() ;
-
-                                 if (lines[nn].Contains(";"))
-                                 {
-                                     lines[nn] = lines[vv].Replace(";", "");
-                                 }
-                                 if (lines[nn].Contains("}"))
-                                 {
-                                     lines[nn] = lines[vv].Replace("}", "");
-                                 }
-                             }
-                             if (lines[nn].Contains("INTO") && !lines[nn].Contains("AND") && !lines[nn].Contains("WHERE"))
-                             {
-                                 lines[nn] = "        // + \u0022" + lines[nn].Trim() + "\u0022";
-                                 lines[nn - 1] = lines[nn - 1] + ";";
-                               
-                             }
-                         }
-                    }
-                }
-                rtb_JavaCode.Lines = lines;
-            
-        }
-
-
-        string temp3;
-        public void Class()
-        {
-            string[] lines = rtb_JavaCode.Lines;
-            for (int gg = 0; gg < lines.Length; gg++)
-            {
-                string line = lines[gg];
-                if (line.Contains("Form Window: "))
-                {
-                    for (int pp = gg+1; pp < lines.Length; pp++)
+                    int indexFROM = line.Trim().IndexOf("FROM");
+                    int textLength = line.Trim().Length;
+                    line = line.Trim();
+                    string temp = line.Substring(indexFROM, textLength - indexFROM);
+                    string tempCopy = "        " + line.Trim().Substring(0, indexFROM) + "\" \n        + \"" + temp + "\"";
+                    inputLines[i] = tempCopy;
+                    if (inputLines[i].Contains(";"))
                     {
-                        string line1 = lines[pp];
-                        if (line1.Trim().StartsWith("Class: "))
+                        inputLines[i] = inputLines[i].Replace(";", "");
+                    }
+                    if (inputLines[i + 2].Contains("}"))
+                    {
+                        inputLines[i + 2] = inputLines[i + 1].Replace("}", "");
+                    }
+
+                    for (int j = i + 1; j < inputLines.Length; j++)
+                    {
+                        if (inputLines[j].Contains("AND") || inputLines[j].Contains("WHERE"))
                         {
-                            temp3 = line.Replace("Form Window: ", "public class ") + line1.Trim().Replace("Class: ", " extends ");
-                            lines[pp] = temp3 + " {";
-                            System.Windows.Forms.Clipboard.SetText(lines[pp]);
-                            for (int ll = pp + 1; ll < lines.Length; ll++)
+                            inputLines[j] = "        +\"" + inputLines[j].Trim();
+
+                            if (inputLines[j].Contains(";"))
                             {
-                                if (lines[ll].Trim().StartsWith("/*"))
-                                {
-                                    int index1 = lines.Length;
-                                    lines[ll] = System.Windows.Forms.Clipboard.GetText() + "\n" + lines[ll];
-                                    lines[index1 - 1] = lines[index1 - 1] + "\n}";
-                                    rtb_JavaCode.Lines = lines;
-                                    return;
-                                }
-                            }                          
+                                inputLines[j] = inputLines[i].Replace(";", "");
+                            }
+                            if (inputLines[j].Contains("}"))
+                            {
+                                inputLines[j] = inputLines[i].Replace("}", "");
+                            }
+                        }
+                        if (inputLines[j].Contains("INTO") && !inputLines[j].Contains("AND") && !inputLines[j].Contains("WHERE"))
+                        {
+                            inputLines[j] = "        // + \"" + inputLines[j].Trim() + "\"";
+                            inputLines[j - 1] = inputLines[j - 1] + ";";
                         }
                     }
-                }
-            }            
-        }
-        public string[] CommentingCodeFromString(string find, string[] inputLines)
-        {
-            for (int cc = 0; cc < inputLines.Length; cc++)
-            {
-                if (inputLines[cc].Contains(find)&& !inputLines[cc].Contains(" !"))
-                {
-                    inputLines[cc] = "//" + inputLines[cc];
                 }
             }
+            return inputLines;
+        }
+
+
+
+        public string[] Class(string[] inputLines)
+        {
+            string temp3;
+            for (int i = 0; i < inputLines.Length; i++)
+            {
+                if (inputLines[i].Contains("Form Window: "))
+                {
+                    for (int j = i + 1; j < inputLines.Length; j++)
+                    {
+                        string line1 = inputLines[j];
+                        if (inputLines[j].Trim().StartsWith("Class: "))
+                        {
+                            temp3 = inputLines[i].Replace("Form Window: ", "public class ") + inputLines[j].Trim().Replace("Class: ", " extends ");
+                            inputLines[j] = temp3 + " {";
+                            string copyTmp = inputLines[j];
+                            for (int k = j + 1; k < inputLines.Length; k++)
+                            {
+                                if (inputLines[k].Trim().StartsWith("/*"))
+                                {
+                                    inputLines[k] = copyTmp + "\n" + inputLines[k];
+                                    inputLines[inputLines.Length - 1] = inputLines[inputLines.Length - 1] + "\n}";
+                                    return inputLines;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return inputLines;
+        }
+
+        public string[] CommentingCodeFromString(string find, string[] inputLines)
+        {
+            for (int i = 0; i < inputLines.Length; i++)
+                if (inputLines[i].Contains(find) && !inputLines[i].Contains(" !"))
+                    inputLines[i] = "//" + inputLines[i];
+
             return inputLines;
         }
 
         // if (and/or)
         public string[] IfAndOr(string[] inputLines)
         {
-            for (int dd = 0; dd < inputLines.Length; dd++)
+            for (int i = 0; i < inputLines.Length; i++)
             {
-                if (inputLines[dd].Contains("if ("))
+                if (inputLines[i].Contains("if ("))
                 {
-                    if (inputLines[dd].Contains(" and "))
-                    {
-                        inputLines[dd] = inputLines[dd].Replace(" and ", " && ");
-                    }
-                    if (inputLines[dd].Contains(" or "))
-                    {
-                        inputLines[dd] = inputLines[dd].Replace(" or ", " || ");
-                    }
-                }              
+                    if (inputLines[i].Contains(" and "))
+                        inputLines[i] = inputLines[i].Replace(" and ", " && ");
+
+                    if (inputLines[i].Contains(" or "))
+                        inputLines[i] = inputLines[i].Replace(" or ", " || ");
+                }
             }
             return inputLines;
         }
 
         // MOVE PUBLIC VOID UNTER COMMENTS
-        public void SelectLine()
+        public string[] SelectLine(string[] inputLines)
         {
-            string[] lines = rtb_JavaCode.Lines;
-            for (int jj = 0; jj < lines.Length; jj++)
+            int tempCount = 0;
+            for (int i = 0; i < inputLines.Length; i++)
             {
-                string line = lines[jj];
+                string line = inputLines[i];
                 if (line.Contains("public"))
                 {
                     string temp = line;
-                    System.Windows.Forms.Clipboard.SetText(temp);
                     line = "";
-
-                    lines[jj] = line;
-                    string[] a = lines;
-                    MoveLine(jj,a);
-                    jj = tempCount;
-                  
+                    inputLines[i] = line;
+                    inputLines = MoveLine(i, inputLines, ref tempCount, temp);
+                    i = tempCount;
                 }
             }
+            return inputLines;
         }
-        int tempCount= 0;
-        public void MoveLine(int countLines,string[] inputLines)
+
+        public string[] MoveLine(int countLines, string[] inputLines, ref int tempCount, string copyString)
         {
             for (int i = countLines; i < inputLines.Length; i++)
             {
                 if (inputLines[i].Contains("*/"))
                 {
-                    inputLines[i] = inputLines[i] + "\n" +System.Windows.Forms.Clipboard.GetText();
+                    inputLines[i] = inputLines[i] + "\n" + copyString;
                     rtb_JavaCode.Lines = inputLines;
                     tempCount = i++;
-                    return;
+                    return inputLines;
                 }
-             }
+            }
+            return inputLines;
         }
 
         //TEXT COLOR
@@ -362,17 +351,19 @@ namespace Centura2Java
                 rtb_JavaCode.SelectionColor = colorForLine(text);
             }
         }
+
         private Color colorForLine(string line)
         {
             if (line.Contains("//") || line.Contains("/*") || line.Contains("*/") || line.Contains("Actions") || line.Contains("Description") || line.Contains("Local variables") || line.Contains("Static Variables") || line.Contains("Number:") || line.Contains("Boolean:") || line.Contains("String:") || line.Contains("returns") || line.Contains("Parameters") || line.Contains("Class") || line.Contains(":"))
             {
-                return Color.Green; 
-            } 
-            else 
+                return Color.Green;
+            }
+            else
             {
                 return Color.Black;
             }
         }
+
         private void Rchtxt_TextChanged()
         {
             this.CheckKeyword("while ", Color.Blue, 0);
@@ -381,7 +372,7 @@ namespace Centura2Java
             this.CheckKeyword("public class ", Color.Purple, 0);
             this.CheckKeyword("true", Color.Blue, 0);
             this.CheckKeyword("false", Color.Blue, 0);
-            this.CheckKeyword("else", Color.Blue, 0); 
+            this.CheckKeyword("else", Color.Blue, 0);
             this.CheckKeyword("break", Color.Blue, 0);
             this.CheckKeyword("extends", Color.Blue, 0);
             this.CheckKeyword("(", Color.Blue, 0);
@@ -393,6 +384,7 @@ namespace Centura2Java
             this.CheckKeyword("null", Color.Blue, 0);
             this.CheckKeyword(" this", Color.Blue, 0);
         }
+
         private void CheckKeyword(string word, Color color, int startIndex)
         {
             if (this.rtb_JavaCode.Text.Contains(word))
@@ -409,10 +401,11 @@ namespace Centura2Java
                 }
             }
         }
+
         //REPLACE FUNCTIONS
-        public string[] ReplaceFunction(string OldString,string NewString, string EndLine, string[] inputLines)
+        public string[] ReplaceFunction(string OldString, string NewString, string EndLine, string[] inputLines)
         {
-            for (int i = 0; i < inputLines.Length; i++ )
+            for (int i = 0; i < inputLines.Length; i++)
             {
                 if (inputLines[i].Contains(OldString))
                 {
@@ -420,65 +413,55 @@ namespace Centura2Java
                     if (EndLine.Length > 0)
                     {
                         inputLines[i] = inputLines[i] + EndLine;
-                    } 
+                    }
                 }
             }
-            //rtb_JavaCode.Lines = inputLines;
             return inputLines;
         }
+
         //CLOSING FUNCTIONS WITH "}"
-        
         public string[] CloseFunctions(string[] inputLines)
         {
-            int temp = 0;
+            int publicVoidCount = 0;
             for (int i = 0; i < inputLines.Length; i++)
             {
                 if (inputLines[i].Contains("public void"))
                 {
-                    temp++;
-                    if (temp>=2)
+                    publicVoidCount++;
+                    if (publicVoidCount >= 2)
                     {
-                        inputLines[i] = inputLines[i].Replace("public void","\n}\npublic void");
+                        inputLines[i] = inputLines[i].Replace("public void", "\n}\npublic void");
                     }
                 }
             }
             inputLines[inputLines.Length - 1] = inputLines[inputLines.Length - 1] + "\n}";
             return inputLines;
         }
+
         //DELETING TEXT FROM BEGGINNING
-        public void DeleteLines()
+        public string[] DeleteLines(string[] inputLines)
         {
-            string[] lines1 = rtb_JavaCode.Lines;
-            for (int jj = 0; jj < lines1.Length; jj++)
+            for (int i = 0; i < inputLines.Length; i++)
             {
-                string line = lines1[jj];
-                if (line.Contains("Functions"))
+                if (inputLines[i].Contains("Functions"))
                 {
-                    line = line.Remove(0);
-                    lines1[jj] = line;
-                    rtb_JavaCode.Lines = lines1;
-                    return;
+                    inputLines[i] = "";
+                    break;
                 }
                 else
-                {
-                    line = line.Remove(0);
-                    lines1[jj] = line;
-                }
+                    inputLines[i] = "";
             }
+            return inputLines;
         }
+
         //Fixing if functions
         public string[] IfFunctionFix(string[] inputLines)
         {
-            for (int nn = 0; nn < inputLines.Length; nn++)
-            {
-                if (inputLines[nn].Contains("if ("))
-                {
-                    if (inputLines[nn].Contains(" != "))
-                    {
-                        inputLines[nn] = inputLines[nn].Replace("//", "");
-                    }
-                }
-            }
+            for (int i = 0; i < inputLines.Length; i++)
+                if (inputLines[i].Contains("if ("))
+                    if (inputLines[i].Contains(" != "))
+                        inputLines[i] = inputLines[i].Replace("//", "");
+            
             return inputLines;
         }
         //Commented if functions 
@@ -486,38 +469,20 @@ namespace Centura2Java
         {
             for (int i = 0; i < inputLines.Length; i++)
             {
-                string line = inputLines[i];
                 if (inputLines[i].Trim().StartsWith("if"))
                 {
-                    int leadingSpaces = 0;
-                    for (int j = 0; j < inputLines[i].Length; j++)
-                    {
-                        if (line[j] == ' ')
-                        {
-                            leadingSpaces++;
-                        }
-                        else { break; }
-                    }
+                    int leadingSpaces = countLeadingSpaces(inputLines[i]);
+                    int leadingSpaces2 = countLeadingSpaces(inputLines[i+1]);
 
-                    int leadingSpaces2 = 0;
-                    string nextLine = inputLines[i + 1];
-                    for (int j = 0; j < nextLine.Length; j++)
-                    {
-                        if (nextLine[j] == ' ')
-                        {
-                            leadingSpaces2++;
-                        }
-                        else { break; }
-                    }
                     if (leadingSpaces2 > leadingSpaces && inputLines[i + 1].Contains(",") && (!inputLines[i + 1].Contains(";")))
                     {
-                        inputLines[i] = inputLines[i]+ " " + inputLines[i+1].Trim();
+                        inputLines[i] = inputLines[i] + " " + inputLines[i + 1].Trim();
                         inputLines[i + 1] = "";
                         i = i + 1;
                     }
                 }
             }
-            
+
             inputLines = IfFunctionsFinish(inputLines);
             return inputLines;
         }
@@ -529,27 +494,7 @@ namespace Centura2Java
                 {
                     inputLines[i] = inputLines[i] + ") {";
 
-                    int leadingSpaces = 0;
-                    for (int j = 0; j < inputLines[i].Length; j++)
-                    {
-                        if (inputLines[i][j] == ' ')
-                        {
-                            leadingSpaces++;
-                        }
-                        else { break; }
-                    }
-
-                    int leadingSpaces2 = 0;
-                    string nextLine = inputLines[i + 1];
-                    for (int j = 0; j < nextLine.Length; j++)
-                    {
-                        if (nextLine[j] == ' ')
-                        {
-                            leadingSpaces2++;
-                        }
-                        else { break; }
-                    }
-                    if (leadingSpaces2 > leadingSpaces )
+                    if (countLeadingSpaces(inputLines[i + 1]) > countLeadingSpaces(inputLines[i]))
                     {
                         inputLines[i + 1] = inputLines[i + 1] + "\n}";
                         i = i + 1;
@@ -557,63 +502,38 @@ namespace Centura2Java
                 }
                 if (inputLines[i].Trim().StartsWith("else "))
                 {
-                   
-                    int leadingSpaces = 0;
-                    for (int j = 0; j < inputLines[i].Length; j++)
-                    {
-                        if (inputLines[i][j] == ' ')
-                        {
-                            leadingSpaces++;
-                        }
-                        else { break; }
-                    }
-
-                    int leadingSpaces2 = 0;
-                    string nextLine = inputLines[i + 1];
-                    for (int j = 0; j < nextLine.Length; j++)
-                    {
-                        if (nextLine[j] == ' ')
-                        {
-                            leadingSpaces2++;
-                        }
-                        else { break; }
-                    }
-                    if (leadingSpaces2 > leadingSpaces)
+                    if (countLeadingSpaces(inputLines[i + 1]) > countLeadingSpaces(inputLines[i]))
                     {
                         inputLines[i + 1] = inputLines[i + 1] + "\n}";
                         i = i + 1;
                     }
                 }
-   
             }
             return inputLines;
         }
+
+        public int countLeadingSpaces(string text)
+        {
+            int leadingSpaces = 0;
+            
+            for(int i = 0; i < text.Length; i++)
+                if (text[i] == ' ')                
+                    leadingSpaces++;               
+                else
+                    break; 
+
+            return leadingSpaces;
+        }
+
         public string[] IfFunctionsCommented(string[] inputLines)
         {
             for (int i = 0; i < inputLines.Length; i++)
             {
                 if (inputLines[i].Trim().StartsWith("!"))
                 {
-                    int leadingSpaces = 0;
-                    for (int xx = 0; xx < inputLines[i].Length; xx++)
-                    {
-                        if (inputLines[i][xx] == ' ')
-                        {
-                            leadingSpaces++;
-                        }
-                        else { break; }
-                    }
+                    int leadingSpaces = countLeadingSpaces(inputLines[i]);
+                    int leadingSpaces2 = countLeadingSpaces(inputLines[i+1]);
 
-                    int leadingSpaces2 = 0;
-                    string nextLine = inputLines[i + 1];
-                    for (int xx = 0; xx < nextLine.Length; xx++)
-                    {
-                        if (nextLine[xx] == ' ')
-                        {
-                            leadingSpaces2++;
-                        }
-                        else { break; }
-                    }
                     if (leadingSpaces2 > leadingSpaces)
                     {
                         inputLines[i + 1] = inputLines[i + 1].Substring(0, leadingSpaces) + "//" + inputLines[i + 1].Substring(leadingSpaces, inputLines[i + 1].Length - (leadingSpaces));
@@ -623,11 +543,11 @@ namespace Centura2Java
             }
             return inputLines;
         }
+
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             rtb_JavaCode.Undo();
             rtb_JavaCode.Focus();
-            
         }
 
         private void redoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -673,7 +593,7 @@ namespace Centura2Java
         private void rtb_JavaCode_TextChanged(object sender, EventArgs e)
         {
             pb1.Maximum = rtb_JavaCode.Lines.Count();
-            label_Java.Text = "Java Code: "+ rtb_JavaCode.Lines.Count()+ " lines of code";
+            label_Java.Text = "Java Code: " + rtb_JavaCode.Lines.Count() + " lines of code";
         }
 
         private void Centura2Java_FormClosing(object sender, FormClosingEventArgs e)
@@ -700,22 +620,21 @@ namespace Centura2Java
                         sw.Close();
                         this.Close();
                         //File.WriteAllText(sfd1.FileName , rtb_JavaCode.Text);
-                    }  
+                    }
 
                 }
             }
         }
 
-       
-       
-        
+
+
+
     }
     // Highlight word color
     static class Utility
     {
         public static void HighlightText(this RichTextBox myRtb, string word, Color color)
         {
-
             if (word == "")
             {
                 return;

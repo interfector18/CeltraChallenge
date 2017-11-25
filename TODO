@@ -16,7 +16,7 @@ Todo - zoki:
 
 Todo:
   ☐ Napravit par input output parova, i testirat cs sa phpom
-  ☐ Refactorirat .cs @started(17-11-24 21:03)
+  ✔ Refactorirat .cs @started(17-11-24 21:03) @done(17-11-25 14:18) @lasted(17 hours 15 minutes 44 seconds)
   ☐ Prevest refaktorirani .cs u php
   ☐ Login sustav
     ☐ Sucelje

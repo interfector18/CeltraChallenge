@@ -24,8 +24,11 @@ Todo:
     ☐ Dizajn
   ☐ Registracijski sustav
     ☐ Mehanizam
-      ☐ Spremanje u neku datoteku @started(17-11-25 19:15)
+      ✔ Spremanje u neku datoteku @started(17-11-25 19:15) @done(17-11-26 13:33) @lasted(18 hours 18 minutes 24 seconds) sprema se u "users.txt"
         ☐ Baza?
       ☐ E-mail confirmation
+        ✔ Napravljen je i sprema se activationId i activated bool varijabla (odnosno "yes"/"no") @done(17-11-26 13:32)
+        ☐ Slanje maila
+        ☐ Activacija clikom na link
     ☐ Sucelje
     ☐ Dizajn

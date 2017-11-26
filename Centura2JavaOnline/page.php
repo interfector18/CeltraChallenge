@@ -1,3 +1,7 @@
+<?php
+ $username_login = $_POST['username_login'];
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -39,10 +43,9 @@
           <a class="nav-link disabled" href="#">Disabled</a>
         </li>-->
       </ul>
-      <form method="post" action="page.php" class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" name="username_login" placeholder="Username">
-            <input class="form-control mr-sm-2" type="password" name="password_login" placeholder="Password">
-            <input class="btn btn-primary" style="font-size: 15px; padding:8px 10px 7px 10px;" type="submit" name="submit" value="Login">
+      <form method="post" action="logout.php" class="form-inline my-2 my-lg-0">
+            <?php echo "<p style='margin: 0px 10px 0px 0px; color:#fff; font-size: 13px;'>Welcome, $username_login.</p>"; ?>
+            <input class="btn btn-primary" style="font-size: 15px; padding:8px 10px 7px 10px;" type="submit" name="submit" value="Logout">
         </form>
     </div>
   </nav>
@@ -50,7 +53,7 @@
 
   <!-- CONTENT  linear-gradient(rgba(134, 223, 255, 0.55), rgba(134, 223, 255, 0.0)); -->
 
-    <div class="jumbotron jumbotron-fluid" style="background: linear-gradient(rgba(57,130, 255, 0.20), rgba(57, 130, 255, 0.0));  height:100vh; background-repeat: no-repeat;">
+    <!--<div class="jumbotron jumbotron-fluid" style="background: linear-gradient(rgba(57,130, 255, 0.20), rgba(57, 130, 255, 0.0));  height:100vh; background-repeat: no-repeat;">
       <div class="container" style="margin-top: 25px;">
         <div style="float:left;">
           <h1 class="display-3" style="width:auto;">Welcome</h1>
@@ -69,7 +72,7 @@
             <input class="btn btn-primary btn-lg btn-block"  style="font-size: 15px;" type="submit" name="submit" value="Register">
         </form>
 
-      </div>
+      </div>-->
       
     </div>  
     

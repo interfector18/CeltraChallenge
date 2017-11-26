@@ -15,22 +15,12 @@ Todo - zoki:
   ✔ Deletelines(); @started(17-11-23 20:52) @done(17-11-23 20:56) @lasted(4 minutes 15 seconds)
 
 Todo:
-<<<<<<< HEAD
-<<<<<<< HEAD
-  ☐ Napravit par input output parova, i testirat cs sa phpom @started(17-11-23 21:48)
-=======
-  ☐ Napravit par input output parova, i testirat cs sa phpom
-  ✔ Refactorirat .cs @started(17-11-24 21:03) @done(17-11-25 14:18) @lasted(17 hours 15 minutes 44 seconds)
-  ☐ Prevest refaktorirani .cs u php
->>>>>>> b2c1d9e648b190755ce826db2a9582d001cb118e
-=======
   ☐ Dati ime projektu
   ✔ Napravit par input output parova, i testirat cs sa phpom @done(17-11-26 12:29) //napravljen je jedan, potpuno je identicans
   ✔ Refactorirat .cs @started(17-11-24 21:03) @done(17-11-25 14:18) @lasted(17 hours 15 minutes 44 seconds)
   ✔ Prevest refaktorirani .cs u php @done(17-11-26 12:29)
   ☐ Pocetna stranica
     ☐ Sucelje/dizajn
->>>>>>> c68bd411a01da7259ba58a63d0b470a4e1283c9c
   ☐ Login sustav
     ☐ Mehanizam
     ☐ Sucelje/dizajn

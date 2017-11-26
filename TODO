@@ -15,6 +15,7 @@ Todo - zoki:
   ✔ Deletelines(); @started(17-11-23 20:52) @done(17-11-23 20:56) @lasted(4 minutes 15 seconds)
 
 Todo:
+  ☐ Dati ime projektu
   ✔ Napravit par input output parova, i testirat cs sa phpom @done(17-11-26 12:29) //napravljen je jedan, potpuno je identicans
   ✔ Refactorirat .cs @started(17-11-24 21:03) @done(17-11-25 14:18) @lasted(17 hours 15 minutes 44 seconds)
   ✔ Prevest refaktorirani .cs u php @done(17-11-26 12:29)
@@ -27,8 +28,9 @@ Todo:
       ✔ Spremanje u neku datoteku @started(17-11-25 19:15) @done(17-11-26 13:33) @lasted(18 hours 18 minutes 24 seconds) sprema se u "users.txt"
         ☐ Baza?
       ☐ E-mail confirmation
-        ✔ Napravljen je i sprema se activationId i activated bool varijabla (odnosno "yes"/"no") @done(17-11-26 13:32)
+        ✔ Napravljen je i sprema se activationId i accountActivated varijablom("yes"/"no") @done(17-11-26 13:32)
         ☐ Slanje maila
+          ☐ Ispraviti text s imenom projekta, kada projekt dobije ime
         ☐ Activacija clikom na link
     ☐ Sucelje
     ☐ Dizajn

@@ -63,10 +63,12 @@
         if(!file_exists($file))
         {
             $id = 1;
+            return $id;
         }
         if(file_exists($file) && filesize($file) == 0)
         {
             $id = 1;
+            return $id;
         }
         else
         {
@@ -84,5 +86,21 @@
             $id = $max + 1;
         }
         return $id;
+    }
+
+    function fileDeleteLine($file, $line)
+    {
+        if(!file_exists($file))
+        {
+            return;
+        }
+        else
+        {
+            $max = 0;
+
+            $fileContents = file_get_contents($file);
+            $fileContents = str_replace($line, "", $fileContents);
+            file_put_contents($file, $fileContents);
+        }
     }
 ?>

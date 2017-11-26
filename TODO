@@ -20,12 +20,10 @@ Todo:
   ✔ Refactorirat .cs @started(17-11-24 21:03) @done(17-11-25 14:18) @lasted(17 hours 15 minutes 44 seconds)
   ✔ Prevest refaktorirani .cs u php @done(17-11-26 12:29)
   ☐ Pocetna stranica
-    ☐ Dizajn
-    ☐ Sucelje
+    ☐ Sucelje/dizajn
   ☐ Login sustav
     ☐ Mehanizam
-    ☐ Sucelje
-    ☐ Dizajn
+    ☐ Sucelje/dizajn
   ☐ Registracijski sustav
     ✔ Mehanizam @done(17-11-26 16:54)
       ✔ Spremanje u neku datoteku @started(17-11-25 19:15) @done(17-11-26 13:33) @lasted(18 hours 18 minutes 24 seconds) sprema se u "users.txt"
@@ -36,5 +34,4 @@ Todo:
         ✘ Slanje maila @cancelled(17-11-26 16:53)
           ✘ Ispraviti text s imenom projekta, kada projekt dobije ime @cancelled(17-11-26 16:53)
         ✘ Activacija clikom na link @cancelled(17-11-26 16:53)
-    ☐ Sucelje
-    ☐ Dizajn
+    ☐ Sucelje/dizajn

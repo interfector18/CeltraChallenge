@@ -56,10 +56,7 @@ function convert()
 
 
     $gJavaCode = implode("\n", $gJavaCode);
-    $gJavaCode = explode("\n", $gJavaCode);
-
-
-    $gJavaCode = implode("\r\n", $gJavaCode);
+    $gJavaCode = ReplaceFunction("\n", "\r\n", "", $gJavaCode);
 
     $path = "output.txt";
     $fh = fopen($path, "w");

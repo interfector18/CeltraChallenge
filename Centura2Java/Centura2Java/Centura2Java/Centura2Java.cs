@@ -259,7 +259,6 @@ namespace Centura2Java
                 {
                     for (int j = i + 1; j < inputLines.Length; j++)
                     {
-                        string line1 = inputLines[j];
                         if (inputLines[j].Trim().StartsWith("Class: "))
                         {
                             temp3 = inputLines[i].Replace("Form Window: ", "public class ") + inputLines[j].Trim().Replace("Class: ", " extends ");

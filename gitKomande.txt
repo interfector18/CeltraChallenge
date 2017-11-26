@@ -1,9 +1,24 @@
-git fetch origin master - za dohvacanje s servera
-git pull - ista stvar, samo u slucaju kad napravimo vise commita bez sinkronizacije
-git push -u origin - za spremanje na server
-git add [ime datoteke, ili *] - za dodavanje na git
+Opće komande:
+git status - ispisuje status 
+git pull [origin] [ime grane] - napravi isto sta i git fetch, ali i azurira trenutnu kopiju
+git push -u origin - za spremanje na server, odnosno spremi na remote zvan "origin"
+git add [ime datoteke, ili *] - za dodavanje datoteka na git, odnosno pracenje promjena istih datoteka s gitom
 git stage [ime datoteke, ili *] - za pripremanje promjena
-git commit -m "poruka commita" - za commitanje promjena
+git commit -m "poruka commita" - za commitanje(spremanje) pripremljenih(git stage) promjena
+git remote set-url origin https://username:password@github.com/username/repo.git - postavlja remote "origin" na ordereni repositorij na githubu
 
+Git configuracija:
+git config [--global] user.name "ime" - postavljanje imena, odnosno ime autora, s --global postavlja se globalno, ne samo u lokalnim repositoriju
+git config [--global] user.email "email adresa" - postavljanje email adrese autora, s --global postavlja se globalno, ne samo u lokalnim repositoriju
 git config credential.helper store - da spremi username i password
-git config --global push.default simple - da ne spamma tijekom push, jer iako pusha samo trenutnu granu
+git config [--global] push.default simple - da ne spamma tijekom push, jer iako pusha samo trenutnu granu, s --global postavlja se globalno, ne samo u lokalnim repositoriju
+
+Grane:
+git branch [-a] - daje popis svih grana, parametar "-a"(ne obavezan) daje popis i sa remote gitova
+git branch [ime grane] - dodaje granu
+git checkout [ime grane] - prebacuje se na granu
+git checkout -b [ime grane] - dodaje granu i prabacuje se na istu granu
+git branch -d [ime grane] - brise granu
+git branch -D [ime grane] - prisilno brise granu
+git push origin [ime grane] - uploada granu na remote git "origin"
+git push origin :[ime grane] - brise granu s remote git "origin"

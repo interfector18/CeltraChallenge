@@ -9,7 +9,6 @@
     require_once('funkcije.php');
     require_once('converter.php');
 
-
     if(isset($_GET['kv']))
     {
         $kv = $_GET['kv'];
@@ -24,8 +23,10 @@
     // case '':
     //     break;
     // case 'd':
+    //     break;
     case 'convert':
         convert();
+        break;
     default:
         login();
         registracija();
@@ -39,10 +40,5 @@
 
 
     ?>
-
-
-
-
-
 </body>
 </html>

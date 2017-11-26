@@ -23,8 +23,13 @@ Todo:
   ☐ Prevest refaktorirani .cs u php
 >>>>>>> b2c1d9e648b190755ce826db2a9582d001cb118e
   ☐ Login sustav
+    ☐ Mehanizam
     ☐ Sucelje
     ☐ Dizajn
   ☐ Registracijski sustav
+    ☐ Mehanizam
+      ☐ Spremanje u neku datoteku @started(17-11-25 19:15)
+        ☐ Baza?
+      ☐ E-mail confirmation
     ☐ Sucelje
     ☐ Dizajn

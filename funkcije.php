@@ -4,7 +4,7 @@
     {
         ?>
 
-        <form action="login.php">
+        <form action="login.php" method="post">
             <input type="text" name="username" placeholder="Enter your name">
             <br>
             <input type="Password" name="password" placeholder="Enter your password">
@@ -21,7 +21,7 @@
     {
         ?>
 
-        <form action="reg.php">
+        <form action="reg.php" method="post">
             <input type="text" name="username" placeholder="Enter your username">
             <br>
             <input type="Password" name="password" placeholder="Enter your password">
@@ -43,8 +43,8 @@
         ?>
 
         <form method="post" action="?kv=convert">
-            <input type="textarea" rows="100" name="tb_centura" placeholder="Enter your centura code">
-            <input type="textarea" rows="100" name="tb_javascript" placeholder="Converted code will go here">
+            <input type="text" name="gCenturaCode" placeholder="Enter your centura code">
+            <input type="text" name="gJavaCode" placeholder="Converted code will go here">
             <input type="submit" name="submit" value="Convertaj">
         </form>
 
@@ -52,6 +52,4 @@
 
         <?php
     }
-
-
 ?>

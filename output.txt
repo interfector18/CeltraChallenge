@@ -6,6 +6,7 @@
 
 
 
+
     // ! !! bedeutet, diese Funktion ist fertig
 
 public class frmBerechnung extends cBerechnung {
@@ -212,7 +213,7 @@ public void  _OnClickRabatte() {
 
       /*
 Description: .._GetNetto()
-          Führt die Nettoberechnung der einzelnen Produkte durch
+          Fï¿½hrt die Nettoberechnung der einzelnen Produkte durch
           200X-XX-XX XX: Erstellung
           2007-07-11 BG: Umstellung auf Late-Bound
       returns;
@@ -230,7 +231,7 @@ public void  _GetNetto() {
 
       /*
 Description: .._GetBrutto()
-          Führt die Bruttoberechnung der einzelnen Produkte durch
+          Fï¿½hrt die Bruttoberechnung der einzelnen Produkte durch
           200X-XX-XX XX: Erstellung
           2007-07-11 BG: Umstellung auf Late-Bound
       returns;
@@ -311,13 +312,13 @@ public void  SetOutput() {
         nRowProdukte = 0;
         bAdd = false;
         if (rbSortJahr = true) {
-          dfsZahlungsart = "JÄHRLICH";
+          dfsZahlungsart = "Jï¿½HRLICH";
 }
         else if { rbSortHalb = true}
-          dfsZahlungsart = "HALBJÄHRLICH";
+          dfsZahlungsart = "HALBJï¿½HRLICH";
 }
         else if { rbSortViertel = true}
-          dfsZahlungsart = "VIERTELJÄHRLICH";
+          dfsZahlungsart = "VIERTELJï¿½HRLICH";
 }
         else if { rbSortMonat = true}
           dfsZahlungsart = "MONATLICH";
@@ -375,7 +376,7 @@ public void  SetOutput() {
           else {
             bEintrag = true;
 }
-          // ! Füge Zeile mit allen Sparten hinzu
+          // ! Fï¿½ge Zeile mit allen Sparten hinzu
           if (bAdd = true && bEintrag = true && (bMindestpraemie1 = true || bMindestpraemie2 = true)) {
             tblOutput.Add (sVGBez, sVGBezkurz, sPGBez, sProduktbez, bSonderRabatt, nLaufzeit,;
 }
@@ -427,7 +428,7 @@ public void  SetOutput_Sparten() {
             break;
 }
           SalTblSetContext (Global.tblBerechnung, nRow);
-          // ! *** Wenn Rabatte/Zuschläge eingegeben werden, ist das Flag true;
+          // ! *** Wenn Rabatte/Zuschlï¿½ge eingegeben werden, ist das Flag true;
           //    bSonderrabatt wird als Parameter an tblOutput.Add weitergegeben
           if (SalTblQueryRowFlags(Global.tblBerechnung,nRow,ROW_UnusedFlag1)) {
             bSonderRabatt=true;

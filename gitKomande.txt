@@ -22,3 +22,6 @@ git branch -d [ime grane] - brise granu
 git branch -D [ime grane] - prisilno brise granu
 git push origin [ime grane] - uploada granu na remote git "origin"
 git push origin :[ime grane] - brise granu s remote git "origin"
+
+Razlike:
+git diff [file1] [file2] - ispise razliku izmedu dvije datoteke (jasmine, koristi to za diff output.txt(.php), output2.txt(.cs) :D)

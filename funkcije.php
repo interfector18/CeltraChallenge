@@ -21,19 +21,7 @@
     {
         ?>
 
-        <form action="reg.php" method="post">
-            <input type="text" name="username" placeholder="Enter your username">
-            <br>
-            <input type="Password" name="password" placeholder="Enter your password">
-            <br>
-            <input type="Password" name="confirm_password" placeholder="Confirm your password">
-            <br>
-            <input type="text" name="email" placeholder="Enter your email">
-            <br>
-            <input type="submit" name="submit" value="Register">
-        </form>
-
-
+        <a href="reg.php">Register</a>
 
         <?php
     }
@@ -51,5 +39,68 @@
 
 
         <?php
+    }
+
+    function fileWriteLine($file, $line, $mode='a')
+    {
+        $f=fopen($file,$mode);
+        flock($f,LOCK_EX);
+
+        if(fwrite($f,$line)==false)
+        {
+            return false;
+        }
+
+        flock($f,LOCK_UN);
+        fclose($f);
+
+        return true;
+    }
+
+
+    function increment($file, $column = 0)
+    {
+        if(!file_exists($file))
+        {
+            $id = 1;
+            return $id;
+        }
+        if(file_exists($file) && filesize($file) == 0)
+        {
+            $id = 1;
+            return $id;
+        }
+        else
+        {
+            $max = 0;
+            $f = fopen($file,'r');
+            while(($line = fgets($f,4096)) !== false)
+            {
+                $polje = explode("\t", $line);
+                if($polje[$column] > $max)
+                {
+                    $max = $polje[$column];
+                }
+            }
+            fclose($f);
+            $id = $max + 1;
+        }
+        return $id;
+    }
+
+    function fileDeleteLine($file, $line)
+    {
+        if(!file_exists($file))
+        {
+            return;
+        }
+        else
+        {
+            $max = 0;
+
+            $fileContents = file_get_contents($file);
+            $fileContents = str_replace($line, "", $fileContents);
+            file_put_contents($file, $fileContents);
+        }
     }
 ?>

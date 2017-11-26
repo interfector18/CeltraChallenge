@@ -1,91 +1,26 @@
-
-
-
-
-
-
-
-
-
-    // ! // !! bedeutet, diese Funktion ist fertig
-
-
-      /*
-Description: .._ImportVar()
-          Importiert die Variablen
-          2007-07-12 BG: Umstellung auf Late-Bound
-      returns
-      Parameters
-      Static Variables
-      Local variables
-        Boolean: bSparte
-      Actions
-*/
+public class frmBerechnung extends cBerechnung {
     public void  _ImportVar() {
         cBerechnung._ImportVar();
-    // ! Ausdrucke aufrufen
-    
-}
+    }
 
 
-      /*
-Description: .._OnClickDeckungsvorgabe()
-          Ruft den Report Deckungsvorgabe auf
-          200X-XX-XX XX: Erstellung
-          2007-07-11 BG: Umstellung auf Late-Bound
-          2007-07-12 BG: einzelne Funktionen zur Berechnung durch OnClickNetto ersetzt (sind dieselben Funktionen)
-          2009-07-17 BG: FIX: #3128: Zahlungsart aus Berechnung nehmen
-      returns
-      Parameters
-      Static Variables
-      Local variables
-        : oDeckungsvorgabe
-          Class: cPrintDV
-      Actions
-*/
 public void  _OnClickDeckungsvorgabe() {
-        SalWaitCursor (true);
-        if( m_bZahlenvergleich = true
-          OnClickNetto();
-          // ! SalWaitCursor( true );
-          // ! GetNetto ();
-          // ! GetBrutto ();
-          // ! tblOutput.SetCursorToTop ();
-          // ! bBerechnet = true;
-          // ! SalWaitCursor( false );
-        SalTblReset( tblPrint );
-        SalTblDestroyColumns (tblPrint);
-        oDeckungsvorgabe.Init(tblPrint,RPT_DV);
-        oDeckungsvorgabe.sZahlungsart_dat = dfsZahlungsart;
-        oDeckungsvorgabe.Fill(tblPrint,Global.tblSaveEingabe);
-        SalWaitCursor (false);
+      if (m_bZahlenvergleich = true) {
+        OnClickNetto();
+      }
+      SalTblReset( tblPrint );
+      SalTblDestroyColumns (tblPrint);
+      oDeckungsvorgabe.Init(tblPrint,RPT_DV);
+      oDeckungsvorgabe.sZahlungsart_dat = dfsZahlungsart;
+      oDeckungsvorgabe.Fill(tblPrint,Global.tblSaveEingabe);
     
 }
-
-
-      /*
-Description: .._OnClickZahlenvergleich()
-          Ruft den Report Zahlenvergleich auf
-          200X-XX-XX XX: Erstellung
-          2007-07-11 BG: Umstellung auf Late-Bound
-      returns
-      Parameters
-      Static Variables
-      Local variables
-        : oZahlenvergleich
-          Class: cPrintZV
-      Actions
-*/
 public void  _OnClickZahlenvergleich() {
-        SalWaitCursor (true);
         SalTblReset( tblPrint );
         SalTblDestroyColumns (tblPrint);
         oZahlenvergleich.Init(tblPrint, RPT_ZV);
         oZahlenvergleich.sZahlungsart_dat = dfsZahlungsart;
-        // ! oZahlenvergleich.Fill(tblPrint, tblOutput,frmBerechnung);
         oZahlenvergleich.Fill(tblPrint, tblOutput, m_bMitVUName );
-        SalWaitCursor (false);
-    
 }
 
 
@@ -94,7 +29,7 @@ Description: .._OnClickVergleich()
           Ruft den Report Vergleich auf
           200X-XX-XX XX: Erstellung
           2007-07-11 BG: Umstellung auf Late-Bound
-      returns
+      returns;
       Parameters
       Static Variables
       Local variables
@@ -103,13 +38,13 @@ Description: .._OnClickVergleich()
       Actions
 */
 public void  _OnClickVergleich() {
-        SalWaitCursor (true);
+//        SalWaitCursor (true);
         SalTblReset( tblPrint );
         SalTblDestroyColumns (tblPrint);
         oVergleich.Init(tblPrint, RPT_V);
         oVergleich.sZahlungsart_dat = dfsZahlungsart;
         oVergleich.Fill(tblPrint, tblOutput,Global.tblBerechnung,frmBerechnung, m_bMitVUName );
-        SalWaitCursor (false);
+//        SalWaitCursor (false);
     
 }
 
@@ -119,7 +54,7 @@ Description: .._OnClickVergleichkurz()
           Ruft den Report Vergleichkurz auf
           200X-XX-XX XX: Erstellung
           2007-07-11 BG: Umstellung auf Late-Bound
-      returns
+      returns;
       Parameters
       Static Variables
       Local variables
@@ -128,13 +63,13 @@ Description: .._OnClickVergleichkurz()
       Actions
 */
 public void  _OnClickVergleichkurz() {
-        SalWaitCursor (true);
+//        SalWaitCursor (true);
         SalTblReset( tblPrint );
         SalTblDestroyColumns (tblPrint);
         oVergleich.Init(tblPrint, RPT_VK);
         oVergleich.sZahlungsart_dat = dfsZahlungsart;
         oVergleich.Fill(tblPrint, tblOutput,Global.tblBerechnung,frmBerechnung, m_bMitVUName );
-        SalWaitCursor (false);
+//        SalWaitCursor (false);
     
 }
 
@@ -144,7 +79,7 @@ Description: .._OnClickDeckungsumfang()
           Ruft den Report Deckungsumfang auf
           200X-XX-XX XX: Erstellung
           2007-07-11 BG: Umstellung auf Late-Bound
-      returns
+      returns;
       Parameters
       Static Variables
       Local variables
@@ -153,12 +88,12 @@ Description: .._OnClickDeckungsumfang()
       Actions
 */
 public void  _OnClickDeckungsumfang() {
-        SalWaitCursor (true);
+//        SalWaitCursor (true);
         SalTblReset( tblPrint );
         SalTblDestroyColumns (tblPrint);
         oDeckungsumfang.Init(tblPrint, RPT_DU);
         oDeckungsumfang.Fill(tblPrint, tblOutput);
-        SalWaitCursor (false);
+//        SalWaitCursor (false);
     
 }
 
@@ -168,7 +103,7 @@ Description: .._OnClickBerechnung()
           Ruft den Report Berechnung auf
           200X-XX-XX XX: Erstellung
           2007-07-11 BG: Umstellung auf Late-Bound
-      returns
+      returns;
       Parameters
       Static Variables
       Local variables
@@ -177,14 +112,14 @@ Description: .._OnClickBerechnung()
       Actions
 */
 public void  _OnClickBerechnung() {
-        SalWaitCursor (true);
+//        SalWaitCursor (true);
         SalTblReset( tblPrint );
         SalTblDestroyColumns (tblPrint);
         oBerechnung.Init(tblPrint,RPT_B);
         oBerechnung.sZahlungsart_dat = dfsZahlungsart;
         // ! oBerechnung.Fill(tblPrint,Global.tblSaveEingabe,tblOutput,Global.tblBerechnung,frmBerechnung);
         oBerechnung.Fill(tblPrint,Global.tblSaveEingabe,tblOutput,Global.tblBerechnung);
-        SalWaitCursor (false);
+//        SalWaitCursor (false);
     
 }
 
@@ -194,30 +129,30 @@ Description: .._OnClickRabatte()
           Ruft die Rabatte-Maske auf
           200X-XX-XX XX: Erstellung
           2007-07-11 BG: Umstellung auf Late-Bound
-      returns
+      returns;
       Parameters
       Static Variables
       Local variables
       Actions
 */
 public void  _OnClickRabatte() {
-        if( SalModalDialog( dlgRabattInfo,  hWndForm,   tblOutput.colsVGBez, tblOutput.colsPGBez,
-              tblOutput.colnVSPProduktnr1, tblOutput.colsProdBez )
-          SalWaitCursor( true );
+        if (SalModalDialog( dlgRabattInfo,  hWndForm,   tblOutput.colsVGBez, tblOutput.colsPGBez, tblOutput.colnVSPProduktnr1, tblOutput.colsProdBez )) {
+
+//          SalWaitCursor( true );
           Global.tblBerechnung.BerechneBrutto();
           // ! VisWaitCursor (false);
           SetOutput();
-          SalWaitCursor( false );
+//          SalWaitCursor( false );
     
 }
 
 
       /*
 Description: .._GetNetto()
-          Führt die Nettoberechnung der einzelnen Produkte durch
+          F�hrt die Nettoberechnung der einzelnen Produkte durch
           200X-XX-XX XX: Erstellung
           2007-07-11 BG: Umstellung auf Late-Bound
-      returns
+      returns;
       Parameters
       Static Variables
       Local variables
@@ -232,10 +167,10 @@ public void  _GetNetto() {
 
       /*
 Description: .._GetBrutto()
-          Führt die Bruttoberechnung der einzelnen Produkte durch
+          F�hrt die Bruttoberechnung der einzelnen Produkte durch
           200X-XX-XX XX: Erstellung
           2007-07-11 BG: Umstellung auf Late-Bound
-      returns
+      returns;
       Parameters
       Static Variables
       Local variables
@@ -245,16 +180,18 @@ Description: .._GetBrutto()
 */
 public void  _GetBrutto() {
         bJump = true;
-        // ! if( m_bEH = true and m_bHH = true
-          nBuendel = 1;
-        // ! else
-          nBuendel = 0;
+        // ! if (m_bEH = true && m_bHH = true
+        //  nBuendel = 1;
+        // ! else {
+        //  nBuendel = 0;
         nBuendel = 0;
-        if( bJump
+        if (bJump) {
           Global.tblBerechnung.SetBrutto (nBuendel, m_sZahlungsweise);
+}
         bJump = true;
-        if( bJump
+        if (bJump) {
           Global.tblBerechnung.BerechneBrutto ();
+}
         SetOutput();
     
 }
@@ -263,7 +200,7 @@ public void  _GetBrutto() {
       /*
 Description: es werden die Daten aus der tblBerechnung entsprechend der tblProduktkombinationen
           gesammelt und die Daten werden in tblOutput angezeigt
-      returns
+      returns;
       Parameters
       Static Variables
       Local variables
@@ -307,28 +244,36 @@ public void  SetOutput() {
         SalTblReset( tblOutput );
         nRowProdukte = 0;
         bAdd = false;
-        if( rbSortJahr = true
-          dfsZahlungsart = 'JÄHRLICH';
-        else if( rbSortHalb = true
-          dfsZahlungsart = 'HALBJÄHRLICH';
-        else if( rbSortViertel = true
-          dfsZahlungsart = 'VIERTELJÄHRLICH';
-        else if( rbSortMonat = true
-          dfsZahlungsart = 'MONATLICH';
+        if (rbSortJahr = true) {
+          dfsZahlungsart = "J�HRLICH";
+}
+        else if { rbSortHalb = true}
+          dfsZahlungsart = "HALBJ�HRLICH";
+}
+        else if { rbSortViertel = true}
+          dfsZahlungsart = "VIERTELJ�HRLICH";
+}
+        else if { rbSortMonat = true}
+          dfsZahlungsart = "MONATLICH";
+}
         Loop Produkte
-          if( not SalTblSetContext (Global.tblProduktkombinationen, nRowProdukte)
-            Break Produkte
+          if (not SalTblSetContext (Global.tblProduktkombinationen, nRowProdukte)) {
+            break Produkte;
+}
           bSonderRabatt = false;
           bEintrag = true;
           // ! SPARTE 1
           bEintrag1 = false;
-          if( Global.tblProduktkombinationen.VSPPRODUKTNR1 > 0
+          if (Global.tblProduktkombinationen.VSPPRODUKTNR1 > 0) {
             nRow = 0;
+}
             Loop SP1
-              if( not SalTblSetContext( Global.tblBerechnung, nRow )
-                Break
-              if( Global.tblProduktkombinationen.VSPPRODUKTNR1 = Global.tblBerechnung.colnVspproduktnr
+              if (not SalTblSetContext( Global.tblBerechnung, nRow )) {
+                break;
+}
+              if (Global.tblProduktkombinationen.VSPPRODUKTNR1 = Global.tblBerechnung.colnVspproduktnr) {
                 sVGBez = Global.tblBerechnung.colsVGBez;
+}
                 sVGBezkurz = Global.tblBerechnung.colsVGBezkurz;
                 sProduktbez = Global.tblBerechnung.colsProduktBez;
                 // ! 44 ist die Bedingungnr von Versicherungssumme
@@ -338,38 +283,48 @@ public void  SetOutput() {
                     nErgebnisJahr1, nErgebnisHalb1, nErgebnisViertel1, nErgebnisMonat1,
                     nSBehalt1, nLaufzeit, bSonder, bAdd, bMindestpraemie1 )
                 bEintrag1 = true;
-                Break SP1
-              nRow = nRow  1;
-          if( bSonderRabatt // != true
+                break SP1;
+              nRow = nRow + 1;
+          if (bSonderRabatt != true) {
             bSonderRabatt = bSonder;
-          if( bAdd = true
+}
+          if (bAdd = true) {
             bAdd_Save = bAdd;
-          if( bSonderRabatt // != true
+}
+          if (bSonderRabatt != true) {
             bSonderRabatt = bSonder;
-          if( bAdd = true
+}
+          if (bAdd = true) {
             bAdd_Save = bAdd;
-          if( Global.tblProduktkombinationen.VSPPRODUKTNR1 > 0 and bEintrag1 = false
+}
+          if (Global.tblProduktkombinationen.VSPPRODUKTNR1 > 0 && bEintrag1 = false) {
             bEintrag = false;
-          else
+}
+          else {
             bEintrag = true;
-          if( Global.tblProduktkombinationen.VSPPRODUKTNR2 > 0 and bEintrag2 = false
+}
+          if (Global.tblProduktkombinationen.VSPPRODUKTNR2 > 0 && bEintrag2 = false) {
             bEintrag = false;
-          else
+}
+          else {
             bEintrag = true;
-          // ! Füge Zeile mit allen Sparten hinzu
-          if( bAdd = true and bEintrag = true and (bMindestpraemie1 = true or bMindestpraemie2 = true)
+}
+          // ! F�ge Zeile mit allen Sparten hinzu
+          if (bAdd = true && bEintrag = true && (bMindestpraemie1 = true || bMindestpraemie2 = true)) {
             tblOutput.Add (sVGBez, sVGBezkurz, sPGBez, sProduktbez, bSonderRabatt, nLaufzeit,;
+}
                 nVspproduktnr1, nVS1, nVSHG, nVSNG, nSBehalt1, nErgebnisJahr1, nErgebnisHalb1, nErgebnisViertel1, nErgebnisMonat1,
                 COLOR_Blue)
             bAdd = false;
             bEintrag = false;
-          else if( bAdd = true and bEintrag = true
+          else if { bAdd = true and bEintrag = true}
             tblOutput.Add (sVGBez, sVGBezkurz, sPGBez, sProduktbez, bSonderRabatt, nLaufzeit,;
+}
                 nVspproduktnr1, nVS1, nVSHG, nVSNG, nSBehalt1, nErgebnisJahr1, nErgebnisHalb1, nErgebnisViertel1, nErgebnisMonat1,
                 COLOR_Black)
             bAdd = false;
             bEintrag = false;
-          nRowProdukte = nRowProdukte  1;
+          nRowProdukte = nRowProdukte + 1;
         // ! Setze die Sicht des Fensters
         SetView ();
     
@@ -378,7 +333,7 @@ public void  SetOutput() {
 
       /*
 Description: Summiert die Daten  aus der tblBerechne und schreibt die Daten in tbl Output
-      returns
+      returns;
       Parameters
         Number: nRow
         Number: nRowProdukte
@@ -402,22 +357,28 @@ public void  SetOutput_Sparten() {
         bAdd = false;
         bMindestpraemie = false;
         Loop
-          if( not SalTblFindNextRow( Global.tblBerechnung, nRow, 0, 0 )
-            Break
+          if (not SalTblFindNextRow( Global.tblBerechnung, nRow, 0, 0 )) {
+            break;
+}
           SalTblSetContext (Global.tblBerechnung, nRow);
-          // ! *** Wenn Rabatte/Zuschläge eingegeben werden, ist das Flag true;
-              bSonderrabatt wird als Parameter an tblOutput.Add weitergegeben
-          if( SalTblQueryRowFlags(Global.tblBerechnung,nRow,ROW_UnusedFlag1)
+          // ! *** Wenn Rabatte/Zuschl�ge eingegeben werden, ist das Flag true;
+          //    bSonderrabatt wird als Parameter an tblOutput.Add weitergegeben
+          if (SalTblQueryRowFlags(Global.tblBerechnung,nRow,ROW_UnusedFlag1)) {
             bSonderRabatt=true;
-          else
+}
+          else {
             bSonderRabatt=false;
-          if( Global.tblBerechnung.colnProblemanzeige > 0 and bMindestpraemie = false
+}
+          if (Global.tblBerechnung.colnProblemanzeige > 0 && bMindestpraemie = false) {
             bMindestpraemie = true;
+}
           // ! ***
-          if( Global.tblBerechnung.colsArtRabatt = RAB_Brutto
+          if (Global.tblBerechnung.colsArtRabatt = RAB_Brutto) {
             SqlPrepareAndExecute (hSql1,;
-                'SELECT selbstbehalt, laufzeit FROM vspprodukt WHERE  vspproduktnr = :Global.tblBerechnung.colnVspproduktnr
-                 INTO  :nSB, :nLaufzeit')
+}
+        "SELECT selbstbehalt, laufzeit " 
+        + "FROM vspprodukt WHERE  vspproduktnr = :Global.tblBerechnung.colnVspproduktnr";
+        // + "INTO  :nSB, :nLaufzeit")"
             SqlFetchNext (hSql1,nFetch);
             SqlCommit (hSql1);
             nVspproduktnr = Global.tblBerechnung.colnVspproduktnr;
@@ -426,7 +387,7 @@ public void  SetOutput_Sparten() {
             nErgebnisViertel = Global.tblBerechnung.colnErgebnisViertel / 4;
             nErgebnisMonat = Global.tblBerechnung.colnErgebnisMonat / 12;
             bAdd = true;
-            Break
+            break;
     
 }
 
@@ -436,7 +397,7 @@ Description: .._XferGlobal2Output()
           Transferiert Werte Global nach tblOutput
           XXXX-XX-XX XX: Erstellung
           2007-08-28 BG: Umstellung auf late-bound
-      returns
+      returns;
       Parameters
       Static Variables
       Local variables
@@ -446,29 +407,33 @@ Description: .._XferGlobal2Output()
 */
 public void  _XferGlobal2Output() {
         SetOutput();
-        SalWaitCursor( true );
+//        SalWaitCursor( true );
         SetView ();
-        if( Global.bLoaded
+        if (Global.bLoaded) {
           tblOutput.RestoreSelections (m_sOutputSel);
-        if( SalTblAnyRows (tblOutput,ROW_Selected,0) and Global.bLoaded = false
+}
+        if (SalTblAnyRows (tblOutput,ROW_Selected,0) && Global.bLoaded = false) {
           nRow = TBL_MinRow;
-          m_sOutputSel = '';
+}
+          m_sOutputSel = "";
           Loop
-            if( SalTblFindNextRow( tblOutput, nRow, ROW_Selected, 0 )
+            if (SalTblFindNextRow( tblOutput, nRow, ROW_Selected, 0 )) {
               SalTblSetRowFlags( tblOutput, nRow, ROW_Selected, false );
-              // ! SalMessageBox( 'es ist etwas selektiert', 'TEST', MB_Ok );
-              nRow = nRow  1;
-            else
-              Break
+}
+              // ! SalMessageBox( "es ist etwas selektiert", "TEST", MB_Ok );
+              nRow = nRow + 1;
+            else {
+              break;
+}
         SalTblScroll(tblOutput,0,hWndNULL,TBL_ScrollTop);
-        SalWaitCursor(false );
+//        SalWaitCursor(false );
     
 }
 
 
       /*
 Description:
-      returns
+      returns;
         Number:
       Parameters
         Number: p_nVspproduktnr
@@ -484,36 +449,45 @@ Description:
 */
 public void  GetVS() {
         GetProduktpaketliste (p_nVspproduktnr, sListe);
-        if( p_nVspproduktnr > 0 and sListe // != STRING_Null
-          sSQL = 'SELECT pd.wert FROM bedingung b, produktdu pd, produktpaket pp, vspprodukt vsp ;
-              WHERE bedingungnr = :p_nBedingungnr
-              AND b.deckungsumfangnr = pd.deckungsumfangnr
-              AND pd.produktpaketnr = pp.produktpaketnr 
-              AND pp.produktnr = vsp.produktnr
-              AND vsp.vspproduktnr = :p_nVspproduktnr
-              AND pp.produktpaketnr in (' || sListe || ')
-              INTO :sWert
-              '
+        if (p_nVspproduktnr > 0 && sListe != STRING_Null) {
+        sSQL = "SELECT pd.wert " 
+        + "FROM bedingung b, produktdu pd, produktpaket pp, vspprodukt vsp "
+}
+        +"+"WHERE bedingungnr = :p_nBedingungnr
+        +"+"AND b.deckungsumfangnr = pd.deckungsumfangnr
+        +"+"AND pd.produktpaketnr = pp.produktpaketnr
+        +"+"AND pp.produktnr = vsp.produktnr
+        +"+"AND vsp.vspproduktnr = :p_nVspproduktnr
+        sSQL = "SELECT pd.wert " 
+        + "" 
+        + "FROM bedingung b, produktdu pd, produktpaket pp, vspprodukt vsp "";
+        // + "// + "// + "INTO :sWert"""
+              "
           SqlPrepareAndExecute( hSql2, sSQL );
-          if( SqlFetchNext( hSql2, nFetch )
+          if (SqlFetchNext( hSql2, nFetch )) {
             SqlCommit( hSql2 );
-            if( sWert = '1' or sWert = '2'
+}
+            if (sWert = "1" || sWert = "2") {
               r_nWert = NUMBER_Null;
-            else
+}
+            else {
               r_nWert = SalStrToNumber( sWert );
-            return true
-          else
+}
+            return true;
+          else {
             SqlCommit( hSql2 );
-            return false
-        else
-          return false
+}
+            return false;
+        else {
+          return false;
+}
     
 }
 
 
       /*
 Description:
-      returns
+      returns;
       Parameters
         Number: p_nVspproduktnr
         Receive String: r_sListe
@@ -522,21 +496,23 @@ Description:
       Actions
 */
 public void  GetProduktpaketliste() {
-        if( p_nVspproduktnr > 0
+        if (p_nVspproduktnr > 0) {
           GetListe (p_nVspproduktnr, r_sListe, Global.tblVSPProdukte);
-        else
-          r_sListe = '';
-        // ! if( p_nVspproduktnr2 > 0
-          GetListe (p_nVspproduktnr2, r_sListe2, Global.tblVSPProdukte);
-        // ! else
-          r_sListe2 = '';
+}
+        else {
+          r_sListe = "";
+}
+        // ! if (p_nVspproduktnr2 > 0
+        //  GetListe (p_nVspproduktnr2, r_sListe2, Global.tblVSPProdukte);
+        // ! else {
+        //  r_sListe2 = "";
     
 }
 
 
       /*
 Description:
-      returns
+      returns;
       Parameters
         Number: p_nVspproduktnr
         Receive String: r_sListe
@@ -561,7 +537,7 @@ Description: .._ShowColumns()
           200X-XX-XX XX: Erstellung
           2007-07-11 BG: Late-bound-Umstellung
           2007-08-28 BG: Aus tblOutput herausgenommen, weil unter Vista Fehler auftreten
-      returns 
+      returns ;
       Parameters 
       Static Variables 
       Local variables 
@@ -579,6 +555,7 @@ public void  _ShowColumns() {
     File Handle: m_hFile
     Boolean: m_bMitVUName
   Message Actions
-*/
     // ! On NAV_EnableDU
-      return true
+    //  return true;
+}
+}

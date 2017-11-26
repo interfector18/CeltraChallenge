@@ -18,9 +18,9 @@ function convert()
     global $gJavaCode;
 
     //CONVERTING CODE TO JAVA
-    $gJavaCode = ReplaceFunction("\r\n", "\n", "", $gJavaCode);
+    $gJavaCode = ReplaceFunction("\r\n", "", "", $gJavaCode);
     $gJavaCode = ReplaceFunction("\t", "  ", "", $gJavaCode);    
-    $gJavaCode = ReplaceFunction("Function:", "public void ", "() {\n", $gJavaCode);    
+    $gJavaCode = ReplaceFunction("Function:", "public void ", "() {\n", $gJavaCode);
     $gJavaCode = ReplaceFunction("Call ", "", ';', $gJavaCode);    
     $gJavaCode = ReplaceFunction("FALSE", "false", '', $gJavaCode);    
     $gJavaCode = ReplaceFunction("TRUE", "true", "", $gJavaCode);    
@@ -36,8 +36,8 @@ function convert()
     $gJavaCode = ReplaceFunction("( )", "()", "", $gJavaCode);    
     $gJavaCode = ReplaceFunction("(  )", "()", "", $gJavaCode);    
     $gJavaCode = ReplaceFunction("(   )", "()", "", $gJavaCode);    
-    $gJavaCode = ReplaceFunction("Description", "/*\nDescription", "", $gJavaCode);    
-    $gJavaCode = ReplaceFunction("  Actions", "  Actions\n*/", "", $gJavaCode);    
+    $gJavaCode = ReplaceFunction("Description", "/*\nDescription", "", $gJavaCode);
+    $gJavaCode = ReplaceFunction("  Actions", "  Actions\n*/", "", $gJavaCode);
     $gJavaCode = ReplaceFunction("'", "\"", "", $gJavaCode);    
     $gJavaCode = IfAndOr($gJavaCode);    
     $gJavaCode = CloseFunctions($gJavaCode);    
@@ -48,20 +48,23 @@ function convert()
     $gJavaCode = CommentingCodeFromString("SalWaitCursor", $gJavaCode);    
 
 
-
     $gJavaCode = SelectLine($gJavaCode);
     $gJavaCode = ClassFunct($gJavaCode);
     $gJavaCode = AccessingData($gJavaCode);
     $gJavaCode = DeleteLines($gJavaCode);
 
+
+
+    $gJavaCode = implode("\n", $gJavaCode);
+    $gJavaCode = explode("\n", $gJavaCode);
+
+
     $gJavaCode = implode("\r\n", $gJavaCode);
-    $gJavaCode = str_replace("\r\n\r\n", "\r\n", $gJavaCode);
 
     $path = "output.txt";
     $fh = fopen($path, "w");
     flock($fh,LOCK_EX);
-    // for($i = 0; $i < count($gJavaCode); $i++)
-        fwrite($fh, $gJavaCode);
+    fwrite($fh, $gJavaCode);
     flock($fh, LOCK_UN);
     fclose($fh);
 
@@ -112,8 +115,6 @@ function AccessingData($inputLines)
             }
         }
     }
-    $inputLines = implode("\n", $inputLines);
-    $inputLines = explode("\n", $inputLines);
     return $inputLines;
 }
 
@@ -138,9 +139,7 @@ function ClassFunct($inputLines)
                         if (startsWith(trim($inputLines[$k]), "/*"))
                         {
                             $inputLines[$k] = $copyTmp . "\n" . $inputLines[$k];
-                            $inputLines[count($inputLines) - 1] = $inputLines[count($inputLines) - 1] . "\n}";
-                            $inputLines = implode("\n", $inputLines);
-                            $inputLines = explode("\n", $inputLines);
+                            $inputLines[count($inputLines) - 1] = $inputLines[count($inputLines) - 1] . "\n}";;
                             return $inputLines;
                         }
                     }
@@ -148,8 +147,6 @@ function ClassFunct($inputLines)
             }
         }
     }
-    $inputLines = implode("\n", $inputLines);
-    $inputLines = explode("\n", $inputLines);
     return $inputLines;
 }
 
@@ -159,8 +156,6 @@ function CommentingCodeFromString($find, $inputLines)
         if (contains($inputLines[$i], $find) && !contains($inputLines[$i], " !"))
             $inputLines[$i] = '//' . $inputLines[$i];
 
-    $inputLines = implode("\n", $inputLines);
-    $inputLines = explode("\n", $inputLines);
     return $inputLines;
 }
 
@@ -178,8 +173,6 @@ function IfAndOr($inputLines)
                 $inputLines[$i] = str_replace(' or ', ' || ', $inputLines[$i]);
         }
     }
-    $inputLines = implode("\n", $inputLines);
-    $inputLines = explode("\n", $inputLines);
     return $inputLines;
 }
 
@@ -199,8 +192,6 @@ function SelectLine($inputLines)
             $i = $tempCount;
         }
     }
-    $inputLines = implode("\n", $inputLines);
-    $inputLines = explode("\n", $inputLines);
     return $inputLines;
 }
 
@@ -212,13 +203,9 @@ function MoveLine($countLines, $inputLines, &$tempCount, $copyString)
         {
             $inputLines[$i] = $inputLines[$i] . "\n" . $copyString;
             $tempCount = $i++;
-            $inputLines = implode("\n", $inputLines);
-            $inputLines = explode("\n", $inputLines);
             return $inputLines;
         }
     }
-    $inputLines = implode("\n", $inputLines);
-    $inputLines = explode("\n", $inputLines);
     return $inputLines;
 }
 
@@ -227,21 +214,16 @@ function ReplaceFunction($OldString, $NewString, $EndLine, $inputLines)
 {
     for ($i = 0; $i < count($inputLines); $i++)
     {
-        // if($OldString = '\t')
-        //         $inputLines[$i] = str_replace("\t", '  ', $inputLines[$i]);
         if (contains($inputLines[$i], $OldString))
         {
             
-                $inputLines[$i] = str_replace($OldString, $NewString, $inputLines[$i]);
+            $inputLines[$i] = str_replace($OldString, $NewString, $inputLines[$i]);
             if (strlen($EndLine) > 0)
             {
                 $inputLines[$i] = $inputLines[$i].$EndLine;
             }
         }
     }
-
-    $inputLines = implode("\n", $inputLines);
-    $inputLines = explode("\n", $inputLines);
 
     return $inputLines;
 }
@@ -257,13 +239,11 @@ function CloseFunctions($inputLines)
             $publicVoidCount++;
             if ($publicVoidCount >= 2)
             {
-                $inputLines[$i] = str_replace("public void", "\n}\\npublic void", $inputLines[$i]);
+                $inputLines[$i] = str_replace("public void", "\n}\npublic void", $inputLines[$i]);
             }
         }
     }
     $inputLines[count($inputLines) - 1] = $inputLines[count($inputLines) - 1] . "\n}";
-    $inputLines = implode("\n", $inputLines);
-    $inputLines = explode("\n", $inputLines);
     return $inputLines;
 }
 
@@ -280,8 +260,7 @@ function DeleteLines($inputLines)
         else
             $inputLines[$i] = "";
     }
-    $inputLines = implode("\n", $inputLines);
-    $inputLines = explode("\n", $inputLines);
+
     return $inputLines;
 }
 
@@ -293,8 +272,6 @@ function IfFunctionFix($inputLines)
             if (contains($inputLines[$i], " != "))
                 $inputLines[$i] = str_replace("//", "", $inputLines[$i]);
     
-    $inputLines = implode("\n", $inputLines);
-    $inputLines = explode("\n", $inputLines);
     return $inputLines;
 }
 //Commented if functions 
@@ -315,9 +292,6 @@ function IfFunctionsClosing($inputLines)
             }
         }
     }
-
-    $inputLines = implode("\n", $inputLines);
-    $inputLines = explode("\n", $inputLines);
     $inputLines = IfFunctionsFinish($inputLines);
     return $inputLines;
 }
@@ -335,7 +309,7 @@ function IfFunctionsFinish($inputLines)
                 $i = $i + 1;
             }
         }
-        if (startsWith(trim($inputLines[$i]), 'else '))
+        if (startsWith(trim($inputLines[$i]), "else "))
         {
             if (countLeadingSpaces($inputLines[$i + 1]) > countLeadingSpaces($inputLines[$i]))
             {
@@ -344,8 +318,6 @@ function IfFunctionsFinish($inputLines)
             }
         }
     }
-    $inputLines = implode("\n", $inputLines);
-    $inputLines = explode("\n", $inputLines);
     return $inputLines;
 }
 
@@ -378,8 +350,6 @@ function IfFunctionsCommented($inputLines)
             }
         }
     }
-    $inputLines = implode("\n", $inputLines);
-    $inputLines = explode("\n", $inputLines);
     return $inputLines;
 }
 

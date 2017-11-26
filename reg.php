@@ -152,49 +152,11 @@ else
         $id = increment($file);
         $line = $id.TAB.$username.TAB.$email.TAB.$password.TAB.$gender.TAB.$bDate.TAB.$regDate.TAB.$accountActivated.TAB.$activationId.END;
         fileWriteLine($file, $line);
-
-        $link = 'http://localhost:3000/activation.php?id='.$activationId;
-
-        require_once 'PHPMailer/Exception.php';
-        require_once 'PHPMailer/PHPMailer.php';
-        require_once 'PHPMailer/SMTP.php';
-
-        $mail = new PHPMailer\PHPMailer\PHPMailer(); 
-        $mail->IsSMTP(); 
-        $mail->SMTPDebug = 2; 
-        $mail->SMTPAuth = true;
-        $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
-        $mail->Host = "smtp.gmail.com";
-        $mail->Port = 465; // or 587
-        $mail->Username = "centura2java@gmail.com";
-        $mail->Password = "Celtra1337";
-        $mail->SetFrom("centura2java@gmail.com", "Centura2Java");
-        $mail->Subject = "Centura 2 Java registration";
-        $mail->isHTML(true);                                  // Set email format to HTML
-        $mail->Body = "Welcome to the celtra challenge Centura 2 Java online converter!\n\nPlease click this link to activate your account: $link";
-        $mail->AltBody = "Welcome to the celtra challenge Centura 2 Java online converter!\n\nPlease click this link to activate your account: $link";
-        $mail->AddAddress($email);
-        
-        
-
-        if(!$mail->Send()) 
-        {
-            echo "Mailer Error: " . $mail->ErrorInfo;
-            fileDeleteLine($file, $line);
-        } 
-        else 
-        {
-            echo '<h1>Your registration was successful!</h1>';
-            echo "<p>Please confirm your account with the email sent to $email.</p>";
-        }
-
+      
+        echo '<h1>Your registration was successful!</h1>';
+        // echo "<p>Please confirm your account with the email sent to $email.</p>"; // mozda kasnije, ali svejedno mozemo spremit activationId pa kasnije pitat aktivaciju :P
+ 
     }
-        
-    
-    echo '<br>Vasa IP adresa: '.$_SERVER['REMOTE_ADDR'].'<br>';
-
-
-
 }
 ?>
     </body>

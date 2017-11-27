@@ -29,6 +29,7 @@ if($_POST)
                 $stranica = basename($_SERVER['HTTP_REFERER']);
             else
                 $stranica = "";
+            $stranica = str_replace($_SERVER['SERVER_NAME'], "", $stranica);
             header("Location: $stranica");
             exit();
         }

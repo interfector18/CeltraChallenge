@@ -13,6 +13,8 @@ if($_SERVER['HTTP_REFERER'] != $_SERVER['SERVER_NAME'])
     $stranica = basename($_SERVER['HTTP_REFERER']);
 else
     $stranica = "";
+
+$stranica = str_replace($_SERVER['SERVER_NAME'], "", $stranica);
 header("Location: $stranica");
 // header("Location: index.php");
 

@@ -73,7 +73,9 @@
                         }
                         else
                         {
-                            
+                            echo '<input class="form-control mr-sm-2" type="text" name="username" placeholder="Username or email">
+                                  <input class="form-control mr-sm-2" type="password" name="password" placeholder="Password">
+                                  <input class="btn btn-primary" style="font-size: 15px; padding:8px 10px 7px 10px;" type="submit" name="submit" value="Login">';
                         }
                     ?>
                 </form>
@@ -87,7 +89,7 @@
             <div class="container">
                 <div style="float:left; ">
                     <h1 class="display-3" style="width:auto;">About project</h1>
-                    <p class="lead" style="width:auto; padding: 20px; font-weight:1; border-radius: 10px; background: linear-gradient(rgba(255,255, 255, 0.40), rgba(255, 255, 255, 0.0)); ">This project was made by Denis Zornada and Jasmin Makaj for participation within Celtra November Challenge.<br>
+                    <p class="lead" style="width:auto; padding: 20px; font-weight:1; border-radius: 10px; background: linear-gradient(rgba(255,255, 255, 0.40), rgba(255, 255, 255, 0.30)); ">This project was made by Denis Zornada and Jasmin Makaj for participation within Celtra November Challenge.<br>
 
                     The project is still a work in progress, but has:<br>
                     - working registration system<br>

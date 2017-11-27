@@ -58,16 +58,16 @@
                 </div>
 
                 <form action="reg.php" method="post" style="float:right; width:350px; margin-right: 50px;">
-                Username:
-                <input class="form-control mr-sm-2" type="text" name="username" placeholder="Enter your username">
-                E-mail:
-                <input class="form-control mr-sm-2" type="text" name="email" placeholder="Enter your email">
-                Password:
-                <input class="form-control mr-sm-2" type="Password" name="password" placeholder="Enter your password">
-                Confirm password:
-                <input class="form-control mr-sm-2" type="Password" name="confirm_password" placeholder="Confirm your password">
-                <br>
-                <input class="btn btn-primary btn-lg btn-block" type="submit" name="submit" value="Register">
+                    Username:
+                    <input class="form-control mr-sm-2" type="text" name="username" placeholder="Enter your username">
+                    E-mail:
+                    <input class="form-control mr-sm-2" type="text" name="email" placeholder="Enter your email">
+                    Password:
+                    <input class="form-control mr-sm-2" type="Password" name="password" placeholder="Enter your password">
+                    Confirm password:
+                    <input class="form-control mr-sm-2" type="Password" name="confirm_password" placeholder="Confirm your password">
+                    <br>
+                    <input class="btn btn-primary btn-lg btn-block" type="submit" name="submit" value="Register">
                 </form>
             </div>
         </div>  

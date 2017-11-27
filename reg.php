@@ -19,16 +19,19 @@ if(isset($_SESSION['id']))
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
         <style>
             body{
-            background-image: url("test_bg.png");
-            background-repeat: no-repeat;
-            background-position: center center; 
-            background-size:     cover;  
+                background-image: url("test_bg.png");
+                background-repeat: no-repeat;
+                background-position: center center; 
+                background-size:     cover;  
             }
             /*@media (min-width: 576px) { 
             div.jumbotron.jumbotron-fluid  div.container form{
             margin-right:0px;
             }
             }*/
+            .btn.btn-primary{
+                cursor: pointer;
+            }
 
         </style>
     </head>
@@ -57,7 +60,7 @@ if(isset($_SESSION['id']))
 
          <!-- CONTENT  linear-gradient(rgba(134, 223, 255, 0.55), rgba(134, 223, 255, 0.0)); -->
         <div class="jumbotron jumbotron-fluid" style="background: linear-gradient(rgba(255, 0, 0, 0.20), rgba(255, 0, 0, 0.0));  height:100vh; background-repeat: no-repeat;">
-            <div class="container" style="margin-top: 25px;">
+            <div class="container" style="margin-top: 25px; margin-bottom: 25px;">
                 <div style="float:left;">
                     <h1 class="display-3" style="width:auto;">Oops. There were some errors!</h1>
                     <p class="lead" style="width:auto; opacity:0.9%; ">

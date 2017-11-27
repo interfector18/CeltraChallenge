@@ -49,36 +49,36 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a class="navbar-brand" href="index.php" style="color:#17a2b8">Centura2Java</a>
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active" style="margin-top:3px;">
-                    <a class="nav-link" href="about.php">About <span class="sr-only">(current)</span></a>
-                    </li>
-                    <!--<li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                    </li>-->
-                </ul>
-                <form method="post" action="logout.php" class="form-inline my-2 my-lg-0">
-                    <?php 
-                        if(isset($_SESSION['id']))
-                        {
-                            echo "<p style='margin: 0px 10px 0px 0px; color:#fff; font-size: 13px;'>Welcome, $username.</p>;
-                                <input class='btn btn-primary' style='font-size: 15px; padding:8px 10px 7px 10px;' type='submit' name='submit' value='Logout'>";
-                        }
-                        else
-                        {
-                            echo '<input class="form-control mr-sm-2" type="text" name="username" placeholder="Username or email">
-                                  <input class="form-control mr-sm-2" type="password" name="password" placeholder="Password">
-                                  <input class="btn btn-primary" style="font-size: 15px; padding:8px 10px 7px 10px;" type="submit" name="submit" value="Login">';
-                        }
-                    ?>
-                </form>
+                    <a class="navbar-brand" href="index.php" style="color:#17a2b8">Centura2Java</a>
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item active" style="margin-top:3px;">
+                        <a class="nav-link" href="about.php">About <span class="sr-only">(current)</span></a>
+                        </li>
+                        <!--<li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                        </li>-->
+                    </ul>
+                    <form method="post" action="logout.php" class="form-inline my-2 my-lg-0">
+                        <?php 
+                            if(isset($_SESSION['id']))
+                            {
+                                echo "<p style='margin: 0px 10px 0px 0px; color:#fff; font-size: 13px;'>Welcome, $username.</p>;
+                                    <input class='btn btn-primary' style='font-size: 15px; padding:8px 10px 7px 10px;' type='submit' name='submit' value='Logout'>";
+                            }
+                            else
+                            {
+                                echo '<input class="form-control mr-sm-2" type="text" name="username" placeholder="Username or email">
+                                    <input class="form-control mr-sm-2" type="password" name="password" placeholder="Password">
+                                    <input class="btn btn-primary" style="font-size: 15px; padding:8px 10px 7px 10px;" type="submit" name="submit" value="Login">';
+                            }
+                        ?>
+                    </form>
                 </div>
             </div>
         </nav>
@@ -89,7 +89,8 @@
             <div class="container">
                 <div style="float:left; ">
                     <h1 class="display-3" style="width:auto;">About project</h1>
-                    <p class="lead" style="width:auto; padding: 20px; font-weight:1; border-radius: 10px; background: linear-gradient(rgba(255,255, 255, 0.40), rgba(255, 255, 255, 0.30)); ">This project was made by Denis Zornada and Jasmin Makaj for participation within Celtra November Challenge.<br>
+                    <p class="lead" style="width:auto; padding: 20px; font-weight:1; border-radius: 10px; background: linear-gradient(rgba(255,255, 255, 0.40), rgba(255, 255, 255, 0.30)); ">
+                    This project was made by Denis Zornada and Jasmin Makaj for participation within <a href='https://www.facebook.com/celtra/'>Celtra</a> November Challenge.<br><br>
 
                     The project is still a work in progress, but has:<br>
                     - working registration system<br>

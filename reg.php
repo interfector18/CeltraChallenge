@@ -7,28 +7,7 @@
     <body>
         
 <?php
-if(!$_POST)
-{
-    ?>
-        <div>Registracija
-            <form action="" method="post">
-                <input type="text" name="username" placeholder="Enter your username">
-                <br>
-                <input type="Password" name="password" placeholder="Enter your password">
-                <br>
-                <input type="Password" name="confirm_password" placeholder="Confirm your password">
-                <br>
-                <input type="text" name="email" placeholder="Enter your email">             
-                <br>
-                <input type="radio" name="gender" value="F">Female
-                <input type="radio" name="gender" value="M">Male
-                <br>            
-                <input type="submit" name="submit" value="Register!">
-            </form>
-        </div>
-    <?php
-}
-else
+if($_POST)
 {
     require_once('funkcije.php');
 
@@ -48,7 +27,7 @@ else
 
 
 
-    echo '<h1>Welcome!</h1>';
+    //echo '<h1>Welcome!</h1>';
 
     $errors = array();
 
@@ -117,13 +96,14 @@ else
         $line = $id.TAB.$username.TAB.$email.TAB.$password.TAB.TAB.$bDate.TAB.$regDate.TAB.$accountActivated.TAB.$activationId.END;
         fileWriteLine($file, $line);
       
-        echo '<h1>Your registration was successful!</h1>';
+        //echo '<h1>Your registration was successful!</h1>';
         // echo "<p>Please confirm your account with the email sent to $email.</p>"; // mozda kasnije, ali svejedno mozemo spremit activationId pa kasnije pitat aktivaciju :P
         
         session_start();
         $_SESSION['id'] = $id;
+        $_SESSION['username'] = $username;
 
-        header("refresh:5; url=loggedIn.php");
+        header("refresh:0; url=loggedIn.php");
         exit();
  
     }

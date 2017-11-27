@@ -24,8 +24,8 @@ if($_POST)
         {
             session_start();
             $_SESSION['id'] = $userData[0];
-            header("Location: /loggedIn.php");
-            //header("Location: ".$_SERVER['SERVER_NAME'].'/Centura2JavaOnline/');
+            $_SESSION['username'] = $username;
+            header("Location: /home.php");
             exit();
         }
     }

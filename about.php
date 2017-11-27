@@ -1,13 +1,13 @@
 <?php
 session_start();
 
-if(isset($_SESSION['id']))
+if(!isset($_SESSION['id']))
 {
-    header('Location: home.php');
+    header('Location: /');
     exit();
 }
+$username_login=$_SESSION['username'];
 ?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -25,12 +25,20 @@ if(isset($_SESSION['id']))
         background-position: center center; 
         background-size:     cover;  
       }
-      /*@media (min-width: 576px) { 
-        div.jumbotron.jumbotron-fluid  div.container form{
-          margin-right:0px;
-          }
-        }*/
-      
+      input.btn.btn-primary{
+        cursor:pointer;
+      }
+  .column {
+    float: left;
+    width: 50%;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
     </style>
 
   </head>
@@ -48,11 +56,16 @@ if(isset($_SESSION['id']))
         <li class="nav-item active" style="margin-top:3px;">
           <a class="nav-link" href="about.php">About <span class="sr-only">(current)</span></a>
         </li>
+        <!--<li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li>-->
       </ul>
-      <form method="post" action="login.php" class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" name="username" placeholder="Username or email">
-            <input class="form-control mr-sm-2" type="password" name="password" placeholder="Password">
-            <input class="btn btn-primary" style="font-size: 15px; padding:8px 10px 7px 10px;" type="submit" name="submit" value="Login">
+      <form method="post" action="logout.php" class="form-inline my-2 my-lg-0">
+            <?php echo "<p style='margin: 0px 10px 0px 0px; color:#fff; font-size: 13px;'>Welcome, $username_login.</p>"; ?>
+            <input class="btn btn-primary" style="font-size: 15px; padding:8px 10px 7px 10px;" type="submit" name="submit" value="Logout">
         </form>
     </div>
   </nav>
@@ -63,24 +76,10 @@ if(isset($_SESSION['id']))
     <div class="jumbotron jumbotron-fluid" style="background: linear-gradient(rgba(57,130, 255, 0.20), rgba(57, 130, 255, 0.0));  height:100vh; background-repeat: no-repeat;">
       <div class="container" style="margin-top: 25px;">
         <div style="float:left;">
-          <h1 class="display-3" style="width:auto;">Welcome</h1>
-          <p class="lead" style="width:auto; opacity:0.9%; ">Centura to Java online converter. First converter online.<br><span >Register for free and convert your code.</span></p>
+          <h1 class="display-3" style="width:auto;">About project</h1>
+          <p class="lead" style="width:auto; opacity:0.9%; "></p>
         </div>
-        <form action="reg.php" method="post" style="float:right; width:375px; margin-right: 1%; background:linear-gradient(rgba(0, 15, 55, 0.15),rgba(0, 15, 55, 0.0)); border-radius: 5px; padding: 15px; ">
-            Username:
-            <input class="form-control mr-sm-2" type="text" name="username" placeholder="Enter your username">
-            E-mail:
-            <input class="form-control mr-sm-2" type="text" name="email" placeholder="Enter your email">
-            Password:
-            <input class="form-control mr-sm-2" type="Password" name="password" placeholder="Enter your password">
-            Confirm password:
-            <input class="form-control mr-sm-2" type="Password" name="confirm_password" placeholder="Confirm your password">
-            <br>
-            <input class="btn btn-primary btn-lg btn-block"  style="font-size: 15px;" type="submit" name="submit" value="Register">
-        </form>
-
       </div>
-      
     </div>  
     
 

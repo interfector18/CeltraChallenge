@@ -7,7 +7,7 @@ if(!isset($_SESSION['id']))
 }
 
 $userId = $_SESSION['id'];
-
+$username = $_SESSION['username'];
 
 ?>
 
@@ -21,7 +21,8 @@ $userId = $_SESSION['id'];
         $userData = explode("\t", $user);
         if($userData[0] == $userId)
         {
-            echo "<h1>Dobro dosli korisnice, $userData[1]<h1>";
+            header('Location: /home.php');
+            //echo "<h1>Dobro dosli korisnice, $userData[1]<h1>";
         }
     }
 ?>

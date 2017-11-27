@@ -1,6 +1,12 @@
 <?php
- $username_login = $_POST['username_login'];
+session_start();
 
+if(!isset($_SESSION['id']))
+{
+    header('Location: /');
+    exit();
+}
+$username_login=$_SESSION['username'];
 ?>
 <!doctype html>
 <html lang="en">
@@ -48,14 +54,8 @@
       <a class="navbar-brand" href="index.php" style="color:#17a2b8">Centura2Java</a>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item active" style="margin-top:3px;">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="about.php">About <span class="sr-only">(current)</span></a>
         </li>
-        <!--<li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>-->
       </ul>
       <form method="post" action="logout.php" class="form-inline my-2 my-lg-0">
             <?php echo "<p style='margin: 0px 10px 0px 0px; color:#fff; font-size: 13px;'>Welcome, $username_login.</p>"; ?>
@@ -71,26 +71,6 @@
     <div class="column"></div>
     <div class="column"></div>
   </div>
-    <!--<div class="jumbotron jumbotron-fluid" style="background: linear-gradient(rgba(57,130, 255, 0.20), rgba(57, 130, 255, 0.0));  height:100vh; background-repeat: no-repeat;">
-      <div class="container" style="margin-top: 25px;">
-        <div style="float:left;">
-          <h1 class="display-3" style="width:auto;">Welcome</h1>
-          <p class="lead" style="width:auto; opacity:0.9%; ">Centura to Java online converter. First converter online.<br><span >Register for free and convert your code.</span></p>
-        </div>
-        <form action="reg.php" method="post" style="float:right; width:350px; margin-right: 50px; background:linear-gradient(rgba(0, 15, 55, 0.15),rgba(0, 15, 55, 0.0)); border-radius: 5px; padding: 15px;">
-            Username:
-            <input class="form-control mr-sm-2" type="text" name="username" placeholder="Enter your username">
-            E-mail:
-            <input class="form-control mr-sm-2" type="text" name="email" placeholder="Enter your email">
-            Password:
-            <input class="form-control mr-sm-2" type="Password" name="password" placeholder="Enter your password">
-            Confirm password:
-            <input class="form-control mr-sm-2" type="Password" name="confirm_password" placeholder="Confirm your password">
-            <br>
-            <input class="btn btn-primary btn-lg btn-block"  style="font-size: 15px;" type="submit" name="submit" value="Register">
-        </form>
-
-      </div>-->
       
     </div>  
     

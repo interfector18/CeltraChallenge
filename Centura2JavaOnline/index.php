@@ -15,6 +15,9 @@
         background-position: center center; 
         background-size:     cover;  
       }
+      input.btn.btn-primary{
+        cursor:pointer;
+      }
     </style>
 
   </head>

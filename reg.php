@@ -18,35 +18,7 @@ if(!$_POST)
                 <br>
                 <input type="Password" name="confirm_password" placeholder="Confirm your password">
                 <br>
-                <input type="text" name="email" placeholder="Enter your email">
-                <br>
-                <select name="day">
-                    <?php 
-                    for ($i=1; $i<=31; $i++) {
-                        echo '<option value="'.$i.'">'.$i.'</option>';
-                    }
-                    ?>                
-                </select>
-                
-                <select name="month">
-                    <?php  
-                    $months = array('1'=>'Jan', '2'=>'Feb','3'=>'Mar',
-                                    '4'=>'Apr', '5'=>'May','6'=>'Jun',
-                                    '7'=>'Jul', '8'=>'Aug','9'=>'Sep',
-                                    '10'=>'Oct', '11'=>'Nov','12'=>'Dec');
-                    foreach ($months as $monthId => $monthName) {
-                        echo '<option value="'.$monthId.'">'.$monthName.'</option>';
-                    }
-                    ?>    
-                </select>
-                
-                <select name="year">
-                    <?php
-                        for ($i=2017; $i>=1905; $i--) {
-                            echo '<option value="'.$i.'">'.$i.'</option>';
-                        }
-                    ?>                   
-                </select>
+                <input type="text" name="email" placeholder="Enter your email">             
                 <br>
                 <input type="radio" name="gender" value="F">Female
                 <input type="radio" name="gender" value="M">Male
@@ -68,14 +40,11 @@ else
     $password = $_POST['password'];
     $confirmedPassowrd = $_POST['confirm_password'];
     $email = $_POST['email'];
-    $bDay = $_POST['day'];
-    $bMonth = $_POST['month'];
-    $bYear = $_POST['year'];
     $gender = $_POST['gender']; // DO NOT FUCKING ASSUME THIS xD gahahahahaha
     $accountActivated = "no";
     $bDate=mktime(0,0,0,$bMonth,$bDay,$bYear);
     $regDate=time();
-    $activationId = md5($username.$email.$bDate.$regDate);
+    $activationId = md5($username.$email.$regDate);
 
 
 

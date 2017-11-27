@@ -25,7 +25,8 @@ if($_POST)
             session_start();
             $_SESSION['id'] = $userData[0];
             $_SESSION['username'] = $username;
-            $stranica = basename($_SERVER['HTTP_REFERER']);
+            if($_SERVER['HTTP_REFERER'] != $_SERVER['SERVER_NAME'])
+                $stranica = basename($_SERVER['HTTP_REFERER']);
             header("Location: $stranica");
             exit();
         }

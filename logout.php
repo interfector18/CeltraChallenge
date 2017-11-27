@@ -9,7 +9,8 @@ unset($_SESSION['id']);
 unset($_SESSION['username']);
 session_destroy();
 
-$stranica = basename($_SERVER['HTTP_REFERER']);
+if($_SERVER['HTTP_REFERER'] != $_SERVER['SERVER_NAME'])
+    $stranica = basename($_SERVER['HTTP_REFERER']);
 header("Location: $stranica");
 // header("Location: index.php");
 

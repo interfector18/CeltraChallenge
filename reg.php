@@ -128,7 +128,7 @@ else
         session_start();
         $_SESSION['id'] = $id;
 
-        header(Location /loggedIn.php);
+        header("refresh:5; Location /loggedIn.php");
         exit();
  
     }

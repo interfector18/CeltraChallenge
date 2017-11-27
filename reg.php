@@ -75,7 +75,6 @@ if($_POST)
     $email = $_POST['email'];
     // $gender = $_POST['gender']; // DO NOT FUCKING ASSUME THIS xD gahahahahaha
     $accountActivated = "no";
-    $bDate=mktime(0,0,0,$bMonth,$bDay,$bYear);
     $regDate=time();
     $activationId = md5($username.$email.$regDate);
 
@@ -165,7 +164,7 @@ if($_POST)
         }
 
         $id = increment($file);
-        $line = $id.TAB.$username.TAB.$email.TAB.$password.TAB.TAB.$bDate.TAB.$regDate.TAB.$accountActivated.TAB.$activationId.END;
+        $line = $id.TAB.$username.TAB.$email.TAB.$password.TAB.$regDate.TAB.$accountActivated.TAB.$activationId.END;
         fileWriteLine($file, $line);
       
         //echo '<h1>Your registration was successful!</h1>';

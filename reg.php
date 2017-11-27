@@ -124,6 +124,12 @@ else
       
         echo '<h1>Your registration was successful!</h1>';
         // echo "<p>Please confirm your account with the email sent to $email.</p>"; // mozda kasnije, ali svejedno mozemo spremit activationId pa kasnije pitat aktivaciju :P
+        
+        session_start();
+        $_SESSION['id'] = $id;
+
+        header(Location /loggedIn.php);
+        exit();
  
     }
 }

@@ -25,14 +25,14 @@ if($_POST)
             session_start();
             $_SESSION['id'] = $userData[0];
             $_SESSION['username'] = $username;
-            header("Location: /home.php");
+            $stranica = basename($_SERVER['HTTP_REFERER']);
+            header("Location: /$stranica");
             exit();
         }
     }
 
-    $stranica = basename($_SERVER['HTTP_REFERER']);
 
-    header("Location: /$stranica"); /* Redirect browser */
+    header("Location: /"); /* Redirect browser */
     exit();
 
 }

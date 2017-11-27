@@ -94,7 +94,7 @@
             <div class="container">
                 <div style="float:left; ">
                     <h1 class="display-3" style="width:auto;">About project</h1>
-                    <p class="lead" style="width:auto; padding: 20px; font-weight:1; border-radius: 10px; background: linear-gradient(rgba(255,255, 255, 0.40), rgba(255, 255, 255, 0.30)); ">
+                    <p class="lead" style="width:auto; margin-top: 20px; padding: 20px; font-weight:1; border-radius: 10px; background: linear-gradient(rgba(255,255, 255, 0.40), rgba(255, 255, 255, 0.30)); ">
                     This project was made by Denis Zornada and Jasmin Makaj for participation within <a href='https://www.facebook.com/celtra/'>Celtra</a> November Challenge.<br><br>
 
                     The project is still a work in progress, but has:<br>

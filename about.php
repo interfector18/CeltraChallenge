@@ -3,8 +3,8 @@
 
     if(!isset($_SESSION['id']))
     {
-        header('Location: /');
-        exit();
+        // header('Location: /');
+        // exit();
     }
     else
     {
@@ -66,11 +66,15 @@
                 </ul>
                 <form method="post" action="logout.php" class="form-inline my-2 my-lg-0">
                     <?php 
-                    if(isset($_SESSION['id']))
-                    {
-                        echo "<p style='margin: 0px 10px 0px 0px; color:#fff; font-size: 13px;'>Welcome, $username.</p>;
-                            <input class='btn btn-primary' style='font-size: 15px; padding:8px 10px 7px 10px;' type='submit' name='submit' value='Logout'>";
-                    }
+                        if(isset($_SESSION['id']))
+                        {
+                            echo "<p style='margin: 0px 10px 0px 0px; color:#fff; font-size: 13px;'>Welcome, $username.</p>;
+                                <input class='btn btn-primary' style='font-size: 15px; padding:8px 10px 7px 10px;' type='submit' name='submit' value='Logout'>";
+                        }
+                        else
+                        {
+                            
+                        }
                     ?>
                 </form>
                 </div>

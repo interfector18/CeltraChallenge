@@ -19,6 +19,20 @@
         background-position: center center; 
         background-size:     cover;  
       }
+      input.btn.btn-primary{
+        cursor:pointer;
+      }
+  .column {
+    float: left;
+    width: 50%;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
     </style>
 
   </head>
@@ -53,6 +67,10 @@
 
   <!-- CONTENT  linear-gradient(rgba(134, 223, 255, 0.55), rgba(134, 223, 255, 0.0)); -->
 
+  <div class="row">
+    <div class="column"></div>
+    <div class="column"></div>
+  </div>
     <!--<div class="jumbotron jumbotron-fluid" style="background: linear-gradient(rgba(57,130, 255, 0.20), rgba(57, 130, 255, 0.0));  height:100vh; background-repeat: no-repeat;">
       <div class="container" style="margin-top: 25px;">
         <div style="float:left;">

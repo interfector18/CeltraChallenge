@@ -40,7 +40,7 @@
         </li>-->
       </ul>
       <form method="post" action="login.php" class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" name="username" placeholder="Username">
+            <input class="form-control mr-sm-2" type="text" name="username" placeholder="Username or email">
             <input class="form-control mr-sm-2" type="password" name="password" placeholder="Password">
             <input class="btn btn-primary" style="font-size: 15px; padding:8px 10px 7px 10px;" type="submit" name="submit" value="Login">
         </form>

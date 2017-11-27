@@ -40,7 +40,7 @@ else
     $password = $_POST['password'];
     $confirmedPassowrd = $_POST['confirm_password'];
     $email = $_POST['email'];
-    $gender = $_POST['gender']; // DO NOT FUCKING ASSUME THIS xD gahahahahaha
+    // $gender = $_POST['gender']; // DO NOT FUCKING ASSUME THIS xD gahahahahaha
     $accountActivated = "no";
     $bDate=mktime(0,0,0,$bMonth,$bDay,$bYear);
     $regDate=time();
@@ -124,6 +124,12 @@ else
       
         echo '<h1>Your registration was successful!</h1>';
         // echo "<p>Please confirm your account with the email sent to $email.</p>"; // mozda kasnije, ali svejedno mozemo spremit activationId pa kasnije pitat aktivaciju :P
+        
+        session_start();
+        $_SESSION['id'] = $id;
+
+        header("refresh:5; Location /loggedIn.php");
+        exit();
  
     }
 }

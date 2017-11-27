@@ -27,4 +27,4 @@ Razlike:
 git diff [file1] [file2] - ispise razliku izmedu dvije datoteke (jasmine, koristi to za diff output.txt(.php), output2.txt(.cs) :D)
 
 Arhiviranje:        //za AWS recimo
-git archive -v -o myapp.zip --format=zip HEAD - "-v" = verbose, "-o" output(kako da se zove), "--format" sve jasno, HEAD to je trenutna radna verzija
+git archive -v -o C2J.zip --format=zip HEAD - "-v" = verbose, "-o" output(kako da se zove), "--format" sve jasno, HEAD to je trenutna radna verzija

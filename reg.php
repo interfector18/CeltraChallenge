@@ -40,7 +40,7 @@ else
     $password = $_POST['password'];
     $confirmedPassowrd = $_POST['confirm_password'];
     $email = $_POST['email'];
-    $gender = $_POST['gender']; // DO NOT FUCKING ASSUME THIS xD gahahahahaha
+    // $gender = $_POST['gender']; // DO NOT FUCKING ASSUME THIS xD gahahahahaha
     $accountActivated = "no";
     $bDate=mktime(0,0,0,$bMonth,$bDay,$bYear);
     $regDate=time();

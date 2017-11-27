@@ -22,10 +22,11 @@ Todo:
   ☐ Pocetna stranica
     ☐ Sucelje/dizajn
   ☐ Login sustav
-    ☐ Mehanizam
+    ✔ Mehanizam @done(17-11-27 14:36) //bilo je fakat lagano, pogledaj koliko je malo koda xD
     ☐ Sucelje/dizajn
   ☐ Registracijski sustav
     ✔ Mehanizam @done(17-11-26 16:54)
+      ☐ Dodati provjeru vec postojeceg username-a
       ✔ Spremanje u neku datoteku @started(17-11-25 19:15) @done(17-11-26 13:33) @lasted(18 hours 18 minutes 24 seconds) sprema se u "users.txt"
         ☐ Baza?
         // neki drugi put :P, ili ako ostane vremena

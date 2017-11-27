@@ -11,6 +11,8 @@ session_destroy();
 
 if($_SERVER['HTTP_REFERER'] != $_SERVER['SERVER_NAME'])
     $stranica = basename($_SERVER['HTTP_REFERER']);
+else
+    $stranica = "";
 header("Location: $stranica");
 // header("Location: index.php");
 

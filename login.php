@@ -32,7 +32,7 @@ if($_POST)
             $stranica = str_replace($_SERVER['SERVER_NAME'], "", $stranica);
             $stranica = str_replace("login.php", "", $stranica);
             $stranica = str_replace("/", "", $stranica);
-            header("Location: $stranica");
+            header("Location: /$stranica");
             exit();
         }
     }

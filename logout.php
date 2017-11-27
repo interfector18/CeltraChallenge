@@ -17,7 +17,7 @@ else
 $stranica = str_replace($_SERVER['SERVER_NAME'], "", $stranica);
 $stranica = str_replace("logout.php", "", $stranica);
 $stranica = str_replace("/", "", $stranica);
-header("Location: $stranica");
+header("Location: /$stranica");
 // header("Location: index.php");
 
 ?>

@@ -72,11 +72,6 @@ else
         $errors[]='Error: confirmed password can\'t be empty!';
     }
 
-    if(empty($gender))
-    {
-        $gender = "U"; // unspecified ili unassumed xD
-    }
-
     if(strlen($username)<=2)
     {
         $errors[]='Error user name can\'t be less than 3 characters long!';
@@ -119,7 +114,7 @@ else
         }
 
         $id = increment($file);
-        $line = $id.TAB.$username.TAB.$email.TAB.$password.TAB.$gender.TAB.$bDate.TAB.$regDate.TAB.$accountActivated.TAB.$activationId.END;
+        $line = $id.TAB.$username.TAB.$email.TAB.$password.TAB.TAB.$bDate.TAB.$regDate.TAB.$accountActivated.TAB.$activationId.END;
         fileWriteLine($file, $line);
       
         echo '<h1>Your registration was successful!</h1>';
@@ -128,7 +123,7 @@ else
         session_start();
         $_SESSION['id'] = $id;
 
-        header("refresh:5; Location /loggedIn.php");
+        header("refresh:5; url=loggedIn.php");
         exit();
  
     }

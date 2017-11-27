@@ -1,6 +1,5 @@
 <?php
 
-    echo $_SERVER['SERVER_NAME'];
     session_start();
 
     if(isset($_SESSION['id']))

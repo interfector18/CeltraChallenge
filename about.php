@@ -42,6 +42,9 @@
                     display: table;
                     clear: both;
                 }
+                .btn.btn-primary{
+                cursor: pointer;
+            }
         </style>
     </head>
     <body>
@@ -64,21 +67,23 @@
                         <a class="nav-link disabled" href="#">Disabled</a>
                         </li>-->
                     </ul>
-                    <form method="post" action="logout.php" class="form-inline my-2 my-lg-0">
+                    
                         <?php 
                             if(isset($_SESSION['id']))
                             {
-                                echo "<p style='margin: 0px 10px 0px 0px; color:#fff; font-size: 13px;'>Welcome, $username.</p>;
-                                    <input class='btn btn-primary' style='font-size: 15px; padding:8px 10px 7px 10px;' type='submit' name='submit' value='Logout'>";
+                                echo "<form method='post' action='logout.php' class='form-inline my-2 my-lg-0'>
+                                <p style='margin: 0px 10px 0px 0px; color:#fff; font-size: 13px;'>Welcome, $username.</p>;
+                                    <input class='btn btn-primary' style='font-size: 15px; padding:8px 10px 7px 10px;' type='submit' name='submit' value='Logout'></form>";
                             }
                             else
                             {
-                                echo '<input class="form-control mr-sm-2" type="text" name="username" placeholder="Username or email">
+                                echo '<form method="post" action="login.php" class="form-inline my-2 my-lg-0">
+                                <input class="form-control mr-sm-2" type="text" name="username" placeholder="Username or email">
                                     <input class="form-control mr-sm-2" type="password" name="password" placeholder="Password">
-                                    <input class="btn btn-primary" style="font-size: 15px; padding:8px 10px 7px 10px;" type="submit" name="submit" value="Login">';
+                                    <input class="btn btn-primary" style="font-size: 15px; padding:8px 10px 7px 10px;" type="submit" name="submit" value="Login"></form>';
                             }
                         ?>
-                    </form>
+                    
                 </div>
             </div>
         </nav>
@@ -108,7 +113,6 @@
             </div>
         </div>  
     
-
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -25,11 +25,9 @@
             background-position: center center; 
             background-size:     cover;  
             }
-            /*@media (min-width: 576px) { 
-            div.jumbotron.jumbotron-fluid  div.container form{
-            margin-right:0px;
+            .btn.btn-primary{
+                cursor: pointer;
             }
-            }*/
 
         </style>
     </head>

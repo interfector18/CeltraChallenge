@@ -39,6 +39,9 @@ $username_login=$_SESSION['username'];
         display: table;
         clear: both;
     }
+    .btn.btn-primary{
+                cursor: pointer;
+            }
     </style>
 
   </head>
@@ -46,33 +49,48 @@ $username_login=$_SESSION['username'];
   
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <a class="navbar-brand" href="index.php" style="color:#17a2b8">Centura2Java</a>
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active" style="margin-top:3px;">
-          <a class="nav-link" href="about.php">About <span class="sr-only">(current)</span></a>
-        </li>
-      </ul>
-      <form method="post" action="logout.php" class="form-inline my-2 my-lg-0">
-            <?php echo "<p style='margin: 0px 10px 0px 0px; color:#fff; font-size: 13px;'>Welcome, $username_login.</p>"; ?>
-            <input class="btn btn-primary" style="font-size: 15px; padding:8px 10px 7px 10px;" type="submit" name="submit" value="Logout">
-        </form>
-    </div>
-  </nav>
-  </div>
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand" href="index.php" style="color:#17a2b8">Centura2Java</a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active" style="margin-top:3px;">
+                    <a class="nav-link" href="about.php">About <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <form method="post" action="login.php" class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" autofocus="autofocus" name="username" placeholder="Username or email">
+                <input class="form-control mr-sm-2" type="password" name="password" placeholder="Password">
+                <input class="btn btn-primary" style="font-size: 15px; padding:8px 10px 7px 10px;" type="submit" name="submit" value="Login">
+            </form>
+          </div>
+        </div>
+      </nav>
 
   <!-- CONTENT  linear-gradient(rgba(134, 223, 255, 0.55), rgba(134, 223, 255, 0.0)); -->
+  <div class="jumbotron jumbotron-fluid" style="background: linear-gradient(rgba(57,130, 255, 0.20), rgba(57, 130, 255, 0.0));  height:100vh; background-repeat: no-repeat;">
+    <div class="container" style="margin-top: 25px;">
+        <div style="float:left;">
+            <h1 class="display-3" style="width:auto;">Welcome</h1>
+            <p class="lead" style="width:auto; opacity:0.9%; ">Centura to Java online converter. First converter online.<br><span >Register for free and convert your code.</span></p>
+        </div>
+      <form action="reg.php" method="post" style="float:right; width:375px; margin-right: 1%; background:linear-gradient(rgba(0, 15, 55, 0.15),rgba(0, 15, 55, 0.0)); border-radius: 5px; padding: 15px; ">
+          Username:
+          <input class="form-control mr-sm-2" type="text" name="username" placeholder="Enter your username">
+          E-mail:
+          <input class="form-control mr-sm-2" type="text" name="email" placeholder="Enter your email">
+          Password:
+          <input class="form-control mr-sm-2" type="Password" name="password" placeholder="Enter your password">
+          Confirm password:
+          <input class="form-control mr-sm-2" type="Password" name="confirm_password" placeholder="Confirm your password">
+          <br>
+          <input class="btn btn-primary btn-lg btn-block"  style="font-size: 15px;" type="submit" name="submit" value="Register">
+      </form>
 
-  <div class="row">
-    <div class="column"></div>
-    <div class="column"></div>
-  </div>
-      
-    </div>  
+    </div>
+  </div>  
     
 
     <!-- Optional JavaScript -->

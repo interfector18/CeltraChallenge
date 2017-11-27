@@ -30,7 +30,9 @@ if($_POST)
         }
     }
 
-    header("Location: /"); /* Redirect browser */
+    $stranica = basename($_SERVER['HTTP_REFERER']);
+
+    header("Location: /$stranica"); /* Redirect browser */
     exit();
 
 }

@@ -85,7 +85,7 @@ $username=$_SESSION['username'];
   <!-- CONTENT  linear-gradient(rgba(134, 223, 255, 0.55), rgba(134, 223, 255, 0.0)); -->
   <div class="jumbotron jumbotron-fluid" style="background: linear-gradient(rgba(57,130, 255, 0.20), rgba(57, 130, 255, 0.0));  height:100vh; background-repeat: no-repeat; margin-top:0px;">
     <div class="container">
-      <table width="100%" style="background: linear-gradient(rgba(0,100, 100, 0.20), rgba(0, 100, 100, 0.0)); border-radius: 5px;">
+      <!--<table width="100%" style="background: linear-gradient(rgba(0,100, 100, 0.20), rgba(0, 100, 100, 0.0)); border-radius: 5px;">
         <tr>
             <td width="50%" align="center" ><h3 class="display-4" style="width:auto;">Centura code</h3>
               <textarea rows="25" cols="65%" name="centura" style="resize: none;"></textarea>
@@ -94,7 +94,7 @@ $username=$_SESSION['username'];
               <textarea rows="25" cols="65%" name="java" style="resize: none;"></textarea>
             </td>
         </tr>
-      </table>
+      </table>-->
     </div>
   </div>  
     

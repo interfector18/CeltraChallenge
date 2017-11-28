@@ -11,7 +11,56 @@ $username=$_SESSION['username'];
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Home - Centura2Java Online Converter</title>
+        <title>Centura2Java Online Converter</title>
+
+        <!--jQuery load-->
+        <script src="jQuery/jquery-3.2.1.min.js"></script>
+
+        <script>
+            function convert()
+            {
+                centuraCode = document.getElementById("centuraCodeTB").value;
+                
+                var javaCode;
+                var data;
+                // javaCode = "Oops. There were some errors!";
+                // $.post("converter.php", {jsCenturaCode: centuraCode}, function(data) { javaCode = data[0]; });
+
+                // $.ajax({
+                //     url:'converter.php',
+                //     type: "POST",
+                //     data: {jsCenturaCode: centuraCode},
+                //     dataType: 'JSON',
+                //     sucess: function (data) {
+                //         javaCode = data;
+                //         alert(data);
+                //     },
+                //     error: function () {
+                //         javaCode = "Oops. There was an error!";
+                //     },
+                // });
+
+                $.ajax({
+                    url:'converter.php',
+                    type: "POST",
+                    dataType: 'JSON',
+                    data: {jsCenturaCode: centuraCode},
+                    complete: function (data) {
+                        setJavaTB(data.responseText);
+                    },
+                    error: function () {
+                        javaCode = "Oops. There was an error!";
+                    },
+                });
+
+            }
+            function setJavaTB(string)
+            {
+                document.getElementById("javaCodeTB").innerHTML = string;
+
+            }
+        </script>
+
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -97,12 +146,14 @@ $username=$_SESSION['username'];
                     <div class="row">
                         <div align="center" class="col-lg-6">
                             <h3 class="display-4" align="center">Centura code</h3>
-                            <textarea rows="25%" cols="65%" name="centura" style="resize: none;"></textarea>
+                            <textarea rows="25%" cols="65%" name="centura" style="resize: none;" id="centuraCodeTB"></textarea>
                         </div>
                         <div align="center" class="col-lg-6">
                             <h3 class="display-4" align="center">Java code</h3>
-                            <textarea rows="25%" cols="65%" name="java" style="resize: none;" readonly></textarea>
+                            <textarea rows="25%" cols="65%" name="java" style="resize: none;" id="javaCodeTB"></textarea>
                         </div>
+                            <input class="btn btn-primary" type="button" value="Convert" onclick="convert();">
+                            <input class="btn btn-primary" type="button" value="Save" onclick="save();">
                     </div>
                 </div>
             </div>
@@ -111,7 +162,7 @@ $username=$_SESSION['username'];
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     </body>

@@ -31,12 +31,12 @@ Todo:
       ✔ Spremanje u neku datoteku @started(17-11-25 19:15) @done(17-11-26 13:33) @lasted(18 hours 18 minutes 24 seconds) sprema se u "users.txt"
         ✘ Baza? @cancelled(17-11-27 20:32)
         // neki drugi put :P, ili ako ostane vremena
-      ✘ E-mail confirmation @cancelled(17-11-26 16:53)
+      ☐ E-mail confirmation
         ✔ Napravljen je i sprema se activationId i accountActivated varijablom("yes"/"no") @done(17-11-26 13:32)
-        ✘ Slanje maila @cancelled(17-11-26 16:53)
-          ✘ Ispraviti text s imenom projekta, kada projekt dobije ime @cancelled(17-11-26 16:53)
-        ✘ Activacija clikom na link @cancelled(17-11-26 16:53)
+        ☐ Slanje maila
+        ☐ Activacija clikom na link
     ✔ Sucelje/dizajn @done(17-11-27 20:32)
   ✔ Convertirani kod kao postovi na fb @done(17-11-28 21:15)
   ☐ Editiranje profila @started(17-11-28 21:16)
-  ✔ Provjeriti naslove na svim stranicama @done(17-11-28 22:49)
+  ☐ Provjeriti naslove na svim stranicama 
+  ☐ Dodati ikone na page

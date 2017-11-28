@@ -14,7 +14,7 @@ $username=$_SESSION['username'];
         <title>Centura2Java Online Converter</title>
 
         <!--jQuery load-->
-        <script src="jquery-3.2.1.min.js"></script>
+        <script src="jQuery/jquery-3.2.1.min.js"></script>
 
         <!-- Required meta tags -->
         <meta charset="utf-8">

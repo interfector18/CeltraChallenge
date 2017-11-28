@@ -54,6 +54,25 @@ $username=$_SESSION['username'];
                 });
 
             }
+            function saveConvert()
+            {
+                centuraCode = document.getElementById("centuraCodeTB").value;
+                javaCode = document.getElementById("javaCodeTB").value;
+
+                $.ajax({
+                    url:'saveConvert.php',
+                    type: "POST",
+                    data: {jsCenturaCode: centuraCode, jsJavaCode: javaCode},
+                    success: function()
+                    {
+                        alert("Success!");
+                    },
+                    error: function () {
+                        alert("Oops. There were some errors!");
+                    },
+                });
+
+            }
             function setJavaTB(string)
             {
                 document.getElementById("javaCodeTB").innerHTML = string;
@@ -154,7 +173,7 @@ $username=$_SESSION['username'];
                         </div>
                         <div align="center" style="width: 100%;">
                             <input align="center" class="btn btn-primary" type="button" value="Convert" onclick="convert();">
-                            <input align="center" class="btn btn-primary" type="button" value="Save" onclick="save();">
+                            <input align="center" class="btn btn-primary" type="button" value="Save" onclick="saveConvert();">
                         <div>
                     </div>
                 </div>

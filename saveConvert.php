@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    $var = 1;
 
     if(!isset($_SESSION['id']))
     {
@@ -9,38 +11,18 @@
     require_once('funkcije.php');
 
     $userID = $_SESSION['id'];
+    // $userID = 1;
     $convertsIndexFile = 'converts_by_id/'.$userID.'_converted.txt';
-    $fileName = 'converts_by_id'.$userID.'_converted.txt';
     $centura_code = $_POST['jsCenturaCode'];
     $java_code = $_POST['jsJavaCode'];
+    $time = time();
+    $postId = increment($convertsIndexFile);
+    $centuraLine = 'converted_files/'.$userID.'_'.$time.'_'.$postId.'_cen.txt';
+    $javaLine = 'converted_files/'.$userID.'_'.$time.'_'.$postId.'_java.txt';
+    $line = $postId."\t".$userID."\t".$centuraLine."\t".$javaLine."\n";
+    fileWriteLine($convertsIndexFile, $line);
 
-    if(!file_exists($convertsIndexFile))
-    {
-        $idPost = 1;
-        fileWriteLine($fileName, $line);
-    }
-    else
-    {
-        $file = 'converts_by_id/'.$_SESSION['id'].'_converted.txt';                  
-        $f = fopen($file, 'r');
-        while (($line = fgets($f, 4096)) !== false) {
-            $array = explode("\t", $line);
-            $centura_dat = $array[2];
-            $java_dat = $array[3];
-            $java_dat = str_replace("\r", "", $java_dat);
-            $java_dat = str_replace("\n", "", $java_dat);
-            
-            $centura_code = array();
-            $java_code = array();
-            $centura_code = file_get_contents($centura_dat);
-            $java_code = file_get_contents($java_dat);
-
-            $dat_array = explode("_", $java_dat);
-            
-            $conv_date = date('d/m/Y', $dat_array[2]);
-
-        }
-        fclose($f);
-
+    file_put_contents($centuraLine, $centura_code);
+    file_put_contents($javaLine, $java_code);
 
 ?>

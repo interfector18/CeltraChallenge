@@ -85,14 +85,16 @@ $username=$_SESSION['username'];
   <!-- CONTENT  linear-gradient(rgba(134, 223, 255, 0.55), rgba(134, 223, 255, 0.0)); -->
   <div class="jumbotron jumbotron-fluid" style="background: linear-gradient(rgba(57,130, 255, 0.20), rgba(57, 130, 255, 0.0));  height:100vh; background-repeat: no-repeat; margin-top:0px;">
     <div class="container">
-      <div width="100%" style="background: linear-gradient(rgba(0,100, 100, 0.20), rgba(0, 100, 100, 0.0)); border-radius: 5px;">
-            <div width="50%" align="center" ><h3 class="display-4" style="width:auto;">Centura code</h3>
+      <!--<table width="100%" style="background: linear-gradient(rgba(0,100, 100, 0.20), rgba(0, 100, 100, 0.0)); border-radius: 5px;">
+        <tr>
+            <td width="50%" align="center" ><h3 class="display-4" style="width:auto;">Centura code</h3>
               <textarea rows="25" cols="65%" name="centura" style="resize: none;"></textarea>
-            </div>
-            <div width="50%" align="center" ><h3 class="display-4" style="width:auto;">Java code</h3>
+            </td>
+            <td width="50%" align="center" ><h3 class="display-4" style="width:auto;">Java code</h3>
               <textarea rows="25" cols="65%" name="java" style="resize: none;"></textarea>
-            </div>
-      </div>
+            </td>
+        </tr>
+      </table>-->
     </div>
   </div>  
     

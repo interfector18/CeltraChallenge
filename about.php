@@ -58,14 +58,15 @@
                     <a class="navbar-brand" href="index.php" style="color:#17a2b8">Centura2Java</a>
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                         <li class="nav-item active" style="margin-top:3px;">
-                        <a class="nav-link" href="about.php">About <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="about.php">About <span class="sr-only">(current)</span></a>
                         </li>
-                        <!--<li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
-                        </li>-->
+                        <?php if(isset($_SESSION['id']))
+                                {
+                                    echo'
+                                    <li class="nav-item active" style="margin-top:3px;">
+                                        <a class="nav-link" href="myconverts.php">My Converts<span class="sr-only">(current)</span></a>
+                                    </li>   ';
+                                }?>
                     </ul>
                     
                         <?php 

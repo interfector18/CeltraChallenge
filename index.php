@@ -46,6 +46,7 @@
                     <li class="nav-item active" style="margin-top:3px;">
                         <a class="nav-link" href="about.php">About <span class="sr-only">(current)</span></a>
                     </li>
+                    
                 </ul>
                 <form method="post" action="login.php" class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="text" autofocus="autofocus" name="username" placeholder="Username or email">

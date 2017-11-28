@@ -7,9 +7,10 @@
 
 global $gCenturaCode;
 global $gJavaCode;
-$gCenturaCode = file("input.txt");
+$gCenturaCode = $_POST['jsCenturaCode'];
 // $gCenturaCode = $_POST['gCenturaCode'];
 $gJavaCode = $gCenturaCode;
+convert();
 
 function convert()
 {
@@ -58,12 +59,14 @@ function convert()
     $gJavaCode = ReplaceFunction("\n", "\r\n", "", $gJavaCode);
     $gJavaCode = implode("\r\n", $gJavaCode);
 
-    $path = "output.txt";
-    $fh = fopen($path, "w");
-    flock($fh,LOCK_EX);
-    fwrite($fh, $gJavaCode);
-    flock($fh, LOCK_UN);
-    fclose($fh);
+    echo $gJavaCode;
+
+    // $path = "output.txt";
+    // $fh = fopen($path, "w");
+    // flock($fh,LOCK_EX);
+    // fwrite($fh, $gJavaCode);
+    // flock($fh, LOCK_UN);
+    // fclose($fh);
 
 }
 

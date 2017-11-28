@@ -12,6 +12,10 @@ $username=$_SESSION['username'];
 <html lang="en">
     <head>
         <title>Centura2Java Online Converter</title>
+
+        <!--jQuery load-->
+        <script src="jquery-3.2.1.min.js"></script>
+
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -97,11 +101,12 @@ $username=$_SESSION['username'];
                     <div class="row">
                         <div align="center" class="col-lg-6">
                             <h3 class="display-4" align="center">Centura code</h3>
-                            <textarea rows="25%" cols="65%" name="centura" style="resize: none;"></textarea>
+                            <button onlick="convert();">Convert</button>
+                            <textarea rows="25%" cols="65%" name="centura" style="resize: none;" id="centuraCodeTB"></textarea>
                         </div>
                         <div align="center" class="col-lg-6">
                             <h3 class="display-4" align="center">Java code</h3>
-                            <textarea rows="25%" cols="65%" name="java" style="resize: none;" readonly></textarea>
+                            <textarea rows="25%" cols="65%" name="java" style="resize: none;" id="javaCodeTB"></textarea>
                         </div>
                     </div>
                 </div>
@@ -111,6 +116,32 @@ $username=$_SESSION['username'];
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script>
+        function convert()
+        {
+            // alert('hello!');
+            centuraCode = document.getElementById("centuraCodeTB").innerHTML;
+
+            var javaCode;
+            // $.post("converter.php", {jsCenturaCode: centuraCode}, function(data) {  });
+            // javaCode = "Currently not implemented";
+
+            $.ajax({
+                url:'converter.php',
+                type: "POST",
+                data: {jsCenturaCode: centuraCode},
+                // dataType: 'json',
+                sucess: function (data) {
+                    javaCode = data;
+                },
+                error: function () {
+                    javaCode = "Oops. There was an error!";
+                },
+            });
+
+            document.getElementById("javaCodeTB").innerHTML = javaCode;
+        }
+        </script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>

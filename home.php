@@ -23,13 +23,12 @@ $username=$_SESSION['username'];
             background-image: url("test_bg.png");
             background-repeat: no-repeat;
             background-position: center center; 
-            background-size: cover;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
-            background-size: cover;
-            width:100%;
-            height:100%;  
+            background-size: 100%;
+            width: 100%;
+            height: 100%;  
         }
         input.btn.btn-primary{
           cursor:pointer;
@@ -77,9 +76,10 @@ $username=$_SESSION['username'];
                         else
                         {
                             echo '<form method="post" action="login.php" class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="text" name="username" placeholder="Username or email">
-                                <input class="form-control mr-sm-2" type="password" name="password" placeholder="Password">
-                                <input class="btn btn-primary" style="font-size: 15px; padding:8px 10px 7px 10px;" type="submit" name="submit" value="Login"></form>';
+                                    <input class="form-control mr-sm-2" type="text" name="username" placeholder="Username or email">
+                                    <input class="form-control mr-sm-2" type="password" name="password" placeholder="Password">
+                                    <input class="btn btn-primary" style="font-size: 15px; padding:8px 10px 7px 10px;" type="submit" name="submit" value="Login">
+                                </form>';
                         }
                     ?>
                 </div>
@@ -90,10 +90,12 @@ $username=$_SESSION['username'];
         <div class="jumbotron jumbotron-fluid" style="background: linear-gradient(rgba(57,130, 255, 0.20), rgba(57, 130, 255, 0.0));  height:100vh; background-repeat: no-repeat; margin-top:0px;">
             <div class="container">
                 <div width="100%" style="background: linear-gradient(rgba(0,100, 100, 0.20), rgba(0, 100, 100, 0.0)); border-radius: 5px;">
-                    <div width="50%" align="center" ><h3 class="display-4" style="width:auto;">Centura code</h3>
+                    <div width="50%" sytle="float: left;">
+                        <h3 class="display-4" align="center" style="width:auto;">Centura code</h3>
                         <textarea rows="25" cols="65%" name="centura" style="resize: none;"></textarea>
                     </div>
-                    <div width="50%" align="center" ><h3 class="display-4" style="width:auto;">Java code</h3>
+                    <div width="45%" sytle="float: right;">
+                        <h3 class="display-4" align="center" style="width:auto;">Java code</h3>
                         <textarea rows="25" cols="65%" name="java" style="resize: none;"></textarea>
                     </div>
                 </div>

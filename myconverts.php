@@ -99,6 +99,8 @@ $username=$_SESSION['username'];
                                 $array = explode("\t", $line);
                                 $centura_dat = $array[2];
                                 $java_dat = $array[3];
+                                $java_dat = str_replace("\r", "", $java_dat);
+                                $java_dat = str_replace("\n", "", $java_dat);
                                 
                                 $centura_code = array();
                                 $java_code = array();

@@ -152,8 +152,10 @@ $username=$_SESSION['username'];
                             <h3 class="display-4" align="center">Java code</h3>
                             <textarea rows="25%" cols="65%" name="java" style="resize: none;" id="javaCodeTB"></textarea>
                         </div>
-                            <input class="btn btn-primary" type="button" value="Convert" onclick="convert();">
-                            <input class="btn btn-primary" type="button" value="Save" onclick="save();">
+                        <div align="center" style="width: 100%;">
+                            <input align="center" class="btn btn-primary" type="button" value="Convert" onclick="convert();">
+                            <input align="center" class="btn btn-primary" type="button" value="Save" onclick="save();">
+                        <div>
                     </div>
                 </div>
             </div>

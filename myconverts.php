@@ -20,10 +20,10 @@ $username=$_SESSION['username'];
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <style>
     body{
-        background-image: url("test_bg.png");
+       /* background-image: url("test_bg.png");
         background-repeat: no-repeat;
         background-position: center center; 
-        background-size:     cover;  
+        background-size:     cover;  */
     }
     input.btn.btn-primary{
         cursor:pointer;
@@ -67,7 +67,7 @@ $username=$_SESSION['username'];
                 if(isset($_SESSION['id']))
                 {
                     echo "<form method='post' action='logout.php' class='form-inline my-2 my-lg-0'>
-                    <p style='margin: 0px 10px 0px 0px; color:#fff; font-size: 13px;'>Welcome, $username.</p>;
+                    <p style='margin: 0px 10px 0px 0px; color:#fff; font-size: 13px;'>Welcome, <a href='profile.php'>$username</a>.</p>;
                         <input class='btn btn-primary' style='font-size: 15px; padding:8px 10px 7px 10px;' type='submit' name='submit' value='Logout'></form>";
                 }
                 else
@@ -83,8 +83,8 @@ $username=$_SESSION['username'];
         </nav>
 
         <!-- CONTENT  linear-gradient(rgba(134, 223, 255, 0.55), rgba(134, 223, 255, 0.0)); -->
-        <div class="jumbotron jumbotron-fluid" style="background: linear-gradient(rgba(57,130, 255, 0.20), rgba(57, 130, 255, 0.0));  height:100vh; background-repeat: no-repeat; margin-top:0px;">
-            <div class="container">
+        <div class="jumbotron jumbotron-fluid" style="padding-top:30px;background: linear-gradient(rgba(57,130, 255, 0.20), rgba(57, 130, 255, 0.0));  height:100vh; background-repeat: no-repeat; margin-top:0px;">
+            <div class="container" >
                     <?php
                         if(!file_exists('converts_by_id/'.$_SESSION['id'].'_converted.txt'))
                         {
@@ -92,6 +92,7 @@ $username=$_SESSION['username'];
                         }
                         else
                         {
+                            echo '<h2>Your converts</h2>';
                             echo '<table width="100%" cellpadding="10px" style="background: linear-gradient(rgba(0,100, 100, 0.20), rgba(0, 100, 100, 0.0)); border-radius: 5px;">';
                             $file = 'converts_by_id/'.$_SESSION['id'].'_converted.txt';                  
                             $f = fopen($file, 'r');
@@ -106,9 +107,13 @@ $username=$_SESSION['username'];
                                 $java_code = array();
                                 $centura_code = file_get_contents($centura_dat);
                                 $java_code = file_get_contents($java_dat);
+
+                                $dat_array = explode("_", $java_dat);
                                 
+                                $conv_date = date('d/m/Y', $dat_array[2]);
+
                                 echo'
-                                <tr style="padding:10px 0px 10px 0px;">
+                                <tr style="padding:10px 0px 0px 0px;">
                                     <td width="6%" align="center">
                                         <h3 class="display-4" style="width:auto;">'.$array[0].'</h3>
                                     </td>
@@ -118,6 +123,13 @@ $username=$_SESSION['username'];
                                     <td width="47%" align="center">
                                         <textarea rows="10" cols="65%" name="java" style="resize: none;">'.$java_code.'</textarea>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <p style="margin:5px;">Date of conversion: '.$conv_date.'</p>
+                                        <hr/>
+                                    </td>
+                                    
                                 </tr>';
                                 }
                                 echo '</table>';

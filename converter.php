@@ -375,5 +375,6 @@ function IfFunctionsFinish($inputLines)
         }
     }
 
-    echo json_encode($gJavaCode);
+    // echo json_encode($gJavaCode);
+    echo $gJavaCode;
 ?>

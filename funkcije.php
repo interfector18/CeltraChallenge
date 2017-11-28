@@ -122,4 +122,16 @@
         //header ('Location: '.$_SERVER['SCRIPT_NAME']); 
                 
     }
+    
+function contains_string($text, $word)
+{
+    if (strpos($text, $word) !== false) 
+    {
+        return true;
+    } 
+    else
+    {
+        return false;
+    }
+}
 ?>

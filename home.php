@@ -19,34 +19,38 @@ $username=$_SESSION['username'];
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
         <style>
-        body{
-            background-image: url("test_bg.png");
-            background-repeat: no-repeat;
-            background-position: center center; 
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: 100%;
-            width: 100%;
-            height: 100%;  
-        }
-        input.btn.btn-primary{
-          cursor:pointer;
-        }
-        .column {
-            float: left;
-            width: 50%;
-        }
+            body{
+                /*background-image: url("test_bg.png");
+                background-repeat: no-repeat;
+                background-position: center center; */
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                background: linear-gradient(rgba(0,100, 100, 0.20), rgba(0, 100, 100, 0.0)); 
+                -o-background-size: cover;
+                background-size: 100%;
+                width: 100%;
+                height: 100%;  
+            }
+            input.btn.btn-primary{
+            cursor:pointer;
+            }
+            .column {
+                float: left;
+                width: 50%;
+            }
 
-        /* Clear floats after the columns */
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-        .btn.btn-primary{
-            cursor: pointer;
-        }
+            /* Clear floats after the columns */
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+            .btn.btn-primary{
+                cursor: pointer;
+            }
+            div {
+                display: block;
+            }
         </style>
     </head>
     <body>
@@ -70,7 +74,7 @@ $username=$_SESSION['username'];
                         if(isset($_SESSION['id']))
                         {
                             echo "<form method='post' action='logout.php' class='form-inline my-2 my-lg-0'>
-                            <p style='margin: 0px 10px 0px 0px; color:#fff; font-size: 13px;'>Welcome, $username.</p>;
+                            <p style='margin: 0px 10px 0px 0px; color:#fff; font-size: 13px;'>Welcome, <a href='profile.php'>$username</a>.</p>;
                                 <input class='btn btn-primary' style='font-size: 15px; padding:8px 10px 7px 10px;' type='submit' name='submit' value='Logout'></form>";
                         }
                         else
@@ -87,16 +91,18 @@ $username=$_SESSION['username'];
         </nav>
 
         <!-- CONTENT  linear-gradient(rgba(134, 223, 255, 0.55), rgba(134, 223, 255, 0.0)); -->
-        <div class="jumbotron jumbotron-fluid" style="background: linear-gradient(rgba(57,130, 255, 0.20), rgba(57, 130, 255, 0.0)); height:100vh; background-repeat: no-repeat; margin-top:0px;">
+        <div class="jumbotron jumbotron-fluid" style="background: linear-gradient(rgba(57,130, 255, 0.20), rgba(57, 130, 255, 0.0)); height:100vh; background-repeat: no-repeat; padding-top:30px;">
             <div class="container">
-                <div style="width: 100%; background: linear-gradient(rgba(0,100, 100, 0.20), rgba(0, 100, 100, 0.0)); border-radius: 5px;">
-                    <div sytle="width: 47%; float:left;">
-                        <h3 class="display-4" align="center">Centura code</h3>
-                        <textarea rows="25%" cols="65%" name="centura" style="resize: none;"></textarea>
-                    </div>
-                    <div sytle="width: 47%; float: left;" >
-                        <h3 class="display-4" align="center">Java code</h3>
-                        <textarea rows="25%" cols="65%" name="java" style="resize: none;"></textarea>
+                <div style="width: 100%; border-radius: 5px;" class="container-fluid">
+                    <div class="row">
+                        <div align="center" class="col-lg-6">
+                            <h3 class="display-4" align="center">Centura code</h3>
+                            <textarea rows="25%" cols="65%" name="centura" style="resize: none;"></textarea>
+                        </div>
+                        <div align="center" class="col-lg-6">
+                            <h3 class="display-4" align="center">Java code</h3>
+                            <textarea rows="25%" cols="65%" name="java" style="resize: none;" readonly></textarea>
+                        </div>
                     </div>
                 </div>
             </div>

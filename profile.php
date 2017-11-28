@@ -94,22 +94,8 @@
         <div class="jumbotron jumbotron-fluid" style="background: linear-gradient(rgba(57,130, 255, 0.20), rgba(57, 130, 255, 0.0));padding-top: 30px;  height:100vh; background-repeat: no-repeat;">
             <div class="container">
                 <div style="float:left; ">
-                    <h1 class="display-3" style="width:auto;">About project</h1>
-                    <p class="lead" style="width:auto; margin-top: 20px; padding: 20px; font-weight:1; border-radius: 10px; background: linear-gradient(rgba(255,255, 255, 0.40), rgba(255, 255, 255, 0.30)); ">
-                    This project was made by Denis Zornada and Jasmin Makaj for participation within <a href='https://www.facebook.com/celtra/'>Celtra</a> November Challenge.<br><br>
-
-                    The project is still a work in progress, but has:<br>
-                    - working registration system<br>
-                    - working login system<br>
-                    - a converter that converts Centura code to Java code (some bugs need to be ironed out)<br><br>
-
-                    It is hosted on AWS, and a database integration is planned.<br>
-                    It uses html, css, php, and bootstrap.<br><br>
-
-                    The main motivation for creating this project was learning new technologies and this is where the 
-                    challenge came in just at the right moment. The main thing we learned is that git version control system is 
-                    a literal life saver, and has saved us from starting over again many time, in addition to making it really
-                    easy for us to work independently of each other.</p>
+                    <h1 class="display-3" style="width:auto;">Edit your profile</h1>
+                    
                 </div>
             </div>
         </div>  

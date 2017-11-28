@@ -103,4 +103,23 @@
             file_put_contents($file, $fileContents);
         }
     }
+
+    function newconversion(){
+        
+        $java_code=$_POST['java'];
+        $centura_code=$_POST['centura'];
+        $time=time(); 
+        $id_user=$_SESSION['id'];
+        $f='converts_by_id/'.$id_user.'_converted.txt';
+        $id_conv=increment($f); 
+        $centura_dat = 'converted_files/'.$id_user."_".$time."_".$id_conv."_cen.txt";
+        $java_dat = 'converted_files/'.$id_user."_".$time."_".$id_conv."_dat.txt";
+
+        $line = $id_conv."\t".$id_user."\t".$time."\t".$centura_dat."\t".$java_dat."\n"; 
+
+        unos($f, $line); 
+
+        //header ('Location: '.$_SERVER['SCRIPT_NAME']); 
+                
+    }
 ?>

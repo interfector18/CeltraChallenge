@@ -16,6 +16,48 @@ $username=$_SESSION['username'];
         <!--jQuery load-->
         <script src="jQuery/jquery-3.2.1.min.js"></script>
 
+        <script>
+            function convert()
+            {
+                centuraCode = document.getElementById("centuraCodeTB").value;
+                
+                var javaCode;
+                var data;
+                // javaCode = "Oops. There were some errors!";
+                $.post("converter.php", {jsCenturaCode: centuraCode}, function(data) { javaCode = data[0]; });
+
+                // $.ajax({
+                //     url:'converter.php',
+                //     type: "POST",
+                //     data: {jsCenturaCode: centuraCode},
+                //     dataType: 'JSON',
+                //     sucess: function (data) {
+                //         javaCode = data;
+                //         alert(data);
+                //     },
+                //     error: function () {
+                //         javaCode = "Oops. There was an error!";
+                //     },
+                // });
+
+                // $.ajax({
+                //     url:'converter.php',
+                //     type: "POST",
+                //     dataType: 'JSON',
+                //     data: {jsCenturaCode: centuraCode},
+                //     complete: function (data) {
+                //         javaCode = data;
+                //         alert(data.jsCenturaCode);
+                //     },
+                //     error: function () {
+                //         javaCode = "Oops. There was an error!";
+                //     },
+                // });
+
+                document.getElementById("javaCodeTB").value = javaCode;
+            }
+        </script>
+
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -101,7 +143,7 @@ $username=$_SESSION['username'];
                     <div class="row">
                         <div align="center" class="col-lg-6">
                             <h3 class="display-4" align="center">Centura code</h3>
-                            <button onlick="convert();">Convert</button>
+                            <button onlick="convert();" class="btn btn-primary">Convert</button>
                             <textarea rows="25%" cols="65%" name="centura" style="resize: none;" id="centuraCodeTB"></textarea>
                         </div>
                         <div align="center" class="col-lg-6">
@@ -116,33 +158,7 @@ $username=$_SESSION['username'];
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script>
-        function convert()
-        {
-            // alert('hello!');
-            centuraCode = document.getElementById("centuraCodeTB").innerHTML;
-
-            var javaCode;
-            // $.post("converter.php", {jsCenturaCode: centuraCode}, function(data) {  });
-            // javaCode = "Currently not implemented";
-
-            $.ajax({
-                url:'converter.php',
-                type: "POST",
-                data: {jsCenturaCode: centuraCode},
-                // dataType: 'json',
-                sucess: function (data) {
-                    javaCode = data;
-                },
-                error: function () {
-                    javaCode = "Oops. There was an error!";
-                },
-            });
-
-            document.getElementById("javaCodeTB").innerHTML = javaCode;
-        }
-        </script>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     </body>

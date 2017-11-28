@@ -1,8 +1,8 @@
 <?php 
 
 /*
-    gCenturaCode - textbox s centura kodom
-    gJavaCode - textbox s javascript kodom
+gCenturaCode - textbox s centura kodom
+gJavaCode - textbox s javascript kodom
 */
 
 global $gCenturaCode;
@@ -12,14 +12,18 @@ $gCenturaCode = $_POST['jsCenturaCode'];
 $gJavaCode = $gCenturaCode;
 convert();
 
+// echo $gJavaCode;
+
 function convert()
 {
 
     global $gCenturaCode;
     global $gJavaCode;
+    $gJavaCode = explode("\n", $gJavaCode);
 
     //CONVERTING CODE TO JAVA
     $gJavaCode = ReplaceFunction("\r\n", "", "", $gJavaCode);
+    $gJavaCode = ReplaceFunction("\n", "", "", $gJavaCode);
     $gJavaCode = ReplaceFunction("\t", "  ", "", $gJavaCode);    
     $gJavaCode = ReplaceFunction("Function:", "public void ", "() {\n", $gJavaCode);
     $gJavaCode = ReplaceFunction("Call ", "", ';', $gJavaCode);    
@@ -59,16 +63,16 @@ function convert()
     $gJavaCode = ReplaceFunction("\n", "\r\n", "", $gJavaCode);
     $gJavaCode = implode("\r\n", $gJavaCode);
 
-    echo $gJavaCode;
-
+    
     // $path = "output.txt";
     // $fh = fopen($path, "w");
     // flock($fh,LOCK_EX);
-    // fwrite($fh, $gJavaCode);
+    // fwrite($fh, json_encode($gJavaCode));
+    // // echo json_encode($gJavaCode);
     // flock($fh, LOCK_UN);
     // fclose($fh);
-
 }
+
 
 function AccessingData($inputLines)
 {
@@ -91,13 +95,13 @@ function AccessingData($inputLines)
             {
                 $inputLines[$i + 2] = str_replace("}", "", $inputLines[$i + 1]);
             }
-
+            
             for ($j = $i + 1; $j < count($inputLines); $j++)
             {
                 if (contains($inputLines[$j], 'AND') || contains($inputLines[$j], "WHERE"))
                 {
                     $inputLines[$j] = "        +\"" . trim($inputLines[$j]);
-
+                    
                     if (contains($inputLines[$j], ";"))
                     {
                         $inputLines[$j] = str_replace(";", "", $inputLines[$i]);
@@ -153,9 +157,9 @@ function ClassFunct($inputLines)
 function CommentingCodeFromString($find, $inputLines)
 {
     for ($i = 0; $i < count($inputLines); $i++)
-        if (contains($inputLines[$i], $find) && !contains($inputLines[$i], " !"))
-            $inputLines[$i] = '//' . $inputLines[$i];
-
+    if (contains($inputLines[$i], $find) && !contains($inputLines[$i], " !"))
+    $inputLines[$i] = '//' . $inputLines[$i];
+    
     return $inputLines;
 }
 
@@ -167,10 +171,10 @@ function IfAndOr($inputLines)
         if (contains($inputLines[$i], 'if ('))
         {
             if (contains($inputLines[$i], ' and '))
-                $inputLines[$i] = str_replace(' and ', ' && ', $inputLines[$i]);
-
+            $inputLines[$i] = str_replace(' and ', ' && ', $inputLines[$i]);
+            
             if (contains($inputLines[$i], ' or '))
-                $inputLines[$i] = str_replace(' or ', ' || ', $inputLines[$i]);
+            $inputLines[$i] = str_replace(' or ', ' || ', $inputLines[$i]);
         }
     }
     return $inputLines;
@@ -224,7 +228,7 @@ function ReplaceFunction($OldString, $NewString, $EndLine, $inputLines)
             }
         }
     }
-
+    
     return $inputLines;
 }
 
@@ -258,9 +262,9 @@ function DeleteLines($inputLines)
             break;
         }
         else
-            $inputLines[$i] = "";
+        $inputLines[$i] = "";
     }
-
+    
     return $inputLines;
 }
 
@@ -268,9 +272,9 @@ function DeleteLines($inputLines)
 function IfFunctionFix($inputLines)
 {
     for ($i = 0; $i < count($inputLines); $i++)
-        if (contains($inputLines[$i], "if ("))
-            if (contains($inputLines[$i], " != "))
-                $inputLines[$i] = str_replace("//", "", $inputLines[$i]);
+    if (contains($inputLines[$i], "if ("))
+    if (contains($inputLines[$i], " != "))
+    $inputLines[$i] = str_replace("//", "", $inputLines[$i]);
     
     return $inputLines;
 }
@@ -283,7 +287,7 @@ function IfFunctionsClosing($inputLines)
         {
             $leadingSpaces = countLeadingSpaces($inputLines[$i]);
             $leadingSpaces2 = countLeadingSpaces($inputLines[$i+1]);
-
+            
             if ($leadingSpaces2 > $leadingSpaces && contains($inputLines[$i + 1], ",") && (!contains($inputLines[$i + 1], ";")))
             {
                 $inputLines[$i] = $inputLines[$i] . " " . trim($inputLines[$i + 1]);
@@ -302,72 +306,74 @@ function IfFunctionsFinish($inputLines)
         if (startsWith(trim($inputLines[$i]), "if ("))
         {
             $inputLines[$i] = $inputLines[$i] . ") {";
-
-            if (countLeadingSpaces($inputLines[$i + 1]) > countLeadingSpaces($inputLines[$i]))
+                
+                if (countLeadingSpaces($inputLines[$i + 1]) > countLeadingSpaces($inputLines[$i]))
+                {
+                    $inputLines[$i + 1] = $inputLines[$i + 1] . "\n}";
+                    $i = $i + 1;
+                }
+            }
+            if (startsWith(trim($inputLines[$i]), "else "))
             {
-                $inputLines[$i + 1] = $inputLines[$i + 1] . "\n}";
-                $i = $i + 1;
+                if (countLeadingSpaces($inputLines[$i + 1]) > countLeadingSpaces($inputLines[$i]))
+                {
+                    $inputLines[$i + 1] = $inputLines[$i + 1] . "\n}";
+                    $i = $i + 1;
+                }
             }
         }
-        if (startsWith(trim($inputLines[$i]), "else "))
-        {
-            if (countLeadingSpaces($inputLines[$i + 1]) > countLeadingSpaces($inputLines[$i]))
-            {
-                $inputLines[$i + 1] = $inputLines[$i + 1] . "\n}";
-                $i = $i + 1;
-            }
-        }
+        return $inputLines;
     }
-    return $inputLines;
-}
-
-function countLeadingSpaces($text)
-{
-    $leadingSpaces = 0;
     
-    for($i = 0; $i < strlen($text); $i++)
-        if ($text[$i] == ' ')                
-            $leadingSpaces++;               
-        else
-            break;
-
-    return $leadingSpaces;
-}
-
-function IfFunctionsCommented($inputLines)
-{
-    for ($i = 0; $i < count($inputLines); $i++)
+    function countLeadingSpaces($text)
     {
-        if (startsWith(trim($inputLines[$i]), '!'))
+        $leadingSpaces = 0;
+        
+        for($i = 0; $i < strlen($text); $i++)
+        if ($text[$i] == ' ')                
+        $leadingSpaces++;               
+        else
+        break;
+        
+        return $leadingSpaces;
+    }
+    
+    function IfFunctionsCommented($inputLines)
+    {
+        for ($i = 0; $i < count($inputLines); $i++)
         {
-            $leadingSpaces = countLeadingSpaces($inputLines[$i]);
-            $leadingSpaces2 = countLeadingSpaces($inputLines[$i+1]);
-
-            if ($leadingSpaces2 > $leadingSpaces)
+            if (startsWith(trim($inputLines[$i]), '!'))
             {
-                $inputLines[$i + 1] = substr($inputLines[$i + 1], 0, $leadingSpaces) . '//' . substr($inputLines[$i + 1], $leadingSpaces, strlen($inputLines[$i + 1]) - $leadingSpaces);
-                $i = $i + 1;
+                $leadingSpaces = countLeadingSpaces($inputLines[$i]);
+                $leadingSpaces2 = countLeadingSpaces($inputLines[$i+1]);
+                
+                if ($leadingSpaces2 > $leadingSpaces)
+                {
+                    $inputLines[$i + 1] = substr($inputLines[$i + 1], 0, $leadingSpaces) . '//' . substr($inputLines[$i + 1], $leadingSpaces, strlen($inputLines[$i + 1]) - $leadingSpaces);
+                    $i = $i + 1;
+                }
             }
         }
+        return $inputLines;
     }
-    return $inputLines;
-}
-
-function startsWith($text, $word) 
-{
-  $length = strlen($word);
-  return (substr($text, 0, $length) === $word);
-}
-
-function contains($text, $word)
-{
-    if (strpos($text, $word) !== false) 
+    
+    function startsWith($text, $word) 
     {
-        return true;
-    } 
-    else
-    {
-        return false;
+        $length = strlen($word);
+        return (substr($text, 0, $length) === $word);
     }
-}
+    
+    function contains($text, $word)
+    {
+        if (strpos($text, $word) !== false) 
+        {
+            return true;
+        } 
+        else
+        {
+            return false;
+        }
+    }
+
+    echo json_encode($gJavaCode);
 ?>

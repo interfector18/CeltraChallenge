@@ -24,7 +24,7 @@ $username=$_SESSION['username'];
                 var javaCode;
                 var data;
                 // javaCode = "Oops. There were some errors!";
-                $.post("converter.php", {jsCenturaCode: centuraCode}, function(data) { javaCode = data[0]; });
+                // $.post("converter.php", {jsCenturaCode: centuraCode}, function(data) { javaCode = data[0]; });
 
                 // $.ajax({
                 //     url:'converter.php',
@@ -40,21 +40,24 @@ $username=$_SESSION['username'];
                 //     },
                 // });
 
-                // $.ajax({
-                //     url:'converter.php',
-                //     type: "POST",
-                //     dataType: 'JSON',
-                //     data: {jsCenturaCode: centuraCode},
-                //     complete: function (data) {
-                //         javaCode = data;
-                //         alert(data.jsCenturaCode);
-                //     },
-                //     error: function () {
-                //         javaCode = "Oops. There was an error!";
-                //     },
-                // });
+                $.ajax({
+                    url:'converter.php',
+                    type: "POST",
+                    dataType: 'JSON',
+                    data: {jsCenturaCode: centuraCode},
+                    complete: function (data) {
+                        setJavaTB(data.responseText);
+                    },
+                    error: function () {
+                        javaCode = "Oops. There was an error!";
+                    },
+                });
 
-                document.getElementById("javaCodeTB").value = javaCode;
+            }
+            function setJavaTB(string)
+            {
+                document.getElementById("javaCodeTB").innerHTML = string;
+
             }
         </script>
 
@@ -143,13 +146,14 @@ $username=$_SESSION['username'];
                     <div class="row">
                         <div align="center" class="col-lg-6">
                             <h3 class="display-4" align="center">Centura code</h3>
-                            <button onlick="convert();" class="btn btn-primary">Convert</button>
                             <textarea rows="25%" cols="65%" name="centura" style="resize: none;" id="centuraCodeTB"></textarea>
                         </div>
                         <div align="center" class="col-lg-6">
                             <h3 class="display-4" align="center">Java code</h3>
                             <textarea rows="25%" cols="65%" name="java" style="resize: none;" id="javaCodeTB"></textarea>
                         </div>
+                            <input class="btn btn-primary" type="button" value="Convert" onclick="convert();">
+                            <input class="btn btn-primary" type="button" value="Save" onclick="save();">
                     </div>
                 </div>
             </div>

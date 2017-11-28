@@ -60,7 +60,7 @@ $username=$_SESSION['username'];
                     <a class="nav-link" href="about.php">About <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active" style="margin-top:3px;">
-                        <a class="nav-link" href="converts.php">My Converts<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="myconverts.php">My Converts<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <?php 

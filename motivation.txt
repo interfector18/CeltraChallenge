@@ -1,4 +1,4 @@
-This project was made by Denis Zornada and Jasmin Makaj for participation within <a href='https://www.facebook.com/celtra/'>Celtra</a> November Challenge.
+This project was made by Denis Zornada and Jasmin Makaj for participation within Celtra November Challenge.
 Our main goal was to make an online converter for Centura programming language to Java code using Amazon Web Services (AWS).
 In attempt to realise this project we used previously acquired knowledge, but we also had to learn some new technologies.
 

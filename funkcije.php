@@ -96,8 +96,6 @@
         }
         else
         {
-            $max = 0;
-
             $fileContents = file_get_contents($file);
             $fileContents = str_replace($line, "", $fileContents);
             file_put_contents($file, $fileContents);

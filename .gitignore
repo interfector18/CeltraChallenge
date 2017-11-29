@@ -7,6 +7,17 @@ Centura2Java/Centura2Java/.vs/Centura2Java/v15/Server/sqlite3/storage.ide-wal
 users.txt
 output2.txt
 output.txt
-
-
 C2J.zip
+.vscode/*
+converted_files/*
+converts_by_id/*
+EB\ -\ accessKeys.txt
+
+# Elastic Beanstalk Files
+
+.elasticbeanstalk/*
+
+!.elasticbeanstalk/*.cfg.yml
+
+!.elasticbeanstalk/*.global.yml
+

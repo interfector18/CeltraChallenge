@@ -86,7 +86,8 @@ $username=$_SESSION['username'];
         <div class="jumbotron jumbotron-fluid" style="padding-top:30px;background: linear-gradient(rgba(57,130, 255, 0.20), rgba(57, 130, 255, 0.0));  height:100vh; background-repeat: no-repeat; margin-top:0px;">
             <div class="container" >
                     <?php
-                        if(!file_exists('converts_by_id/'.$_SESSION['id'].'_converted.txt'))
+                        $fileName = 'converts_by_id/'.$_SESSION['id'].'_converted.txt';
+                        if(!file_exists($fileName) || filesize($fileName) == 0)
                         {
                             echo '<h1>You don\'t have any converted codes so far.</h1>';
                         }
@@ -96,16 +97,17 @@ $username=$_SESSION['username'];
                             //echo '<table width="100%" cellpadding="10px" style="background: linear-gradient(rgba(0,100, 100, 0.20), rgba(0, 100, 100, 0.0)); border-radius: 5px;">';
                            
                             $file = 'converts_by_id/'.$_SESSION['id'].'_converted.txt';                  
-                            $f = fopen($file, 'r');
-                            while (($line = fgets($f, 4096)) !== false) {
+                            $allConverts = file($file);
+                            $postNum = 0;
+                            foreach($allConverts as $line)
+                            {
+                                $postNum++;
                                 $array = explode("\t", $line);
                                 $centura_dat = $array[2];
                                 $java_dat = $array[3];
                                 $java_dat = str_replace("\r", "", $java_dat);
                                 $java_dat = str_replace("\n", "", $java_dat);
                                 
-                                $centura_code = array();
-                                $java_code = array();
                                 $centura_code = file_get_contents($centura_dat);
                                 $java_code = file_get_contents($java_dat);
 
@@ -117,44 +119,22 @@ $username=$_SESSION['username'];
 
                                 <div class="row">
                                     <div width="6%" align="center" class="col-lg-1">
-                                        <h3 class="display-4" valign="center">'.$array[0].'</h3>
+                                        <h3 class="display-4" valign="center">'.$postNum.'</h3>
                                     </div>
                                     <div align="center" class="col-lg-5">
                                         <h3 class="display-4" align="center" style="width:450px;">Centura code</h3>
-                                        <textarea rows="10%" cols="60%" name="centura" style="resize: none;" id="centuraCodeTB">'.$centura_code.'</textarea>
+                                        <textarea rows="10%" cols="60%" name="centura" style="resize: none;" id="centuraCodeTB" readonly>'.$centura_code.'</textarea>
                                     </div>
                                     <div width="47%" align="center" class="col-lg-5">
                                         <h3 class="display-4" align="center">Java code</h3>
-                                        <textarea rows="10%" cols="60%" name="java" style="resize: none;" id="javaCodeTB">'.$java_code.'</textarea>
+                                        <textarea rows="10%" cols="60%" name="java" style="resize: none;" id="javaCodeTB" readonly>'.$java_code.'</textarea>
                                     </div>
                                 </div>
-                                <p style="margin:5px;">Date of conversion: '.$conv_date.'</p>
-                                <hr/>
-                                <!--<tr style="padding:10px 0px 0px 0px;">
-                                
-                                    <td width="6%" align="center">
-                                        <h3 class="display-4" style="width:auto;">'.$array[0].'</h3>
-                                    </td>
-                                    <td width="47%" align="center">
-                                        <textarea rows="10" cols="65%" name="centura" style="resize: none;">'.$centura_code.'</textarea>
-                                    </td>
-                                    <td width="47%" align="center">
-                                        <textarea rows="10" cols="65%" name="java" style="resize: none;">'.$java_code.'</textarea>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3">
-                                        <p style="margin:5px;">Date of conversion: '.$conv_date.'</p>
-                                        <hr/>
-                                    </td>
-                                    
-                                </tr>-->';
+                                <p style="margin:5px;">Date of conversion: '.$conv_date.'<a href="deleteConvert.php?uid='.$array[1].'&pid='.$array[0].'" style="float:right;">Delete</a></p>
+                                <hr/>';
                                 }
                                // echo '</table>';
                             }
-                            fclose($f);
-                        
-                        
                     ?>
             </div>
         </div>  

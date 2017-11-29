@@ -77,7 +77,7 @@
                 <div style="float:left; ">
                     <h1 class="display-3" style="width:auto;">About project</h1>
                     <p class="lead" style="width:auto; margin-top: 20px; padding: 20px; font-weight:1; border-radius: 10px; background: linear-gradient(rgba(255,255, 255, 0.45), rgba(255, 255, 255, 0.30)); ">
-                    This project was made by Denis Zornada and Jasmin Makaj for participation within <a href='https://www.facebook.com/celtra/'>Celtra</a> November Challenge.<br><br>
+                    This project was made by Denis Zornada and Jasmin Makaj for participation within <a href='https://www.facebook.com/celtra/'>Celtra</a> November Challenge.<br>
                         Our main goal was to make an online converter for Centura programming language to Java code using Amazon Web Services (AWS).<br>
                         In attempt to realise this project we used previously acquired knowledge, but we also had to learn some new technologies.<br><br>
                         
@@ -87,9 +87,9 @@
                         - a converter that converts Centura code to Java code (some bugs need to be ironed out)<br>
                         - system to save and delete converted codes<br>
                         - profile editing capabilities<br><br>
-                        The project is hosted on AWS, and a database integration is planned. It was made using HTML, CSS, PHP, Javascript, jQuery and AJAX. The knowledge of C#, Centura, and Java programming languages was also necessary to finalize this project.<br><br>
+                        The project is hosted on AWS, and a database integration is planned. It was made using HTML, CSS, PHP, Javascript, jQuery and AJAX. The knowledge of C#, Centura, and Java programming languages was also necessary to finalize this project.<br>
                         
-                        "Gupta's first product was SQLBase, followed by SQLWindows, which combined SQLBase with a graphical user interface and programming language for creating business applications, known as Centura Gupta programming language." - Wikipedia<br><br>
+                        "Gupta's first product was SQLBase, followed by SQLWindows, which combined SQLBase with a graphical user interface and programming language for creating business applications, known as Centura Gupta programming language." - Wikipedia<br>
                         
                         "Java is a general-purpose computer programming language that is concurrent, class-based, object-oriented, and specifically designed to have as few implementation dependencies as possible." - Wikipedia<br><br>
                         

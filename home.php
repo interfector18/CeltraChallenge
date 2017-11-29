@@ -11,7 +11,7 @@ $username=$_SESSION['username'];
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Centura2Java Online Converter</title>
+        <title>Home - Centura2Java Online Converter</title>
 
         <!--jQuery load-->
         <script src="jQuery/jquery-3.2.1.min.js"></script>
@@ -23,22 +23,6 @@ $username=$_SESSION['username'];
                 
                 var javaCode;
                 var data;
-                // javaCode = "Oops. There were some errors!";
-                // $.post("converter.php", {jsCenturaCode: centuraCode}, function(data) { javaCode = data[0]; });
-
-                // $.ajax({
-                //     url:'converter.php',
-                //     type: "POST",
-                //     data: {jsCenturaCode: centuraCode},
-                //     dataType: 'JSON',
-                //     sucess: function (data) {
-                //         javaCode = data;
-                //         alert(data);
-                //     },
-                //     error: function () {
-                //         javaCode = "Oops. There was an error!";
-                //     },
-                // });
 
                 $.ajax({
                     url:'converter.php',
@@ -83,41 +67,13 @@ $username=$_SESSION['username'];
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+        <link rel="shortcut icon" type="image/png" href="/images/icon2.png"/>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="css/additional_style.css">
         <style>
             body{
-                /*background-image: url("test_bg.png");
-                background-repeat: no-repeat;
-                background-position: center center; */
-                -webkit-background-size: cover;
-                -moz-background-size: cover;
-                background: linear-gradient(rgba(0,100, 100, 0.20), rgba(0, 100, 100, 0.0)); 
-                -o-background-size: cover;
-                background-size: 100%;
-                width: 100%;
-                height: 100%;  
-            }
-            input.btn.btn-primary{
-            cursor:pointer;
-            }
-            .column {
-                float: left;
-                width: 50%;
-            }
-
-            /* Clear floats after the columns */
-            .row:after {
-                content: "";
-                display: table;
-                clear: both;
-            }
-            .btn.btn-primary{
-                cursor: pointer;
-            }
-            div {
-                display: block;
+                background: linear-gradient(rgba(0,100, 100, 0.20), rgba(0, 100, 100, 0.0));
             }
         </style>
     </head>

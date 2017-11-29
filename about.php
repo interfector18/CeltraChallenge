@@ -18,32 +18,13 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+        <link rel="shortcut icon" type="image/png" href="/images/icon2.png"/>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="css/additional_style.css">
         <style>
-                body{
-                    background-image: url("test_bg.png");
-                    background-repeat: no-repeat;
-                    background-position: center center; 
-                    background-size:     cover;  
-                }
-                input.btn.btn-primary{
-                    cursor:pointer;
-                }
-                .column {
-                    float: left;
-                    width: 50%;
-                }
-
-                /* Clear floats after the columns */
-                .row:after {
-                    content: "";
-                    display: table;
-                    clear: both;
-                }
-                .btn.btn-primary{
-                cursor: pointer;
+            body{
+                background-image: url("images/background.png");
             }
         </style>
     </head>
@@ -95,21 +76,24 @@
             <div class="container">
                 <div style="float:left; ">
                     <h1 class="display-3" style="width:auto;">About project</h1>
-                    <p class="lead" style="width:auto; margin-top: 20px; padding: 20px; font-weight:1; border-radius: 10px; background: linear-gradient(rgba(255,255, 255, 0.40), rgba(255, 255, 255, 0.30)); ">
+                    <p class="lead" style="width:auto; margin-top: 20px; padding: 20px; font-weight:1; border-radius: 10px; background: linear-gradient(rgba(255,255, 255, 0.45), rgba(255, 255, 255, 0.30)); ">
                     This project was made by Denis Zornada and Jasmin Makaj for participation within <a href='https://www.facebook.com/celtra/'>Celtra</a> November Challenge.<br><br>
-
-                    The project is still a work in progress, but has:<br>
-                    - working registration system<br>
-                    - working login system<br>
-                    - a converter that converts Centura code to Java code (some bugs need to be ironed out)<br><br>
-
-                    It is hosted on AWS, and a database integration is planned.<br>
-                    It uses html, css, php, javascript, jQuery, AJAX and bootstrap.<br><br>
-
-                    The main motivation for creating this project was learning new technologies and this is where the 
-                    challenge came in just at the right moment. The main thing we learned is that git version control system is 
-                    a literal life saver, and has saved us from starting over again many time, in addition to making it really
-                    easy for us to work independently of each other.</p>
+                        Our main goal was to make an online converter for Centura programming language to Java code using Amazon Web Services (AWS).<br>
+                        In attempt to realise this project we used previously acquired knowledge, but we also had to learn some new technologies.<br><br>
+                        
+                        The project is still a work in progress, but has:<br>
+                        - registration system<br>
+                        - login system<br>
+                        - a converter that converts Centura code to Java code (some bugs need to be ironed out)<br>
+                        - system to save and delete converted codes<br>
+                        - profile editing capabilities<br><br>
+                        The project is hosted on AWS, and a database integration is planned. It was made using HTML, CSS, PHP, Javascript, jQuery and AJAX. The knowledge of C#, Centura, and Java programming languages was also necessary to finalize this project.<br><br>
+                        
+                        "Gupta's first product was SQLBase, followed by SQLWindows, which combined SQLBase with a graphical user interface and programming language for creating business applications, known as Centura Gupta programming language." - Wikipedia<br><br>
+                        
+                        "Java is a general-purpose computer programming language that is concurrent, class-based, object-oriented, and specifically designed to have as few implementation dependencies as possible." - Wikipedia<br><br>
+                        
+                        The main motivation for creating this project was learning new technologies and this is where the challenge came in just at the right moment. The main thing we learned is that git version control system is a literal life saver, and has saved us from starting over again many time. In addition to making it really easy for us to work independently of each other.</p><br><br>
                 </div>
             </div>
         </div>  

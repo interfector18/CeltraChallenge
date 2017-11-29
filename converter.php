@@ -62,6 +62,11 @@ function convert()
 
     $gJavaCode = ReplaceFunction("\n", "\r\n", "", $gJavaCode);
     $gJavaCode = implode("\r\n", $gJavaCode);
+    $gJavaCode = RemoveMultiLineComments($gJavaCode);
+    $gJavaCode = explode("\r\n", $gJavaCode);
+    $gJavaCode = RemoveEmpty($gJavaCode);
+    $gJavaCode = RemoveComments($gJavaCode);
+    $gJavaCode = implode("\r\n", $gJavaCode);
 
     
     // $path = "output.txt";
@@ -355,6 +360,44 @@ function IfFunctionsFinish($inputLines)
             }
         }
         return $inputLines;
+    }
+
+    function RemoveEmpty($inputLines)
+    {
+        $outputLines = array();
+        foreach($inputLines as $line)
+        {
+            if(trim($line) != "")
+                $outputLines[]= $line;
+        }
+        return $outputLines;
+    }
+
+    function RemoveComments($inputLines)
+    {
+        $outputLines = array();
+        foreach($inputLines as $line)
+        {
+            if(!startsWith(trim($line), "//"))
+            {
+                $outputLines []= $line;
+            }
+        }
+        return $outputLines;
+    }
+
+    function RemoveMultiLineComments($inputString)
+    {
+        while(contains($inputString, "/*") && contains($inputString, "*/"))
+        {
+            $from = strpos($inputString, "/*");
+            $length = strpos($inputString, "*/") - $from + 2;
+            if($length < 0)
+                return $inputString;
+            $strToReplace = substr($inputString, $from, $length);
+            $inputString = str_replace($strToReplace, "", $inputString);
+        }
+        return $inputString;
     }
     
     function startsWith($text, $word) 

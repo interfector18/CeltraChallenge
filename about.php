@@ -104,7 +104,7 @@
                     - a converter that converts Centura code to Java code (some bugs need to be ironed out)<br><br>
 
                     It is hosted on AWS, and a database integration is planned.<br>
-                    It uses html, css, php, and bootstrap.<br><br>
+                    It uses html, css, php, javascript, jQuery, AJAX and bootstrap.<br><br>
 
                     The main motivation for creating this project was learning new technologies and this is where the 
                     challenge came in just at the right moment. The main thing we learned is that git version control system is 

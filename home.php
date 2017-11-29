@@ -73,7 +73,8 @@ $username=$_SESSION['username'];
         <link rel="stylesheet" type="text/css" href="css/additional_style.css">
         <style>
             body{
-                background: linear-gradient(rgba(0,100, 100, 0.20), rgba(0, 100, 100, 0.0));
+               background: linear-gradient(rgba(0,100, 100, 0.20), rgba(0, 100, 100, 0.0));
+               /*background: url("images/background.png") no-repeat fixed;*/
             }
         </style>
     </head>

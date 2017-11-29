@@ -28,3 +28,7 @@ git diff [file1] [file2] - ispise razliku izmedu dvije datoteke (jasmine, korist
 
 Arhiviranje:        //za AWS recimo
 git archive -v -o C2J.zip --format=zip HEAD - "-v" = verbose, "-o" output(kako da se zove), "--format" sve jasno, HEAD to je trenutna radna verzija
+
+Datoteke:
+git checkout HEAD~2 -- path/to/file - dohvacanje datoteke 2 commita prije pozicije HEAD (trenutna pozicija)
+git checkout commit-id -- path/to/file - dohvacanje datoteka sa commita odredenim s commit-id

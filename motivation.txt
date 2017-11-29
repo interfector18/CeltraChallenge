@@ -1,14 +1,22 @@
-This project was made by Denis Zornada and Jasmin Makaj for participation within Celtra November Challenge.
+This project was made by Denis Zornada and Jasmin Makaj for participation within <a href='https://www.facebook.com/celtra/'>Celtra</a> November Challenge.
+Our main goal was to make an online converter for Centura programming language to Java code using Amazon Web Services (AWS).
+In attempt to realise this project we used previously acquired knowledge, but we also had to learn some new technologies.
 
 The project is still a work in progress, but has:
-- working registration system
-- working login system
+- registration system
+- login system
 - a converter that converts Centura code to Java code (some bugs need to be ironed out)
+- system to save and delete converted codes
+- profile editing capabilities
+The project is hosted on AWS, and a database integration is planned. It was made using HTML, CSS, PHP, Javascript, jQuery and AJAX. 
+The knowledge of C#, Centura, and Java programming languages was also necessary to finalize this project.
 
-It is hosted on AWS, and a database integration is planned.
-It uses html, css, php, and bootstrap.
+"Gupta's first product was SQLBase, followed by SQLWindows, which combined SQLBase with a graphical user interface and programming language 
+for creating business applications, known as Centura Gupta programming language." - Wikipedia
 
-The main motivation for creating this project was learning new technologies and this is where the 
-challenge came in just at the right moment. The main thing we learned is that git version control system is 
-a literal life saver, and has saved us from starting over again many time, in addition to making it really
-easy for us to work independently of each other.
+"Java is a general-purpose computer programming language that is concurrent, class-based, object-oriented, and specifically designed to have as 
+few implementation dependencies as possible." - Wikipedia
+
+The main motivation for creating this project was learning new technologies and this is where the challenge came in just at the right moment. 
+The main thing we learned is that git version control system is a literal life saver, and has saved us from starting over again many time. 
+In addition to making it really easy for us to work independently of each other.

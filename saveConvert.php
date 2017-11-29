@@ -10,6 +10,14 @@
 
     require_once('funkcije.php');
 
+    if(!is_dir('converts_by_id/'))
+    {
+        mkdir('converts_by_id/', 0777, true);
+    }
+    if(!is_dir('converted_files/'))
+    {
+        mkdir('converted_files/', 0777, true);
+    }
     $userID = $_SESSION['id'];
     // $userID = 1;
     $convertsIndexFile = 'converts_by_id/'.$userID.'_converted.txt';

@@ -93,7 +93,8 @@ $username=$_SESSION['username'];
                         else
                         {
                             echo '<h2>Your converts</h2>';
-                            echo '<table width="100%" cellpadding="10px" style="background: linear-gradient(rgba(0,100, 100, 0.20), rgba(0, 100, 100, 0.0)); border-radius: 5px;">';
+                            //echo '<table width="100%" cellpadding="10px" style="background: linear-gradient(rgba(0,100, 100, 0.20), rgba(0, 100, 100, 0.0)); border-radius: 5px;">';
+                           
                             $file = 'converts_by_id/'.$_SESSION['id'].'_converted.txt';                  
                             $f = fopen($file, 'r');
                             while (($line = fgets($f, 4096)) !== false) {
@@ -113,7 +114,24 @@ $username=$_SESSION['username'];
                                 $conv_date = date('d/m/Y', $dat_array[2]);
 
                                 echo'
-                                <tr style="padding:10px 0px 0px 0px;">
+
+                                <div class="row">
+                                    <div width="6%" align="center" class="col-lg-1">
+                                        <h3 class="display-4" valign="center">'.$array[0].'</h3>
+                                    </div>
+                                    <div align="center" class="col-lg-5">
+                                        <h3 class="display-4" align="center" style="width:450px;">Centura code</h3>
+                                        <textarea rows="10%" cols="60%" name="centura" style="resize: none;" id="centuraCodeTB">'.$centura_code.'</textarea>
+                                    </div>
+                                    <div width="47%" align="center" class="col-lg-5">
+                                        <h3 class="display-4" align="center">Java code</h3>
+                                        <textarea rows="10%" cols="60%" name="java" style="resize: none;" id="javaCodeTB">'.$java_code.'</textarea>
+                                    </div>
+                                </div>
+                                <p style="margin:5px;">Date of conversion: '.$conv_date.'</p>
+                                <hr/>
+                                <!--<tr style="padding:10px 0px 0px 0px;">
+                                
                                     <td width="6%" align="center">
                                         <h3 class="display-4" style="width:auto;">'.$array[0].'</h3>
                                     </td>
@@ -130,9 +148,9 @@ $username=$_SESSION['username'];
                                         <hr/>
                                     </td>
                                     
-                                </tr>';
+                                </tr>-->';
                                 }
-                                echo '</table>';
+                               // echo '</table>';
                             }
                             fclose($f);
                         

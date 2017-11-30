@@ -55,23 +55,26 @@
 
     <div class="jumbotron jumbotron-fluid" style="background: linear-gradient(rgba(57,130, 255, 0.20), rgba(57, 130, 255, 0.0));  height:100vh; background-repeat: no-repeat;">
         <div class="container" style="margin-top: 25px;">
-            <div style="float:left;">
-                <h1 class="display-3" style="width:auto;">Welcome</h1>
-                <p class="lead" style="width:auto; opacity:0.9%; ">Centura to Java online converter. First converter online.<br><span >Register for free and convert your code.</span></p>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1 class="display-3" style="width:auto;">Welcome</h1>
+                    <p class="lead" style="width:auto; opacity:0.9%; ">Centura to Java online converter. First converter online.<br><span >Register for free and convert your code.</span></p>
+                </div>
+                <div align="center" class="col-lg-6">
+                    <form action="reg.php" method="post" style=" width:370px; background:linear-gradient(rgba(0, 15, 55, 0.15),rgba(0, 15, 55, 0.0)); border-radius: 5px; padding: 15px; ">
+                        Username:
+                        <input class="form-control mr-sm-2" type="text" name="username" placeholder="Enter your username">
+                        E-mail:
+                        <input class="form-control mr-sm-2" type="text" name="email" placeholder="Enter your email">
+                        Password:
+                        <input class="form-control mr-sm-2" type="Password" name="password" placeholder="Enter your password">
+                        Confirm password:
+                        <input class="form-control mr-sm-2" type="Password" name="confirm_password" placeholder="Confirm your password">
+                        <br>
+                        <input class="btn btn-primary btn-lg btn-block"  style="font-size: 15px;" type="submit" name="submit" value="Register">
+                    </form>
+                </div>
             </div>
-        <form action="reg.php" method="post" style="float:right; width:375px; margin-right: 1%; background:linear-gradient(rgba(0, 15, 55, 0.15),rgba(0, 15, 55, 0.0)); border-radius: 5px; padding: 15px; ">
-            Username:
-            <input class="form-control mr-sm-2" type="text" name="username" placeholder="Enter your username">
-            E-mail:
-            <input class="form-control mr-sm-2" type="text" name="email" placeholder="Enter your email">
-            Password:
-            <input class="form-control mr-sm-2" type="Password" name="password" placeholder="Enter your password">
-            Confirm password:
-            <input class="form-control mr-sm-2" type="Password" name="confirm_password" placeholder="Confirm your password">
-            <br>
-            <input class="btn btn-primary btn-lg btn-block"  style="font-size: 15px;" type="submit" name="submit" value="Register">
-        </form>
-
         </div>
     </div>  
 

@@ -24,7 +24,12 @@ git push origin [ime grane] - uploada granu na remote git "origin"
 git push origin :[ime grane] - brise granu s remote git "origin"
 
 Razlike:
+git log - pregled zadnjih commitova, tko i kada
+git log -p - dodatno pokaze razlike u datotekama
+git log -p HEAD..origin/master - commitovi i razlike izmedu lokalnih commitova i remote commita
+git diff - prikaze razlike izmedu lokalnih commitova i trenutne kopije
 git diff [file1] [file2] - ispise razliku izmedu dvije datoteke (jasmine, koristi to za diff output.txt(.php), output2.txt(.cs) :D)
+git diff HEAD..origin/master - razlike izmedu lokalnih comittova i remote kopije, git fetch potreban prije
 
 Arhiviranje:        //za AWS recimo
 git archive -v -o C2J.zip --format=zip HEAD - "-v" = verbose, "-o" output(kako da se zove), "--format" sve jasno, HEAD to je trenutna radna verzija
@@ -32,3 +37,4 @@ git archive -v -o C2J.zip --format=zip HEAD - "-v" = verbose, "-o" output(kako d
 Datoteke:
 git checkout HEAD~2 -- path/to/file - dohvacanje datoteke 2 commita prije pozicije HEAD (trenutna pozicija)
 git checkout commit-id -- path/to/file - dohvacanje datoteka sa commita odredenim s commit-id
+
